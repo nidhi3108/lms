@@ -1,5 +1,6 @@
-const express=require('express')
-const app=5000;
+const express= require('express')
+const app=express();
+const port=5000;
 
 
 
