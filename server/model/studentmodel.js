@@ -15,6 +15,10 @@ const Studentschema= new Schema({
     ],
     address:{type:String,required:true}
 
+
+
+    
+
 })
 const Studentmodel=model("Studentmodel",Studentschema)
 module.exports=Studentmodel
