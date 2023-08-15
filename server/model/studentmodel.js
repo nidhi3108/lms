@@ -1,16 +1,19 @@
-const {Types,Schema} = require('../connection')
+const {Types,Schema,model} = require('../connection')
 const Studentschema= new Schema({
-   fullname:{String,required:true},
-   email:{String,required:true},
-   phoneno:{String,required:true},
-   password:{String,required:true},
+   fullname:{ 
+    type:String,
+    required:true
+  },
+   email:{ type:String,required:true},
+   phoneno:{ type:String,required:true},
+   password:{ type:String,required:true},
    interestedCategories: [
       {
-        type: mongoose.Schema.Types.ObjectId,
+        type: Schema.Types.ObjectId,
         ref: 'Coursecategorymodel' // Reference to the 'CourseCategory' model
       }
     ],
-    address:{String,required:true}
+    address:{type:String,required:true}
 
 })
 const Studentmodel=model("Studentmodel",Studentschema)
