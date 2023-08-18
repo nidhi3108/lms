@@ -1,7 +1,8 @@
 const dotenv=require('dotenv')
 const express= require('express')
+// const jwt = require('jsonwebtoken');
 const app=express();
-const port=5000;
+const port= process.env.port ||5000;
 dotenv.config({path:'./.env'});
 
 const studentrouter=require('./router/studentrouter')
@@ -21,6 +22,18 @@ app.use((err, req, res, next) => {
 app.use('/student',studentrouter)
 app.use('/teacher',teacherrouter)
 
+
+// const createToken= async()=>{
+//    const token = await jwt.sign({_id:"64df24784fc57cdd1c9e869e"},"mynameisnidhvermanadthisismylmsporjectoflnodeandreact",{
+//     expiresIn:'2 minutes'
+//    })
+//    console.log(token);
+
+//    const userverify= await jwt.verify(token,"mynameisnidhvermanadthisismylmsporjectoflnodeandreact");
+//    console.log(userverify);
+// }
+
+// createToken();
 app.listen(port,()=>{
     console.log(`server is running at ${port}`)
 })
