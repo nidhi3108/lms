@@ -1,7 +1,6 @@
 const express= require('express')
-const model= require("../connection")
+const model= require("../model/teachermodel")
 const router=express.Router();
-
 
 
 router.post('/register',(req,res)=>{

@@ -4,9 +4,11 @@ const router=express.Router();
 
 router.post('/register',(req,res)=>{
     console.log(req.body);
+    console.log("req.body");
     new model(req.body).save()
     .then((result)=>{
         console.log("data save");
+        console.log(result);
         res.json(result);
     })
     .catch((err)=>{

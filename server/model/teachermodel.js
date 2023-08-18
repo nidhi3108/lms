@@ -1,12 +1,11 @@
-const {Types,Schema} = require('../connection')
+const {Types,Schema,model} = require('../connection')
 const Teacherschema= new Schema({
-   fullname:{String,required:true},
-   email:{String,required:true},
-   phoneno:{String,required:true},
-   address:{String,required:true},
-   password:{String,required:true},
-   qualification:{String,required:true},
-
+   fullname:String,
+   email:String,
+   phoneno:String,
+   address:String,
+   password:String,
+   qualification:String,
 })
 const Teachermodel=model("Teachermodel",Teacherschema)
 module.exports=Teachermodel
