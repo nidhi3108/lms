@@ -1,11 +1,12 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 const Cardcourse = (props) => {
    
   return (
     <>
         <div className="col-sm-3">
-            <div class="card">
+            <div className="card">
               <img
                 src={props.img}
                 alt="Fissure in Sandstone"
@@ -15,9 +16,9 @@ const Cardcourse = (props) => {
                 <p class="card-text">
                  {props.description}
                 </p>
-                <a href="#!" class="btn btn-primary">
+                <NavLink to="/detail/1" className="btn btn-primary">
                   Read More
-                </a>
+                </NavLink>
                 </div>
         </div>
       </div>

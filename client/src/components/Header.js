@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 
 const Header=()=>{
     return(
@@ -22,20 +23,29 @@ const Header=()=>{
       </h3>
       <ul className="navbar-nav me-auto mb-2 mb-lg-0">
         <li className="nav-item">
-          <a className="nav-link" aria-current="page" href="/home">
+          <NavLink className="nav-link" aria-current="page" to="/home">
             Home
-          </a>
+          </NavLink>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="/course">
+          <NavLink className="nav-link" to="/course">
             Courses
-          </a>
+          </NavLink>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="/teachers">Teachers</a>
+          <NavLink className="nav-link" to="/teachers">Teachers</NavLink>
+        </li>
+        <li className="nav-item">
+          <NavLink className="nav-link" to="/about">About Us</NavLink>
+        </li>
+        <li className="nav-item">
+          <NavLink className="nav-link" to="/login">Login</NavLink>
+        </li>
+        <li className="nav-item">
+          <NavLink className="nav-link" to="/register">Register</NavLink>
         </li>
       </ul>
-      <form className="d-flex input-group w-auto">
+      <form className="d-flex input-group w-auto">    
         <input
           type="search"
           className="form-control"
