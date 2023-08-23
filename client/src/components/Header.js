@@ -44,6 +44,12 @@ const Header=()=>{
         <li className="nav-item">
           <NavLink className="nav-link" to="/register">Register</NavLink>
         </li>
+        <li className="nav-item">
+          <NavLink className="nav-link" to="/userdashboard">UserDashboard</NavLink>
+        </li>
+        <li className="nav-item">
+          <NavLink className="nav-link" to="/coursedetail">coursedetail</NavLink>
+        </li>
       </ul>
       <form className="d-flex input-group w-auto">    
         <input
