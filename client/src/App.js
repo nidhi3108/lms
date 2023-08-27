@@ -11,6 +11,7 @@ import RecommendedCourse from './components/User/RecommendedCourse';
 import Favouritecourse from './components/User/Favouritecourse';
 import ProfileSetting from './components/User/ProfileSetting';
 import Logout from './components/User/Logout';
+import Changepassword from './components/User/Changepassword';
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
       <Route element={<RecommendedCourse/>} path="/recomcourse"/>
       <Route element={<Favouritecourse/>} path="/favcourse"/>
       <Route element={<ProfileSetting/>} path="/profilesetting"/>
+      <Route element={<Changepassword/>} path="/changepass"/>
       <Route element={<Logout/>} path="/logout"/>
       
     </Routes>

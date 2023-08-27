@@ -6,7 +6,7 @@ import {Routes as Switch,Route} from "react-router-dom"
 
 const UserDashboard = () => (
     <>
-        <div className="container  mt-4">
+        <div className="container  mt-2">
             <div className="row">
                 <div className="col-md-3">
                 <Sidebar/>
