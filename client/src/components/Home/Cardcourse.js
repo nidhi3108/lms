@@ -2,7 +2,6 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 const Cardcourse = (props) => {
-   
   return (
     <>
         <div className="col-sm-3">
