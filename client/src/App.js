@@ -3,6 +3,8 @@ import CourseDetail from './components/CourseDetail/CourseDetail';
 import Header from "./components/Header";
 import Home from "./components/Home/Home";
 import { BrowserRouter, Routes,Route } from "react-router-dom";
+
+//users
 import UserLogin from './components/User/UserLogin';
 import UserRegister from './components/User/UserRegister';
 import UserDashboard from './components/User/UserDashboard';
@@ -25,6 +27,9 @@ import TeacherMyCourse from './components/Teacher/TeacherMyCourse';
 import TeacherMyUsers from './components/Teacher/TeacherMyUsers';
 import TeacherProfileSetting from './components/Teacher/TeacherProfileSetting';
 import TeacherDetail from './components/Teacher/TeacherDetail';
+
+//commaon pages List pages
+import Allcourses from './components/Commonpages/Allcourses';
 
 function App() {
   return (
@@ -54,6 +59,9 @@ function App() {
       <Route element={<TeacherMyUsers/>} path="teacher-myusers"/>
       <Route element={<TeacherProfileSetting/>} path="/teacher-profilesetting"/>
       <Route element={<TeacherDetail/>} path="/teacher-detail/:teacher_id"/>
+
+      {/* List page */}
+      <Route element={<Allcourses/>} path="/all-courses"/>
       
     </Routes>
     
