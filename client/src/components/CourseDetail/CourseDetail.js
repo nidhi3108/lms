@@ -29,7 +29,7 @@ const CourseDetail = () => {
                   is a little bit longer.
                 </p>
                 <p className="fw-bold">
-                  Course By: <NavLink to="">Teacher 1</NavLink>
+                  Course By: <NavLink to="/teacher-detail/1">Teacher 1</NavLink>
                 </p>
                 <p className="fw-bold">Durationn: 3 Hours 30 minute</p>
                 <p className="fw-bold">Total Enrolled: 456 Students</p>
@@ -40,12 +40,67 @@ const CourseDetail = () => {
         </div>
         <div className="card mt-4 border border-secondary ">
           <ul className="list-group list-group-flush">
-          <div className="card-header ">Course Videos</div>
+            <div className="card-header ">Course Videos</div>
             <li className="list-group-item ">
               Introduction
-              <button className="btn btn-sm btn-danger float-end">
+              <button
+                type="button"
+                className="btn btn-sm btn-danger float-end"
+                data-bs-toggle="modal"
+                data-bs-target="#staticBackdrop"
+              >
                 <Youtube />
+                {/* <model start here */}
+                {/* Modal */}
+                <div
+                  className="modal fade"
+                  id="staticBackdrop"
+                  data-bs-backdrop="static"
+                  data-bs-keyboard="false"
+                  tabIndex={-1}
+                  aria-labelledby="staticBackdropLabel"
+                  aria-hidden="true"
+                >
+                  <div className="modal-dialog model-xl">
+                    <div className="modal-content">
+                      <div className="modal-header">
+                        <h5
+                          className="modal-title text-black"
+                          id="staticBackdropLabel"
+                        >
+                          Video 1
+                        </h5>
+                        <button
+                          type="button"
+                          className="btn-close"
+                          data-bs-dismiss="modal"
+                          aria-label="Close"
+                        />
+                      </div>
+                      <div className="modal-body">
+                        <div class="ratio ratio-16x9">
+                          <iframe
+                            src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0"
+                            title="YouTube video"
+                            allowfullscreen
+                          ></iframe>
+                        </div>
+                      </div>
+                      <div className="modal-footer">
+                        <button
+                          type="button"
+                          className="btn btn-secondary"
+                          data-bs-dismiss="modal"
+                        >
+                          Close
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {/* model end here */}
               </button>
+
             </li>
             <li className="list-group-item ">
               Setup Project
@@ -69,11 +124,27 @@ const CourseDetail = () => {
         </div>
         <h3 className="mt-4">Related Course</h3>
         <div className="row">
-        <Cardcourse  title="React" description="This is most popular course to learn" img="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHY9CHw_2VsuMCijpcpQ6nEk4quK_TtGKMvg9OHMiSDl1Ebyc7zUhubBojR5gYPjX_AIc&usqp=CAU"/>
-        <Cardcourse  title="React" description="This is most popular course to learn" img="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHY9CHw_2VsuMCijpcpQ6nEk4quK_TtGKMvg9OHMiSDl1Ebyc7zUhubBojR5gYPjX_AIc&usqp=CAU"/>
-        <Cardcourse  title="React" description="This is most popular course to learn" img="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHY9CHw_2VsuMCijpcpQ6nEk4quK_TtGKMvg9OHMiSDl1Ebyc7zUhubBojR5gYPjX_AIc&usqp=CAU"/>
-        <Cardcourse  title="React" description="This is most popular course to learn" img="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHY9CHw_2VsuMCijpcpQ6nEk4quK_TtGKMvg9OHMiSDl1Ebyc7zUhubBojR5gYPjX_AIc&usqp=CAU"/>
-      </div>
+          <Cardcourse
+            title="React"
+            description="This is most popular course to learn"
+            img="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHY9CHw_2VsuMCijpcpQ6nEk4quK_TtGKMvg9OHMiSDl1Ebyc7zUhubBojR5gYPjX_AIc&usqp=CAU"
+          />
+          <Cardcourse
+            title="React"
+            description="This is most popular course to learn"
+            img="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHY9CHw_2VsuMCijpcpQ6nEk4quK_TtGKMvg9OHMiSDl1Ebyc7zUhubBojR5gYPjX_AIc&usqp=CAU"
+          />
+          <Cardcourse
+            title="React"
+            description="This is most popular course to learn"
+            img="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHY9CHw_2VsuMCijpcpQ6nEk4quK_TtGKMvg9OHMiSDl1Ebyc7zUhubBojR5gYPjX_AIc&usqp=CAU"
+          />
+          <Cardcourse
+            title="React"
+            description="This is most popular course to learn"
+            img="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHY9CHw_2VsuMCijpcpQ6nEk4quK_TtGKMvg9OHMiSDl1Ebyc7zUhubBojR5gYPjX_AIc&usqp=CAU"
+          />
+        </div>
       </div>
     </>
   );

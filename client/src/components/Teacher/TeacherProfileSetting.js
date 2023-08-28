@@ -1,13 +1,13 @@
 import React from "react";
-import Sidebar from "./Sidebar";
+import TeacherSidebar from "./TeacherSidebar";
 
-const ProfileSetting = () => {
+const TeacherProfileSetting = () => {
   return (
     <>
       <div className="container">
         <div className="row">
           <section className="col-md-3">
-            <Sidebar />
+            <TeacherSidebar/>
           </section>
           <section className="col-md-8 mt-4">
             <div className="card">
@@ -84,4 +84,4 @@ const ProfileSetting = () => {
   );
 };
 
-export default ProfileSetting;
+export default TeacherProfileSetting;
