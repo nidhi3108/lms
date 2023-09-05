@@ -10,11 +10,16 @@ const Cardcourse = (props) => {
                 src={props.img}
                 alt="Fissure in Sandstone"
               />
-              <div class="card-body">
-                <h5 class="card-title">{props.title}</h5>
-                <p class="card-text">
+              <div className="card-body">
+                <h5 className="card-title">{props.title}</h5>
+                <p className="card-text">
                  {props.description}
                 </p>
+                <div className="card-footer">
+                <p className="card-title">Rating:5/10</p>
+                <p className="card-title">Views:55855</p>
+                </div>
+                
                 <NavLink to="/detail/1" className="btn btn-primary">
                   Read More
                 </NavLink>
