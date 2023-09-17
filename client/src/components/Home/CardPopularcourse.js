@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-const Cardcourse = (props) => {
+const CardPopularcourse = (props) => {
   return (
     <>
       <div className="col-sm-3">
@@ -25,4 +25,4 @@ const Cardcourse = (props) => {
   );
 };
 
-export default Cardcourse;
+export default CardPopularcourse;

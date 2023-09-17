@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-const Cardcourse = (props) => {
+const CardPopularTeachercourse = (props) => {
   return (
     <>
       <div className="col-sm-3">
@@ -15,7 +15,7 @@ const Cardcourse = (props) => {
                 <span className="float-end"><strong>Views:</strong> 55855</span>
               </div>
               
-            <NavLink to="/detail/1" className="btn btn-primary mt-3">
+            <NavLink to="/teacher-detail/1" className="btn btn-primary mt-3">
               Read More
             </NavLink>
           </div>
@@ -25,4 +25,4 @@ const Cardcourse = (props) => {
   );
 };
 
-export default Cardcourse;
+export default CardPopularTeachercourse;

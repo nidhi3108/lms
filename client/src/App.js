@@ -29,7 +29,9 @@ import TeacherProfileSetting from './components/Teacher/TeacherProfileSetting';
 import TeacherDetail from './components/Teacher/TeacherDetail';
 
 //commaon pages List pages
-import Allcourses from './components/Commonpages/Allcourses';
+import AllLatestcourses from './components/Commonpages/AllLatestcourses';
+import AllLatestPopularcourses from './components/Commonpages/AllLatestPopularcourses';
+import AllLatestTeacher from './components/Commonpages/AllLatestTeacher';
 
 function App() {
   return (
@@ -61,7 +63,9 @@ function App() {
       <Route element={<TeacherDetail/>} path="/teacher-detail/:teacher_id"/>
 
       {/* List page */}
-      <Route element={<Allcourses/>} path="/all-courses"/>
+      <Route element={<AllLatestcourses/>} path="/all-latest-courses"/>
+      <Route element={<AllLatestPopularcourses/>} path="/all-latest-popular-courses"/>
+      <Route element={<AllLatestTeacher/>} path="/all-latest-teacher"/>
       
     </Routes>
     
