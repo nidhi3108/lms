@@ -1,10 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 const Register = (props) => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone:'',
+    address:'',
+    interest: '',
+    password: '',
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) =>({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    console.log('Form Data:', formData);
+  }
   return (
     <>
      <h3 className="text-center mt-4">{props.title}</h3>
       <div className="container w-50 mt-4 border border-secondary rounded">
-        <form>
+        <form  onSubmit={handleSubmit}>
           {/* 2 column grid layout with text inputs for the first and last names */}
           <div className="row mb-4">
             <div className="col">
@@ -14,10 +36,11 @@ const Register = (props) => {
                 </label>
                 <input
                   type="text"
-                  id="form6Example1"
+                  id="name"
                   className="form-control"
+                  value={formData.name}
+                  onChange={handleInputChange}
                 />
-                
               </div>
             </div>
 
@@ -26,7 +49,10 @@ const Register = (props) => {
           <label className="form-label" htmlFor="form6Example5">
               {props.email}
             </label>
-            <input type="email" id="form6Example5" className="form-control" />
+            <input type="email" id="email" className="form-control"
+            value={formData.email}
+            onChange={handleInputChange}
+             />
            
           </div>
           {/* Number input */}
@@ -34,28 +60,40 @@ const Register = (props) => {
           <label className="form-label" htmlFor="form6Example6">
               {props.phone}
             </label>
-            <input type="text" id="form6Example6" className="form-control" />
+            <input type="text" id="phone" className="form-control" 
+            value={formData.phone}
+            onChange={handleInputChange}
+            />
           
           </div>
           <div className=" mb-4">
           <label className="form-label" htmlFor="form6Example4">
               {props.address}
             </label>
-            <input type="text" id="form6Example4" className="form-control" />
+            <input type="text" id="address" className="form-control"
+            value={formData.address}
+            onChange={handleInputChange}
+            />
             
           </div>
           <div className=" mb-4">
           <label className="form-label" htmlFor="form6Example4">
               {props.interest}
             </label>
-            <input type="password" id="form6Example4" className="form-control" />
+            <input type="password" id="interest" className="form-control" 
+            value={formData.interest}
+            onChange={handleInputChange}
+            />
             
           </div>
           <div className=" mb-4">
           <label className="form-label" htmlFor="form6Example4">
               {props.password}
             </label>
-            <input type="password" id="form6Example4" className="form-control" />
+            <input type="password" id="password" className="form-control" 
+            value={formData.password}
+            onChange={handleInputChange}
+            />
             
           </div>
           {/* Submit button */}
