@@ -8,19 +8,23 @@ const Register = (props) => {
     interest: '',
     password: '',
   });
-
+ let name,value;
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) =>({
-      ...prevData,
+    name=e.target.name
+    value=e.target.value
+    console.log("error in  phle setform handlechange");
+    setFormData({
+      ...formData,
       [name]: value,
-    }));
+    });
+    console.log("error in handlechange");
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     console.log('Form Data:', formData);
+    console.log("error in handlesubmit");
   }
   return (
     <>
@@ -37,6 +41,7 @@ const Register = (props) => {
                 <input
                   type="text"
                   id="name"
+                  name="name"
                   className="form-control"
                   value={formData.name}
                   onChange={handleInputChange}
@@ -49,7 +54,7 @@ const Register = (props) => {
           <label className="form-label" htmlFor="form6Example5">
               {props.email}
             </label>
-            <input type="email" id="email" className="form-control"
+            <input type="email" name="email" id="email" className="form-control"
             value={formData.email}
             onChange={handleInputChange}
              />
@@ -60,7 +65,7 @@ const Register = (props) => {
           <label className="form-label" htmlFor="form6Example6">
               {props.phone}
             </label>
-            <input type="text" id="phone" className="form-control" 
+            <input type="text" name="phone" id="phone" className="form-control" 
             value={formData.phone}
             onChange={handleInputChange}
             />
@@ -70,7 +75,7 @@ const Register = (props) => {
           <label className="form-label" htmlFor="form6Example4">
               {props.address}
             </label>
-            <input type="text" id="address" className="form-control"
+            <input type="text" name="address" id="address" className="form-control"
             value={formData.address}
             onChange={handleInputChange}
             />
@@ -80,7 +85,7 @@ const Register = (props) => {
           <label className="form-label" htmlFor="form6Example4">
               {props.interest}
             </label>
-            <input type="password" id="interest" className="form-control" 
+            <input type="password" name="interest" id="interest" className="form-control" 
             value={formData.interest}
             onChange={handleInputChange}
             />
@@ -90,7 +95,7 @@ const Register = (props) => {
           <label className="form-label" htmlFor="form6Example4">
               {props.password}
             </label>
-            <input type="password" id="password" className="form-control" 
+            <input type="password" name="password" id="password" className="form-control" 
             value={formData.password}
             onChange={handleInputChange}
             />
