@@ -12,19 +12,16 @@ const Register = (props) => {
   const handleInputChange = (e) => {
     name=e.target.name
     value=e.target.value
-    console.log("error in  phle setform handlechange");
     setFormData({
       ...formData,
       [name]: value,
     });
-    console.log("error in handlechange");
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     console.log('Form Data:', formData);
-    console.log("error in handlesubmit");
+    console.log("success handlesubmit");
   }
   return (
     <>
@@ -85,8 +82,18 @@ const Register = (props) => {
           <label className="form-label" htmlFor="form6Example4">
               {props.interest}
             </label>
-            <input type="password" name="interest" id="interest" className="form-control" 
+            <input type="text" name="interest" id="interest" className="form-control" 
             value={formData.interest}
+            onChange={handleInputChange}
+            />
+            
+          </div>
+          <div className=" mb-4">
+          <label className="form-label" htmlFor="form6Example4">
+              {props.qualification}
+            </label>
+            <input type="text" name="qualification" id="qualification" className="form-control" 
+            value={formData.qualification}
             onChange={handleInputChange}
             />
             
@@ -95,7 +102,7 @@ const Register = (props) => {
           <label className="form-label" htmlFor="form6Example4">
               {props.password}
             </label>
-            <input type="password" name="password" id="password" className="form-control" 
+            <input type="text" name="password" id="password" className="form-control" 
             value={formData.password}
             onChange={handleInputChange}
             />
