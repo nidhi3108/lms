@@ -7,6 +7,7 @@ const Register = (props) => {
     address:'',
     interest: '',
     password: '',
+    flag:'',
   });
  let name,value;
   const handleInputChange = (e) => {
@@ -78,6 +79,8 @@ const Register = (props) => {
             />
             
           </div>
+
+           if(flag==student){   
           <div className=" mb-4">
           <label className="form-label" htmlFor="form6Example4">
               {props.interest}
@@ -88,6 +91,10 @@ const Register = (props) => {
             />
             
           </div>
+}
+
+//changes
+              if(flag==teacher){
           <div className=" mb-4">
           <label className="form-label" htmlFor="form6Example4">
               {props.qualification}
@@ -98,6 +105,7 @@ const Register = (props) => {
             />
             
           </div>
+}
           <div className=" mb-4">
           <label className="form-label" htmlFor="form6Example4">
               {props.password}
