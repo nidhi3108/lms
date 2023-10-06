@@ -26,9 +26,8 @@ const Register = (props) => {
     e.preventDefault();
     console.log("Form Data:", formData);
     console.log("success handlesubmit");
-
     
-   
+   if (flag === "teacher"){
     const response= await fetch("http://localhost:5000/teacher/register",{
       method: 'post',
       body: JSON.stringify(formData),
@@ -56,6 +55,36 @@ const Register = (props) => {
       //     timer: 2000
       //   })
   }
+}
+else{
+  const response= await fetch("http://localhost:5000/student/register",{
+    method: 'post',
+    body: JSON.stringify(formData),
+    headers:{
+        'Content-Type': 'application/json'
+    }
+
+   
+});
+console.log(response.status);
+      
+if(response.status===200){
+    console.log("Register Successful");
+    // Swal.fire({
+    //     title:"Register Suuceesful",
+    //     icon:"success",
+    //     timer: 2000
+    //   })
+}
+else{
+    console.log("Register failed");
+    // Swal.fire({
+    //     title:"oops something wrong",
+    //     icon:"error",
+    //     timer: 2000
+    //   })
+}
+}
   }
   return (
     <>
