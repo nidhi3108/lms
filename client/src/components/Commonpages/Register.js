@@ -6,7 +6,9 @@ const Register = (props) => {
     email: "",
     phone: "",
     address: "",
-    interest: "",
+    // interest: "",
+    // interest: flag === "student" ? "" : null, // Initialize based on flag
+    // qualification: flag === "teacher" ? "" : null,
     password: "",
     flag: "",
   });
@@ -18,13 +20,43 @@ const Register = (props) => {
       ...formData,
       [name]: value,
     });
-  };
+  }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Form Data:", formData);
     console.log("success handlesubmit");
-  };
+
+    
+   
+    const response= await fetch("http://localhost:5000/teacher/register",{
+      method: 'post',
+      body: JSON.stringify(formData),
+      headers:{
+          'Content-Type': 'application/json'
+      }
+
+     
+  });
+  console.log(response.status);
+        
+  if(response.status===200){
+      console.log("Register Successful");
+      // Swal.fire({
+      //     title:"Register Suuceesful",
+      //     icon:"success",
+      //     timer: 2000
+      //   })
+  }
+  else{
+      console.log("Register failed");
+      // Swal.fire({
+      //     title:"oops something wrong",
+      //     icon:"error",
+      //     timer: 2000
+      //   })
+  }
+  }
   return (
     <>
       <h3 className="text-center mt-4">{props.title}</h3>
@@ -93,20 +125,6 @@ const Register = (props) => {
               onChange={handleInputChange}
             />
           </div>
- {/* interest  */}
-          {/* <div className=" mb-4">
-            <label className="form-label" htmlFor="form6Example4">
-              {props.interest}
-            </label>
-            <input
-              type="text"
-              name="interest"
-              id="interest"
-              className="form-control"
-              value={formData.interest}
-              onChange={handleInputChange}
-            />
-          </div> */}
 
           {flag == "student" ? (
             <div className=" mb-4">
@@ -160,6 +178,6 @@ const Register = (props) => {
       </div>
     </>
   );
-};
+}
 
 export default Register;

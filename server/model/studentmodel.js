@@ -25,6 +25,8 @@ const Studentschema= new Schema({
    email:String,
    phoneno:String,
    password:String,
+   interested:String,
+   qualification:String,
   //  interestedCategories: [
   //     {
   //       type: Schema.Types.ObjectId,

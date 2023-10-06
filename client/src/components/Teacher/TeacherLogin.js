@@ -3,7 +3,7 @@ import Login from "../Commonpages/Login"
 const TeacherLogin = (props) => {
   return (
     <>
-    <Login title="Login Here" name="Full Name" email="Email"  phone="Phone No" address="Address" interest="Interest" password="Password"/>
+    <Login title="Login Here" name="Full Name" email="Email" password="Password"/>
     </>
   )
 }

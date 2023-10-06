@@ -12,7 +12,7 @@ router.post('/register',(req,res)=>{
         res.json(result);
     })
     .catch((err)=>{
-        console.log(err);
+        console.log(err)
         res.json(err)
     })
 })
