@@ -1,8 +1,76 @@
 import React from "react";
 import {Formik} from "formik";
+import {useNavigate, resetForm} from "react-router-dom"
+
 const Login = (props) => {
-  const LoginSubmit = (formdata) => {
+  const navigate = useNavigate();
+  const flag = props.flag;
+  const LoginSubmit = async (formdata,{resetForm}) => {
     console.log(formdata);
+    if (flag === "teacher"){
+      const response= await fetch("http://localhost:5000/teacher/login",{
+        method: 'post',
+        body: JSON.stringify(formdata),
+        headers:{
+            'Content-Type': 'application/json'
+        }
+  
+      
+    });
+    console.log(response.status);
+    const userData = await response.json();
+    if(response.status===200){
+        console.log("Login Successful");
+        sessionStorage.setItem('currentUserTeacher',JSON.stringify(userData));
+        // Swal.fire({
+        //     title:"Register Suuceesful",
+        //     icon:"success",
+        //     timer: 2000
+        //   })
+        navigate("/teacher-dashboard");
+        resetForm();
+    }
+    else{
+        console.log("Login failed");
+        // Swal.fire({
+        //     title:"oops something wrong",
+        //     icon:"error",
+        //     timer: 2000
+        //   })
+    }
+  }
+  else{
+    const response= await fetch("http://localhost:5000/student/login",{
+      method: 'post',
+      body: JSON.stringify(formdata),
+      headers:{
+          'Content-Type': 'application/json'
+      }
+  
+     
+  });
+  console.log(response.status);
+  const userData = await response.json();
+  if(response.status===200){
+      console.log("login Successful");
+      sessionStorage.setItem('currentUserStudent',JSON.stringify(userData));
+      // Swal.fire({
+      //     title:"Register Suuceesful",
+      //     icon:"success",
+      //     timer: 2000
+      //   })
+      navigate("/user-dashboard");
+        resetForm();
+  }
+  else{
+      console.log("login failed");
+      // Swal.fire({
+      //     title:"oops something wrong",
+      //     icon:"error",
+      //     timer: 2000
+      //   })
+  }
+  }
   };
   return (
     <>

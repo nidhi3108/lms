@@ -18,18 +18,22 @@ router.post('/register',(req,res)=>{
     })
 })
 
-router.post('/register',(req,res)=>{
+
+router.post('/login',(req,res)=>{
     console.log(req.body);
     console.log("req.body");
-    new model(req.body).save()
+    const loginData= req.body;
+    model.findOne({email:loginData.email,password:loginData.password})
     .then((result)=>{
-        console.log("data save");
-        console.log(result);
-        res.json(result);
+        if(result){
+            res.status(200).json(result);
+        }
+        else{
+            res.status(401).json({status:"login faled"})
+        }
     })
     .catch((err)=>{
-        console.log(err)
-        res.json(err)
+        res.status(500).json(err)
     })
 })
 
