@@ -1,24 +1,66 @@
 import { Formik } from "formik";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 const AddCoursePage = () => {
     const [selFile, setSelFile] = useState("")
     const [selThumbnail, setSelThumbnail] = useState("")
-  const CourseSubmit = (formdata) => {
-      const formData = new FormData();
-      formData.append("file", formData.file);
-      formData.append("thumbnail", formData.thumbnail);
-      console.log(formdata);
+    const fileInputRef= useRef();
+    const thumbnailInputRef= useRef();
+  const CourseSubmit = async (formdata,{resetForm}) => {
+    formdata.file = selFile;
+    formdata.thumbnail = selThumbnail;
+    console.log(formdata);
+
+    const response = await fetch("http://localhost:5000/course/add", {
+      method: 'POST',
+      body: JSON.stringify(formdata),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+   console.log(response);
+
+
+   // Clear the file inputs
+   if (fileInputRef.current) {
+     fileInputRef.current.value = null;
+   }
+   if (thumbnailInputRef.current) {
+     thumbnailInputRef.current.value = null;
+   }
+ 
+  resetForm();
+
   };
 
   const uploadFile=(e)=>{
     const file=e.target.files[0];
-    setSelFile(file.name)   
+    setSelFile(file.name)  
+    const fd = new FormData();
+    fd.append("myfile", file); 
+    fetch("http://localhost:5000/file/uploadfile", {
+      method: "POST",
+      body: fd,
+    }).then((res) => {
+      if (res.status === 200) {
+      console.log("file uploaded");
+      }
+    });
 
   }
 
   const uploadThumbnail=(e)=>{
     const file = e.target.files[0];
     setSelThumbnail(file.name);
+    const fd = new FormData();
+    fd.append("myuploadfile", file);
+    fetch("http://localhost:5000/file/thumbnailfile", {
+      method: "POST",
+      body: fd,
+    }).then((res) => {
+      if (res.status === 200) {
+      console.log("thumbnail uploaded");
+      }
+    });
 
 
   }
@@ -90,6 +132,7 @@ const AddCoursePage = () => {
                           className="form-control"
                           onChange={ uploadThumbnail}
                         //   value={values.thumbnail}
+                        ref={thumbnailInputRef}
                         />
                       </div>
                       <div className="mb-1">
@@ -101,6 +144,7 @@ const AddCoursePage = () => {
                           id="file"
                           className="form-control"
                           onChange={uploadFile}
+                          ref={fileInputRef}
                         //   value={values.file}
                         />
                       </div>

@@ -7,6 +7,8 @@ dotenv.config({path:'./.env'});
 
 const studentrouter=require('./router/studentrouter')
 const teacherrouter=require('./router/teacherrouter')
+const filerouter=require('./router/filerouter')
+const courserouter=require('./router/courserouter')
 const cors=require('cors')
 
 app.use(express.json());
@@ -21,7 +23,10 @@ app.use((err, req, res, next) => {
   
 app.use('/student',studentrouter)
 app.use('/teacher',teacherrouter)
+app.use('/course',courserouter)
+app.use('/file', filerouter)
 
+app.use(express.static('./static/uploads'));
 
 // const createToken= async()=>{
 //    const token = await jwt.sign({_id:"64df24784fc57cdd1c9e869e"},"mynameisnidhvermanadthisismylmsporjectoflnodeandreact",{

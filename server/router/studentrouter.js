@@ -8,7 +8,7 @@ router.post('/register',(req,res)=>{
     console.log("req.body");
     new model(req.body).save()
     .then((result)=>{
-        console.log("data save");
+        console.log(" student register data save");
         console.log(result);
         res.json(result);
     })
@@ -27,6 +27,7 @@ router.post('/login',(req,res)=>{
     .then((result)=>{
         if(result){
             res.status(200).json(result);
+            console.log(" student login data match");
         }
         else{
             res.status(401).json({status:"login faled"})
