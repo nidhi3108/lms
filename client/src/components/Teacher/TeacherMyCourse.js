@@ -1,7 +1,46 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import TeacherSidebar from "./TeacherSidebar";
+import { Link } from "react-router-dom";
 
 const TeacherMyCourse= () => {
+
+   const [backendData,setBackendData]= useState([])
+   const url= "http://localhost:5000";
+  const showCourse = async () => {
+    const response = await fetch("http://localhost:5000/course/getall");
+    console.log(response.status);
+    const data = await response.json();
+    console.log(data);
+    setBackendData(data);
+    console.log(backendData.length);
+  }; 
+
+  useEffect(()=>{
+   showCourse();
+  },[])
+
+  const showAllCourse=()=>{
+    return backendData.map((data) => (
+      <div className="col-md-3 me-1" style={{border:"2px solid black"}}>
+        <div className="card">
+          <img
+            src={url+data.thumbnail}
+            className="card-img-top"
+            alt="Fissure in Sandstone"
+          />
+          <div className="card-body">
+            <h5 className="card-title">{data.title}</h5>
+            <p className="card-text">
+              {data.description}
+            </p>
+            {/* <Link to={"/player/"+data._id} className="btn btn-primary">
+              View
+            </Link> */}
+          </div>
+        </div>
+      </div>
+    ));
+  }
   return (
     <>
     <div className="container">
@@ -13,7 +52,8 @@ const TeacherMyCourse= () => {
       <div className="card">
         <h5 className="card-header">My Courses</h5>
         <div className="card-body">
-          <table className="table border border-radius">
+        <div className="row">{showAllCourse()}</div>
+          {/* <table className="table border border-radius">
             <thead>
               <tr>
                 <th colSpan={3}>My Courses</th>
@@ -33,7 +73,7 @@ const TeacherMyCourse= () => {
                 </td>
               </tr>
             </tbody>
-          </table>
+          </table> */}
         </div>
       </div>
               

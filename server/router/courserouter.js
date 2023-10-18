@@ -16,6 +16,21 @@ router.post('/add',(req,res)=>{
 })
 
 
+router.get('/getall',(req,res)=>{
+    console.log(req.body);
+    coursemodel.find().populate("title")
+    .then((result)=>{
+        console.log(result);
+        console.log("data fetvh hogya");
+        res.json(result);
+    })
+    .catch((err)=>{
+        console.log(err);
+        console.log("data fetching  fail hogya");
+        res.json(err)
+    });
+})
+
 
 
 module.exports=router
