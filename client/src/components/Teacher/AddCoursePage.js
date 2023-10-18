@@ -27,7 +27,6 @@ const AddCoursePage = () => {
    if (thumbnailInputRef.current) {
      thumbnailInputRef.current.value = null;
    }
- 
   resetForm();
 
   };
