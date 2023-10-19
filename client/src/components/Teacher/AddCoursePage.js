@@ -1,6 +1,7 @@
 import { Formik } from "formik";
 import React, { useRef, useState } from "react";
 const AddCoursePage = () => {
+  const flag="course"
     const [selFile, setSelFile] = useState("")
     const [selThumbnail, setSelThumbnail] = useState("")
     const fileInputRef= useRef();

@@ -27,6 +27,8 @@ import TeacherMyCourse from './components/Teacher/TeacherMyCourse';
 import TeacherMyUsers from './components/Teacher/TeacherMyUsers';
 import TeacherProfileSetting from './components/Teacher/TeacherProfileSetting';
 import TeacherDetail from './components/Teacher/TeacherDetail';
+import TeacherAddChapter from './components/Teacher/TeacherAddChapter';
+
 
 //commaon pages List pages
 import AllLatestcourses from './components/Commonpages/AllLatestcourses';
@@ -61,6 +63,7 @@ function App() {
       <Route element={<TeacherMyUsers/>} path="teacher-myusers"/>
       <Route element={<TeacherProfileSetting/>} path="/teacher-profilesetting"/>
       <Route element={<TeacherDetail/>} path="/teacher-detail/:teacher_id"/>
+      <Route element={<TeacherAddChapter/>} path="/teacher-addchapter"/>
 
       {/* List page */}
       <Route element={<AllLatestcourses/>} path="/all-latest-courses"/>
