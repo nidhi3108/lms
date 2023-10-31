@@ -21,7 +21,7 @@ const Login = (props) => {
     const userData = await response.json();
     if(response.status===200){
         console.log("Login Successful");
-        sessionStorage.setItem('currentUserTeacher',JSON.stringify(userData));
+        sessionStorage.setItem('currentTeacher',JSON.stringify(userData));
         // Swal.fire({
         //     title:"Register Suuceesful",
         //     icon:"success",
@@ -53,7 +53,7 @@ const Login = (props) => {
   const userData = await response.json();
   if(response.status===200){
       console.log("login Successful");
-      sessionStorage.setItem('currentUserStudent',JSON.stringify(userData));
+      
       // Swal.fire({
       //     title:"Register Suuceesful",
       //     icon:"success",

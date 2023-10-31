@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import { Formik } from "formik";
 
 const TeacherAddChapter= () => {
@@ -45,8 +46,15 @@ const uploadFile=(e)=>{
 
     return (
         <>
+          <div className="head d-flex justify-content-around mt-3">
+               
+               <h5 >Add Chapter</h5>
+               <Link to="/teacher-mycourses" className="btn btn-primary me-1" >Back to my courses</Link>
+                    
+               </div>
         <div className="container w-50 mt-3" style={{border:"1px solid black"}}>
         <div className="row d-flex justify-content-center align-items-center ">
+      
           <div>
             <Formik
               initialValues={{

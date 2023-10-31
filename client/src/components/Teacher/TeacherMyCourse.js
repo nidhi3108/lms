@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import TeacherSidebar from "./TeacherSidebar";
 import TeacherAddcourse from "./TeacherAddcourse"
 import { Link } from "react-router-dom";
+import { Trash2 } from 'react-feather';
 
 const TeacherMyCourse= () => {
-
    const [backendData,setBackendData]= useState([])
    const url= "http://localhost:5000/";
    
@@ -18,6 +18,9 @@ const TeacherMyCourse= () => {
   }; 
 
 
+const deletecourse=()=>{
+  console.log("dlete kro course");
+}
 
   const showAllCourse=()=>{
     return backendData.map((data) => (
@@ -32,12 +35,15 @@ const TeacherMyCourse= () => {
           <div className="card-body">
             <h5 className="card-title">{data.title}</h5>
              <div className="button d-flex" >
-            <Link to={"/player/"+data._id} className="btn btn-primary me-2 "style={{height: "fit-content"}}>
+            <Link to={"/all-chapter"} className="btn btn-primary me-2 "style={{height: "fit-content"}}>
               View
             </Link>
             <Link to={"/teacher-addchapter"} className="btn btn-primary me-1"style={{height: "fit-content"}}>
               +Chapter
             </Link>
+            <button onClick={deletecourse}>
+              <Trash2 style={{color: 'red'}} />
+            </button>
             </div>
           </div>
         </div>

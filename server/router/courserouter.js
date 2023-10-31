@@ -31,6 +31,15 @@ router.get('/getall',(req,res)=>{
     });
 })
 
+router.post('/delete',(req,res)=>{
+    model.findByIdAndDelete({_id: req.body._id})
+    .then((result) => {
+        res.status(200).json(result)
+        
+    }).catch((err) => {
+        res.json(err);
+    });
+})
 
 
 module.exports=router
