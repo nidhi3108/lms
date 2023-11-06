@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { Formik } from "formik";
 
 const TeacherAddChapter= () => {
+  const [currentTeacher, setcurrentTeacher] = useState(JSON.parse(sessionStorage.getItem('currentTeacher')))
+
 const flag ="chapter";
   const [selFile, setSelFile] = useState("")
   const fileInputRef= useRef();

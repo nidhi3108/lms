@@ -18,7 +18,7 @@ router.post('/add',(req,res)=>{
 
 router.get('/getall',(req,res)=>{
     console.log(req.body);
-    coursemodel.find().populate("title")
+    coursemodel.find().populate('createdBy')
     .then((result)=>{
         console.log(result);
         console.log("data fetvh hogya");

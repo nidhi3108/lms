@@ -17,7 +17,7 @@ router.post('/add',(req,res)=>{
 
 router.get('/getall',(req,res)=>{
     console.log(req.body);
-    Chaptermodel.find().populate("title")
+    Chaptermodel.find().populate("createdBy")
     .then((result)=>{
         console.log(result);
         console.log("chapter data fetvh hogya");

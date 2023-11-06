@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import { Trash2 } from 'react-feather';
 
 const TeacherMyCourse= () => {
+  const [currentTeacher, setcurrentTeacher] = useState(JSON.parse(sessionStorage.getItem('currentTeacher')))
+  const [currentCourse, setCurrentCourse] = useState(JSON.parse(sessionStorage.getItem('currentCourse')));
    const [backendData,setBackendData]= useState([])
    const url= "http://localhost:5000/";
    
@@ -19,7 +21,7 @@ const TeacherMyCourse= () => {
 
 
 const deletecourse=()=>{
-  console.log("dlete kro course");
+  console.log("delete kro course");
 }
 
   const showAllCourse=()=>{
@@ -35,7 +37,7 @@ const deletecourse=()=>{
           <div className="card-body">
             <h5 className="card-title">{data.title}</h5>
              <div className="button d-flex" >
-            <Link to={"/all-chapter"} className="btn btn-primary me-2 "style={{height: "fit-content"}}>
+            <Link to={"/all-chapter/"+currentCourse._id} className="btn btn-primary me-2 "style={{height: "fit-content"}}>
               View
             </Link>
             <Link to={"/teacher-addchapter"} className="btn btn-primary me-1"style={{height: "fit-content"}}>

@@ -15,7 +15,7 @@ const AddCoursePage = () => {
 
     const response = await fetch("http://localhost:5000/course/add", {
       method: 'POST',
-      body: JSON.stringify({formdata,createdBy: currentTeacher._id}),
+      body: JSON.stringify({coursedata:formdata,createdBy: currentTeacher._id}),
       headers: {
         "Content-Type": "application/json",
       },
@@ -82,6 +82,8 @@ const AddCoursePage = () => {
                 thumbnail: null,
                 file: null,
                 technology: " ",
+                createdBy:currentTeacher._id,
+                createdAt: new Date()
               }}
               onSubmit={CourseSubmit}
             >

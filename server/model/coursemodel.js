@@ -5,7 +5,7 @@ const Courseschema= new Schema({
    description:String,
    file:String,
     thumbnail:String,
-    createdBy:{type: mongoose.Types.ObjectId, ref:"users"},
+    createdBy:{type: mongoose.Types.ObjectId},
     createdAt:Date,
   //  Teachermodel: {
   //   type: mongoose.Schema.Types.ObjectId,

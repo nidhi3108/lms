@@ -1,7 +1,15 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const navigate = useNavigate();
+  let userState = sessionStorage.getItem("currentTeacher");
+
+  const signOut = () => {
+    sessionStorage.removeItem("currentTeacher");
+    navigate("../teacher-login");
+  };
+
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -108,7 +116,15 @@ const Header = () => {
                 </li>
               </ul>
             </div>
-
+            <div className="signout">
+            <button
+                type="button"
+                onClick={signOut}
+                class="btn btn-danger me-3"
+              >
+                Sign out
+              </button>
+                  </div>
             <form className="d-flex input-group w-auto ms-3">
               <input
                 type="search"
