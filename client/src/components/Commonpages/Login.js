@@ -1,4 +1,5 @@
 import React from "react";
+import Swal from "sweetalert2";
 import {Formik} from "formik";
 import {useNavigate, resetForm} from "react-router-dom"
 
@@ -15,28 +16,33 @@ const Login = (props) => {
             'Content-Type': 'application/json'
         }
   
-      
+
     });
     console.log(response.status);
     const userData = await response.json();
     if(response.status===200){
         console.log("Login Successful");
-        sessionStorage.setItem('currentUserTeacher',JSON.stringify(userData));
-        // Swal.fire({
-        //     title:"Register Suuceesful",
-        //     icon:"success",
-        //     timer: 2000
-        //   })
+        sessionStorage.setItem('currentTeacher',JSON.stringify(userData));
+        Swal.fire({
+          title:"Success",
+          icon: "success",
+          text:"Log In Successful",
+          timer: 2000,
+          confirmButtonText: 'OK',
+          confirmButtonColor: 'green'
+          })
         navigate("/teacher-dashboard");
         resetForm();
     }
     else{
         console.log("Login failed");
-        // Swal.fire({
-        //     title:"oops something wrong",
-        //     icon:"error",
-        //     timer: 2000
-        //   })
+        Swal.fire({
+          title: "Login Failed...",
+          icon: 'error',
+          timer: 3000,
+          text: 'Someone anonymous...',
+          footer: `<a href='../userregister'>Want to register?</a>`
+          })
     }
   }
   else{
@@ -53,7 +59,7 @@ const Login = (props) => {
   const userData = await response.json();
   if(response.status===200){
       console.log("login Successful");
-      sessionStorage.setItem('currentUserStudent',JSON.stringify(userData));
+      
       // Swal.fire({
       //     title:"Register Suuceesful",
       //     icon:"success",

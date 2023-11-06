@@ -1,11 +1,13 @@
 import { Formik } from "formik";
 import React, { useRef, useState } from "react";
 const AddCoursePage = () => {
-  const flag="course"
+  // const flag="course"
+  const [currentTeacher, setcurrentTeacher] = useState(JSON.parse(sessionStorage.getItem('currentTeacher')))
     const [selFile, setSelFile] = useState("")
     const [selThumbnail, setSelThumbnail] = useState("")
     const fileInputRef= useRef();
     const thumbnailInputRef= useRef();
+
   const CourseSubmit = async (formdata,{resetForm}) => {
     formdata.file = selFile;
     formdata.thumbnail = selThumbnail;
@@ -19,8 +21,11 @@ const AddCoursePage = () => {
       },
     });
    console.log(response);
-
-
+   const userData = await response.json();
+   if(response.status === 200){
+    console.log('course save Successful');
+    sessionStorage.setItem('currentCourse',JSON.stringify(userData));
+   }
    // Clear the file inputs
    if (fileInputRef.current) {
      fileInputRef.current.value = null;
@@ -77,6 +82,8 @@ const AddCoursePage = () => {
                 thumbnail: null,
                 file: null,
                 technology: " ",
+                createdBy:currentTeacher._id,
+                createdAt: new Date()
               }}
               onSubmit={CourseSubmit}
             >

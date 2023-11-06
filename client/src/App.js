@@ -34,6 +34,7 @@ import TeacherAddChapter from './components/Teacher/TeacherAddChapter';
 import AllLatestcourses from './components/Commonpages/AllLatestcourses';
 import AllLatestPopularcourses from './components/Commonpages/AllLatestPopularcourses';
 import AllLatestTeacher from './components/Commonpages/AllLatestTeacher';
+import Allchapter from './components/Teacher/Allchapter';
 
 function App() {
   return (
@@ -59,7 +60,7 @@ function App() {
       <Route element={<TeacherChangepassword/>} path="/teacher-changepass"/>
       <Route element={<TeacherAddcourse/>} path="/teacher-addcourse"/>
       <Route element={<TeacherLogout/>} path="/teacher-logout"/>
-      <Route element={<TeacherMyCourse/>} path="/teacher-mycourses"/>
+      <Route element={<TeacherMyCourse/>} path="/teacher-mycourses/:id"/>
       <Route element={<TeacherMyUsers/>} path="teacher-myusers"/>
       <Route element={<TeacherProfileSetting/>} path="/teacher-profilesetting"/>
       <Route element={<TeacherDetail/>} path="/teacher-detail/:teacher_id"/>
@@ -69,6 +70,8 @@ function App() {
       <Route element={<AllLatestcourses/>} path="/all-latest-courses"/>
       <Route element={<AllLatestPopularcourses/>} path="/all-latest-popular-courses"/>
       <Route element={<AllLatestTeacher/>} path="/all-latest-teacher"/>
+      <Route element={<Allchapter/>} path="/all-chapter/:id"/>
+
       
     </Routes>
     

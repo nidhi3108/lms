@@ -4,6 +4,8 @@ const Chapterschema= new Schema({
    title:String,
    description:String,
    file:String,
+   createdBy:{type: mongoose.Types.ObjectId},
+    createdAt:Date
     // thumbnail:String,
     // createdBy:{type: mongoose.Types.ObjectId, ref:"users"},
     // createdAt:Date,

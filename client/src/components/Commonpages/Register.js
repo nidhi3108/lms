@@ -1,5 +1,8 @@
 import React, { useState } from "react";
+import swal from 'sweetalert2';
+import { NavLink, useNavigate } from 'react-router-dom'
 const Register = (props) => {
+  const navigate = useNavigate();
   const flag = props.flag;
   const [formData, setFormData] = useState({
     name: "",
@@ -41,19 +44,20 @@ const Register = (props) => {
         
   if(response.status===200){
       console.log("Register Successful");
-      // Swal.fire({
-      //     title:"Register Suuceesful",
-      //     icon:"success",
-      //     timer: 2000
-      //   })
+      swal.fire({
+          title:"Register Suuceesful",
+          icon:"success",
+          timer: 2000
+        })
+        navigate('../teacher-login');
   }
   else{
       console.log("Register failed");
-      // Swal.fire({
-      //     title:"oops something wrong",
-      //     icon:"error",
-      //     timer: 2000
-      //   })
+      swal.fire({
+          title:"oops something wrong",
+          icon:"error",
+          timer: 2000
+        })
   }
 }
 else{

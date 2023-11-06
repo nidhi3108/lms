@@ -1,15 +1,20 @@
 import React, { useEffect, useState } from "react";
 import TeacherSidebar from "./TeacherSidebar";
 import TeacherAddcourse from "./TeacherAddcourse"
+import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { Trash2 } from 'react-feather';
 
 const TeacherMyCourse= () => {
-
+  const [currentTeacher, setcurrentTeacher] = useState(JSON.parse(sessionStorage.getItem('currentTeacher')))
+  // const [currentCourse, setCurrentCourse] = useState(JSON.parse(sessionStorage.getItem('currentCourse')));
    const [backendData,setBackendData]= useState([])
    const url= "http://localhost:5000/";
+   const { id } = useParams();
+   console.log(id);
    
   const showCourse = async () => {
-    const response = await fetch("http://localhost:5000/course/getall");
+    const response = await fetch("http://localhost:5000/course/getall/" + id);
     console.log(response.status);
     const data = await response.json();
     console.log(data);
@@ -18,6 +23,9 @@ const TeacherMyCourse= () => {
   }; 
 
 
+const deletecourse=()=>{
+  console.log("delete kro course");
+}
 
   const showAllCourse=()=>{
     return backendData.map((data) => (
@@ -31,13 +39,21 @@ const TeacherMyCourse= () => {
           />
           <div className="card-body">
             <h5 className="card-title">{data.title}</h5>
+            {/* <h6>{currentTeacher._id}</h6> */}
              <div className="button d-flex" >
+<<<<<<< HEAD
             <Link to="/teacher-addchapter" className="btn btn-primary me-2 "style={{height: "fit-content"}}>
+=======
+            <Link to={"/all-chapter"} className="btn btn-primary me-2 "style={{height: "fit-content"}}>
+>>>>>>> 8095faa82795aadee983d7a820b6b85c984da146
               View
             </Link>
             <Link to={"/teacher-addchapter"} className="btn btn-primary me-1"style={{height: "fit-content"}}>
               +Chapter
             </Link>
+            <button onClick={deletecourse}>
+              <Trash2 style={{color: 'red'}} />
+            </button>
             </div>
           </div>
         </div>
@@ -47,6 +63,8 @@ const TeacherMyCourse= () => {
   useEffect(()=>{
     showCourse();
    },[])
+
+   
   return (
     <>
     <div className="container">
