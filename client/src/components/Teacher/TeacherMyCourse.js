@@ -1,17 +1,20 @@
 import React, { useEffect, useState } from "react";
 import TeacherSidebar from "./TeacherSidebar";
 import TeacherAddcourse from "./TeacherAddcourse"
+import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Trash2 } from 'react-feather';
 
 const TeacherMyCourse= () => {
   const [currentTeacher, setcurrentTeacher] = useState(JSON.parse(sessionStorage.getItem('currentTeacher')))
-  const [currentCourse, setCurrentCourse] = useState(JSON.parse(sessionStorage.getItem('currentCourse')));
+  // const [currentCourse, setCurrentCourse] = useState(JSON.parse(sessionStorage.getItem('currentCourse')));
    const [backendData,setBackendData]= useState([])
    const url= "http://localhost:5000/";
+   const { id } = useParams();
+   console.log(id);
    
   const showCourse = async () => {
-    const response = await fetch("http://localhost:5000/course/getall");
+    const response = await fetch("http://localhost:5000/course/getall/" + id);
     console.log(response.status);
     const data = await response.json();
     console.log(data);
@@ -36,8 +39,9 @@ const deletecourse=()=>{
           />
           <div className="card-body">
             <h5 className="card-title">{data.title}</h5>
+            {/* <h6>{currentTeacher._id}</h6> */}
              <div className="button d-flex" >
-            <Link to={"/all-chapter/"+currentCourse._id} className="btn btn-primary me-2 "style={{height: "fit-content"}}>
+            <Link to={"/all-chapter"} className="btn btn-primary me-2 "style={{height: "fit-content"}}>
               View
             </Link>
             <Link to={"/teacher-addchapter"} className="btn btn-primary me-1"style={{height: "fit-content"}}>
@@ -55,6 +59,8 @@ const deletecourse=()=>{
   useEffect(()=>{
     showCourse();
    },[])
+
+   
   return (
     <>
     <div className="container">

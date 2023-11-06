@@ -16,9 +16,10 @@ router.post('/add',(req,res)=>{
 })
 
 
-router.get('/getall',(req,res)=>{
+router.get('/getall/:id',(req,res)=>{
     console.log(req.body);
-    coursemodel.find().populate('createdBy')
+    console.log(req.params.id);
+    coursemodel.findById(req.params.id).populate('createdBy')
     .then((result)=>{
         console.log(result);
         console.log("data fetvh hogya");
@@ -30,6 +31,7 @@ router.get('/getall',(req,res)=>{
         res.json(err)
     });
 })
+
 
 router.post('/delete',(req,res)=>{
     model.findByIdAndDelete({_id: req.body._id})

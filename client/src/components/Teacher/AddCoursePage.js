@@ -15,7 +15,7 @@ const AddCoursePage = () => {
 
     const response = await fetch("http://localhost:5000/course/add", {
       method: 'POST',
-      body: JSON.stringify({coursedata:formdata,createdBy: currentTeacher._id}),
+      body: JSON.stringify(formdata),
       headers: {
         "Content-Type": "application/json",
       },
