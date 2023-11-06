@@ -32,7 +32,7 @@ const TeacherMyCourse= () => {
           <div className="card-body">
             <h5 className="card-title">{data.title}</h5>
              <div className="button d-flex" >
-            <Link to={"/player/"+data._id} className="btn btn-primary me-2 "style={{height: "fit-content"}}>
+            <Link to="/teacher-addchapter" className="btn btn-primary me-2 "style={{height: "fit-content"}}>
               View
             </Link>
             <Link to={"/teacher-addchapter"} className="btn btn-primary me-1"style={{height: "fit-content"}}>

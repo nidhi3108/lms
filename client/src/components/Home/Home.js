@@ -3,6 +3,35 @@ import Cardcourse from './Cardcourse'
 import Testimonial from './Testimonials'
 import { NavLink } from 'react-router-dom'
 
+
+let mapData = [
+    {
+        "title":"React",
+        "description":"This is react course",
+        "imgUrl":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHY9CHw_2VsuMCijpcpQ6nEk4quK_TtGKMvg9OHMiSDl1Ebyc7zUhubBojR5gYPjX_AIc&usqp=CAU"
+    },
+    {
+        "title":"React",
+        "description":"This is react course",
+        "imgUrl":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHY9CHw_2VsuMCijpcpQ6nEk4quK_TtGKMvg9OHMiSDl1Ebyc7zUhubBojR5gYPjX_AIc&usqp=CAU"
+    },
+    {
+        "title":"React",
+        "description":"This is react course",
+        "imgUrl":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHY9CHw_2VsuMCijpcpQ6nEk4quK_TtGKMvg9OHMiSDl1Ebyc7zUhubBojR5gYPjX_AIc&usqp=CAU"
+    },
+    {
+        "title":"React",
+        "description":"This is react course",
+        "imgUrl":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHY9CHw_2VsuMCijpcpQ6nEk4quK_TtGKMvg9OHMiSDl1Ebyc7zUhubBojR5gYPjX_AIc&usqp=CAU"
+    },
+    {
+        "title":"React",
+        "description":"This is react course",
+        "imgUrl":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHY9CHw_2VsuMCijpcpQ6nEk4quK_TtGKMvg9OHMiSDl1Ebyc7zUhubBojR5gYPjX_AIc&usqp=CAU"
+    },
+];
+
 const Home=()=>{
     useEffect(() => {
         document.title="Home Page";
@@ -12,10 +41,9 @@ const Home=()=>{
         <div className="container mt-4">
         <h3>Latest Courses <NavLink to="/all-latest-courses" className='float-end'>See All</NavLink></h3> 
         <div className="row">
-        <Cardcourse  title="React" description="This is most popular course to learn" img="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHY9CHw_2VsuMCijpcpQ6nEk4quK_TtGKMvg9OHMiSDl1Ebyc7zUhubBojR5gYPjX_AIc&usqp=CAU"/>
-        <Cardcourse  title="React" description="This is most popular course to learn" img="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHY9CHw_2VsuMCijpcpQ6nEk4quK_TtGKMvg9OHMiSDl1Ebyc7zUhubBojR5gYPjX_AIc&usqp=CAU"/>
-        <Cardcourse  title="React" description="This is most popular course to learn" img="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHY9CHw_2VsuMCijpcpQ6nEk4quK_TtGKMvg9OHMiSDl1Ebyc7zUhubBojR5gYPjX_AIc&usqp=CAU"/>
-        <Cardcourse  title="React" description="This is most popular course to learn" img="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHY9CHw_2VsuMCijpcpQ6nEk4quK_TtGKMvg9OHMiSDl1Ebyc7zUhubBojR5gYPjX_AIc&usqp=CAU"/>
+            {mapData.map((item)=>{return  <Cardcourse  title={item.title} description={item.description} img={item.imgUrl}/>})}
+       
+        
         </div>
         <h3>Popular Courses  <NavLink to="/all-latest-popular-courses" className='float-end'>See All</NavLink></h3> 
         <div className="row">
