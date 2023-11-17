@@ -3,7 +3,6 @@ import CourseDetail from './components/CourseDetail/CourseDetail';
 import Header from "./components/Header";
 import Home from "./components/Home/Home";
 import { BrowserRouter, Routes,Route } from "react-router-dom";
-
 //users
 import UserLogin from './components/User/UserLogin';
 import UserRegister from './components/User/UserRegister';
@@ -35,6 +34,7 @@ import AllLatestcourses from './components/Commonpages/AllLatestcourses';
 import AllLatestPopularcourses from './components/Commonpages/AllLatestPopularcourses';
 import AllLatestTeacher from './components/Commonpages/AllLatestTeacher';
 import Allchapter from './components/Teacher/Allchapter';
+import Authorize from './components/Commonpages/Authorize';
 
 function App() {
   return (
@@ -55,7 +55,7 @@ function App() {
       {/* //Teachers */}
       <Route element={<TeacherRegister/>} path="/teacher-register"/>
       <Route element={<TeacherLogin/>} path="/teacher-login"/>
-      <Route element={<TeacherDashboard/>} path="/teacher-dashboard"/>
+      <Route element={<Authorize><TeacherDashboard/></Authorize>} path="/teacher-dashboard"/>
       <Route element={<TeacherSidebar/>} path="/teacher-sidebar"/>
       <Route element={<TeacherChangepassword/>} path="/teacher-changepass"/>
       <Route element={<TeacherAddcourse/>} path="/teacher-addcourse"/>

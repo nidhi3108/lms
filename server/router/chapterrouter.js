@@ -15,9 +15,10 @@ router.post('/add',(req,res)=>{
 })
 
 
-router.get('/getall',(req,res)=>{
+router.get('/getall/:id',(req,res)=>{
     console.log(req.body);
-    Chaptermodel.find().populate("createdBy")
+    console.log(req.params.id);
+    Chaptermodel.find({createdBy: req.params.id})
     .then((result)=>{
         console.log(result);
         console.log("chapter data fetvh hogya");
