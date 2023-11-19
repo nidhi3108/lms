@@ -4,7 +4,7 @@ import { Formik } from "formik";
 
 const TeacherAddChapter= () => {
   const [currentTeacher, setcurrentTeacher] = useState(JSON.parse(sessionStorage.getItem('currentTeacher')))
-
+ 
 const flag ="chapter";
   const [selFile, setSelFile] = useState("")
   const fileInputRef= useRef();
@@ -12,14 +12,15 @@ const ChapterSubmit = async (formdata,{resetForm}) => {
   formdata.file = selFile;
   console.log(formdata);
 
-  const response = await fetch("http://localhost:5000/chapter/add", {
-    method: 'POST',
+  const response = await fetch("http://localhost:5000/chapter/add", {   
+    method: 'post',
     body: JSON.stringify(formdata),
-    headers: {
-      "Content-Type": "application/json",
-    },
+    headers:{
+        'Content-Type': 'application/json'
+    }
   });
  console.log(response);
+ console.log("chapter data saved in backend");
 
 
  // Clear the file inputs
@@ -51,7 +52,7 @@ const uploadFile=(e)=>{
           <div className="head d-flex justify-content-around mt-3">
                
                <h5 >Add Chapter</h5>
-               <Link to="/teacher-mycourses" className="btn btn-primary me-1" >Back to my courses</Link>
+               <Link to={"/teacher-mycourses/"+currentTeacher._id} className="btn btn-primary me-1" >Back to my courses</Link>
                     
                </div>
         <div className="container w-50 mt-3" style={{border:"1px solid black"}}>
@@ -65,6 +66,8 @@ const uploadFile=(e)=>{
                 thumbnail: null,
                 file: null,
                 technology: " ",
+                // createdBy:currentCourse._id,
+                createdAt: new Date()
               }}
               onSubmit={ChapterSubmit}
             >

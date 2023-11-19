@@ -7,7 +7,6 @@ import { Trash2 } from 'react-feather';
 
 const TeacherMyCourse= () => {
   const [currentTeacher, setcurrentTeacher] = useState(JSON.parse(sessionStorage.getItem('currentTeacher')))
-  // const [currentCourse, setCurrentCourse] = useState(JSON.parse(sessionStorage.getItem('currentCourse')));
    const [backendData,setBackendData]= useState([])
    const url= "http://localhost:5000/";
    const { id } = useParams();

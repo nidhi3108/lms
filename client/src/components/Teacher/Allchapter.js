@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Trash2 } from 'react-feather';
+
 const Allchapter = () => {
   const [backendData, setBackendData] = useState([]);
+  const {id}=useParams();
+  console.log(id);
   const url = "http://localhost:5000/";
 
   const showChapter = async () => {
-    const response = await fetch("http://localhost:5000/chapter/getall");
+    const response = await fetch("http://localhost:5000/chapter/getall/"+id);
     console.log(response.status);
     const data = await response.json();
     console.log(data);
