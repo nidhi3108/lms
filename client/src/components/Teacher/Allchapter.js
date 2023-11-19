@@ -3,6 +3,9 @@ import { Link, useParams } from "react-router-dom";
 import { Trash2 } from 'react-feather';
 
 const Allchapter = () => {
+  
+  const [currentTeacher, setcurrentTeacher] = useState(JSON.parse(sessionStorage.getItem('currentTeacher')))
+
   const [backendData, setBackendData] = useState([]);
   const {id}=useParams();
   console.log(id);
@@ -54,7 +57,7 @@ const Allchapter = () => {
                 <div className="head d-flex justify-content-between">
                
               <h5 >My Chapter</h5>
-              <Link to="/teacher-mycourses" className="btn btn-primary me-1" >Back to my courses</Link>
+              <Link to={"/teacher-mycourses/"+currentTeacher._id} className="btn btn-primary me-1" >Back to my courses</Link>
                    
               </div>
               <div className="card-body">

@@ -4,13 +4,15 @@ import { Formik } from "formik";
 
 const TeacherAddChapter= () => {
   const [currentTeacher, setcurrentTeacher] = useState(JSON.parse(sessionStorage.getItem('currentTeacher')))
- 
+  
+let selectedCourseId = localStorage.getItem("selectedCourse");
 const flag ="chapter";
   const [selFile, setSelFile] = useState("")
   const fileInputRef= useRef();
 const ChapterSubmit = async (formdata,{resetForm}) => {
   formdata.file = selFile;
-  console.log(formdata);
+  formdata.courseId = selectedCourseId;
+  console.info("Add chapter form data >>>>> ",formdata);
 
   const response = await fetch("http://localhost:5000/chapter/add", {   
     method: 'post',
@@ -19,8 +21,9 @@ const ChapterSubmit = async (formdata,{resetForm}) => {
         'Content-Type': 'application/json'
     }
   });
- console.log(response);
- console.log("chapter data saved in backend");
+ console.log("chapter data saved in backend ::: response => ",response);
+ localStorage.removeItem("selectedCourse");
+
 
 
  // Clear the file inputs

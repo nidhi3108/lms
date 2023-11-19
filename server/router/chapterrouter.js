@@ -18,7 +18,7 @@ router.post('/add',(req,res)=>{
 router.get('/getall/:id',(req,res)=>{
     console.log(req.body);
     console.log(req.params.id);
-    Chaptermodel.find({createdBy: req.params.id})
+    Chaptermodel.find({courseId: req.params.id})
     .then((result)=>{
         console.log(result);
         console.log("chapter data fetvh hogya");

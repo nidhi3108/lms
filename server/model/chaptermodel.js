@@ -5,6 +5,7 @@ const Chapterschema= new Schema({
    description:String,
    file:String,
    createdBy:{type: mongoose.Types.ObjectId},
+   courseId:{type: mongoose.Types.ObjectId},
     createdAt:Date
     // thumbnail:String,
     // createdBy:{type: mongoose.Types.ObjectId, ref:"users"},
