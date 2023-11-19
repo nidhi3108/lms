@@ -41,11 +41,8 @@ const deletecourse=()=>{
             <h5 className="card-title">{data.title}</h5>
             {/* <h6>{currentTeacher._id}</h6> */}
              <div className="button d-flex" >
-<<<<<<< HEAD
-            <Link to="/teacher-addchapter" className="btn btn-primary me-2 "style={{height: "fit-content"}}>
-=======
+            <Link to="/teacher-addchapter" className="btn btn-primary me-2 "style={{height: "fit-content"}}></Link>
             <Link to={"/all-chapter"} className="btn btn-primary me-2 "style={{height: "fit-content"}}>
->>>>>>> 8095faa82795aadee983d7a820b6b85c984da146
               View
             </Link>
             <Link to={"/teacher-addchapter"} className="btn btn-primary me-1"style={{height: "fit-content"}}>

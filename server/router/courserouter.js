@@ -19,7 +19,8 @@ router.post('/add',(req,res)=>{
 router.get('/getall/:id',(req,res)=>{
     console.log(req.body);
     console.log(req.params.id);
-    coursemodel.findById(req.params.id).populate('createdBy')
+    coursemodel.find({createdBy:req.params.id})
+    // coursemodel.find(req.params.id).populate('createdBy')
     .then((result)=>{
         console.log(result);
         console.log("data fetvh hogya");
