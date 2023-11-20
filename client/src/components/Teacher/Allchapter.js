@@ -19,7 +19,9 @@ const Allchapter = () => {
     setBackendData(data);
     console.log(backendData.length);
   };
-
+  const deletechapter=()=>{
+    console.log("delete chapter");
+  }
   const showAllChapter = () => {
     return backendData.map((data) => (
       <div className="col-md-3">
@@ -35,9 +37,9 @@ const Allchapter = () => {
             <h5 className="card-title">{data.title}</h5>
             <p className="card-title">{data.description}</p>              
             </div>
-            <Link to={"/teacher-addchapter"} className=" me-1"style={{height: "fit-content"}} >
-              <Trash2 style={{color: 'red'}}/>
-            </Link>
+            <button onClick={() => deletechapter(data)}>
+              <Trash2 style={{color: 'red'}} />
+            </button>
           </div>
         </div>
       </div>

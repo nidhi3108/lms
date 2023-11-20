@@ -22,8 +22,24 @@ const TeacherMyCourse= () => {
   }; 
 
 
-const deletecourse=()=>{
+const deletecourse= async (data)=>{
+  console.log(data);
   console.log("delete kro course");
+  const response=  await fetch('http://localhost:5000/course/delete/', {
+        method: 'post',
+        body: JSON.stringify(data),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    console.log(response);
+    if(response.status===200){
+       console.log("course deleted");
+    }
+    else{
+       console.log("some error in course deletion");
+    }
+    showCourse();
 }
 
   const showAllCourse=()=>{
@@ -50,7 +66,7 @@ const deletecourse=()=>{
 }            }>
               +Chapter
             </Link>
-            <button onClick={deletecourse}>
+            <button onClick={() => deletecourse(data)}>
               <Trash2 style={{color: 'red'}} />
             </button>
             </div>
