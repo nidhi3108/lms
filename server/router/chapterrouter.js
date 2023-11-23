@@ -32,7 +32,8 @@ router.get('/getall/:id',(req,res)=>{
 })
 
 router.post('/delete',(req,res)=>{
-    model.findByIdAndDelete({_id: req.body._id})
+    console.log(req.body);
+    Chaptermodel.findByIdAndDelete({_id: req.body._id})
     .then((result) => {
         res.status(200).json(result)
         

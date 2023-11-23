@@ -16,6 +16,20 @@ router.post('/add',(req,res)=>{
 })
 
 
+router.get('/getallcourse',(req,res)=>{
+    console.log(req.body);
+    coursemodel.find().populate('createdBy')
+    .then((result)=>{
+        console.log("coursedata get");
+        res.json(result);
+    })
+    .catch((err)=>{
+        console.log(err);
+        res.json(err)
+    })
+})
+
+
 router.get('/getall/:id',(req,res)=>{
     console.log(req.body);
     console.log(req.params.id);

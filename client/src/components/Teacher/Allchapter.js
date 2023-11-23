@@ -19,8 +19,25 @@ const Allchapter = () => {
     setBackendData(data);
     console.log(backendData.length);
   };
-  const deletechapter=()=>{
+  const deletechapter= async (data)=>{
+    console.log(data);
     console.log("delete chapter");
+    const response=  await fetch('http://localhost:5000/chapter/delete/', {
+      method: 'post',
+      body: JSON.stringify(data),
+      headers: {
+          'Content-Type': 'application/json'
+      }
+  })
+  console.log(response);
+  if(response.status===200){
+     console.log("chapeter deleted");
+  }
+  else{
+     console.log("some error in chapter deletion");
+  }
+
+  showChapter();
   }
   const showAllChapter = () => {
     return backendData.map((data) => (

@@ -1,16 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink } from 'react-router-dom'
+// import Cardcourse from '../Home/Cardcourse'
 import CardPopularTeachercourse from '../Home/CardPopularTeacher'
+
+
 const AllLatestTeacher = (props) => {
+
+
+  const url = "http://localhost:5000/";
+  const [backendTeacherData, setbackendTeacherData] = useState([])
+
+const showAllTeacher = async ()=>{
+  const response = await fetch("http://localhost:5000/teacher/getallTeacher");
+  console.log(response.status);
+  const data = await response.json();
+  console.log(data);
+  setbackendTeacherData(data);
+  console.log(setbackendTeacherData.length);
+}
+
+
+  useEffect(()=>{
+    showAllTeacher();
+},[]) 
   return (
     <>
     <div className="container mt-4">
      <h3>Popular Teachers</h3> 
      <div className="row">
-        <CardPopularTeachercourse  title="Ashish" description="This is most popular Teacher" img="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(1).webp"/>
-        <CardPopularTeachercourse  title="Ashish" description="This is most popular Teacher" img="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(1).webp"/>
-        <CardPopularTeachercourse  title="Ashish" description="This is most popular Teacher" img="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(1).webp"/>
-        <CardPopularTeachercourse  title="Ashish" description="This is most popular Teacher" img="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(1).webp"/>
+     {backendTeacherData.map(
+                (data)=>{return  <CardPopularTeachercourse  title={data.title} description={data.description} img={url+data.thumbnail}/>}
+                )}
         </div>
              {/* pagination */}
              <nav aria-label="Page navigation example">
