@@ -4,6 +4,7 @@ import { NavLink, useNavigate } from 'react-router-dom'
 const Register = (props) => {
   const navigate = useNavigate();
   const flag = props.flag;
+  const [selThumbnail, setSelThumbnail] = useState("")
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -14,6 +15,7 @@ const Register = (props) => {
     // qualification: flag === "teacher" ? "" : null,
     password: "",
     flag: "",
+    thumbnail:"",
   });
   let name, value;
   const handleInputChange = (e) => {
@@ -90,6 +92,23 @@ else{
 }
 }
   }
+  
+  const uploadThumbnail=(e)=>{
+    const file = e.target.files[0];
+    setSelThumbnail(file.name);
+    const fd = new FormData();
+    fd.append("myuploadteacherfile", file);
+    fetch("http://localhost:5000/file/uploadTeacherpic", {
+      method: "POST",
+      body: fd,
+    }).then((res) => {
+      if (res.status === 200) {
+      console.log("thumbnail uploaded");
+      }
+    });
+  }
+
+
   return (
     <>
       <h3 className="text-center mt-4">{props.title}</h3>
@@ -188,7 +207,21 @@ else{
               />
             </div>
           )}
-
+          {/* upload pic of teacher */}
+           <div className=" mb-4">
+           <label className="form-label" htmlFor="form6Example5">
+                          Thumbnail
+                        </label>
+                        <input
+                          type="file"
+                          id="thumbnail"
+                          className="form-control"
+                          onChange={ uploadThumbnail}
+                          value={formData.thumbnail}
+                        //   value={values.thumbnail}
+                        // ref={thumbnailInputRef}
+                        />
+          </div>
           {/* password  */}
           <div className=" mb-4">
             <label className="form-label" htmlFor="form6Example4">

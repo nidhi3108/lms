@@ -3,7 +3,7 @@ import Cardcourse from './Cardcourse'
 import Testimonial from './Testimonials'
 import { NavLink } from 'react-router-dom'
 import { useState } from 'react'
-
+import CardPopularTeachercourse from './CardPopularTeacher'
 
 // let mapData = [
 //     {
@@ -33,6 +33,7 @@ const Home=()=>{
 
 const url = "http://localhost:5000/";
 const [backendData, setBackendData] = useState([]);
+const [backendTeacherData, setbackendTeacherData] = useState([])
 
 
 const showAllCourse= async ()=> {
@@ -44,9 +45,23 @@ const showAllCourse= async ()=> {
     console.log(backendData.length);
 }
 
+const showAllTeacher = async ()=>{
+    const response = await fetch("http://localhost:5000/teacher/getallTeacher");
+    console.log(response.status);
+    const data = await response.json();
+    console.log(data);
+    setbackendTeacherData(data);
+    console.log(setbackendTeacherData.length);
+  }
+  
+
+  
+  
 useEffect(()=>{
-    showAllCourse();
-},[])
+      showAllTeacher();
+      showAllCourse();
+},[]) 
+
 
     useEffect(() => {
         document.title="Home Page";
@@ -66,10 +81,10 @@ useEffect(()=>{
      
         <h3>Popular Teachers <NavLink to="/all-latest-teacher" className='float-end'>See All</NavLink></h3> 
         <div className="row">
-        <Cardcourse  title="Ashish" description="This is most popular Teacher" img="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(1).webp" />
-        <Cardcourse  title="Ashish" description="This is most popular Teacher" img="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(1).webp"/>
-        <Cardcourse  title="Ashish" description="This is most popular Teacher" img="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(1).webp"/>
-        <Cardcourse  title="Ashish" description="This is most popular Teacher" img="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(1).webp"/>
+       {backendTeacherData.slice(0, 4).map(
+                (data)=>{return  <CardPopularTeachercourse  title={data.name} img={url+data.thumbnail}/>}
+                )}
+       
         </div>
         <h3>Testimonial</h3> 
         <Testimonial/>

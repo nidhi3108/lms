@@ -38,7 +38,7 @@ router.post('/login',(req,res)=>{
 
 router.get('/getallTeacher',(req,res)=>{
     console.log(req.body);
-    model.find().populate('createdBy')
+    model.find().populate('name')
     .then((result)=>{
         console.log("coursedata get");
         res.json(result);
