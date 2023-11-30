@@ -12,7 +12,7 @@ const CardPopularTeachercourse = (props) => {
             <p className="card-text">{props.description}</p>
             
               
-            <NavLink to="/teacher-detail/1" className="btn btn-primary mt-3">
+            <NavLink to={`/teacher-detail/${props._id}`} className="btn btn-primary mt-3">
               Read More
             </NavLink>
           </div>

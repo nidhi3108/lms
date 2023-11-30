@@ -72,19 +72,15 @@ useEffect(()=>{
         <div className="container mt-4">
         <h3>Latest Courses <NavLink to="/all-latest-courses" className='float-end'>See All</NavLink></h3> 
         <div className="row">
-            {backendData.slice(0, 4).map(
-                (data)=>{return  <Cardcourse  title={data.title} description={data.description} img={url+data.thumbnail}/>}
+            {backendData.slice(0, 4).map( 
+                (data)=>{return  <Cardcourse  title={data.title} description={data.description} img={url+data.thumbnail} id={data._id}/>}
                 )}
-       
-        
         </div>
-     
         <h3>Popular Teachers <NavLink to="/all-latest-teacher" className='float-end'>See All</NavLink></h3> 
         <div className="row">
        {backendTeacherData.slice(0, 4).map(
-                (data)=>{return  <CardPopularTeachercourse  title={data.name} img={url+data.thumbnail}/>}
-                )}
-       
+                (data)=>{return  <CardPopularTeachercourse  title={data.name} img={url+data.thumbnail} id={data._id}/>}
+                )}       
         </div>
         <h3>Testimonial</h3> 
         <Testimonial/>

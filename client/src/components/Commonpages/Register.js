@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import swal from 'sweetalert2';
 import { NavLink, useNavigate } from 'react-router-dom'
 const Register = (props) => {
   const navigate = useNavigate();
   const flag = props.flag;
+  const thumbnailpicteacherRef= useRef();
   const [selThumbnail, setSelThumbnail] = useState("")
   const [formData, setFormData] = useState({
     name: "",
@@ -15,7 +16,7 @@ const Register = (props) => {
     // qualification: flag === "teacher" ? "" : null,
     password: "",
     flag: "",
-    thumbnail:"",
+    thumbnail: "",
   });
   let name, value;
   const handleInputChange = (e) => {
@@ -26,9 +27,9 @@ const Register = (props) => {
       [name]: value,
     });
   }
-
   const handleSubmit = async (e) => {
     e.preventDefault();
+    formData.thumbnail = selThumbnail;
     console.log("Form Data:", formData);
     console.log("success handlesubmit");
     
@@ -46,6 +47,9 @@ const Register = (props) => {
         
   if(response.status===200){
       console.log("Register Successful");
+      if (thumbnailpicteacherRef.current) {
+        thumbnailpicteacherRef.current.value = null;
+      }
       swal.fire({
           title:"Register Suuceesful",
           icon:"success",
@@ -61,6 +65,7 @@ const Register = (props) => {
           timer: 2000
         })
   }
+  
 }
 else{
   const response= await fetch("http://localhost:5000/student/register",{
@@ -96,14 +101,18 @@ else{
   const uploadThumbnail=(e)=>{
     const file = e.target.files[0];
     setSelThumbnail(file.name);
-    const fd = new FormData();
-    fd.append("myuploadteacherfile", file);
+    const formDataCopy  = new FormData();
+    formDataCopy .append("myuploadteacherfile", file);
     fetch("http://localhost:5000/file/uploadTeacherpic", {
       method: "POST",
-      body: fd,
+      body: formDataCopy ,
     }).then((res) => {
       if (res.status === 200) {
       console.log("thumbnail uploaded");
+      setFormData({
+        ...formData,
+        thumbnail: file.name, // or the path/reference to the uploaded file
+      });
       }
     });
   }
@@ -209,7 +218,7 @@ else{
           )}
           {/* upload pic of teacher */}
            <div className=" mb-4">
-           <label className="form-label" htmlFor="form6Example5">
+           <label className="form-label" htmlFor="thumbnail">
                           Thumbnail
                         </label>
                         <input
@@ -217,9 +226,7 @@ else{
                           id="thumbnail"
                           className="form-control"
                           onChange={ uploadThumbnail}
-                          value={formData.thumbnail}
-                        //   value={values.thumbnail}
-                        // ref={thumbnailInputRef}
+                        ref={thumbnailpicteacherRef}
                         />
           </div>
           {/* password  */}

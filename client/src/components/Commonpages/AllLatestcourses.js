@@ -17,19 +17,9 @@ const showAllCourse= async ()=> {
     console.log(backendData.length);
 }
 
-// const showAllTeacher = async ()=>{
-//   const response = await fetch("http://localhost:5000/teacher/getallTeacher");
-//   console.log(response.status);
-//   const data = await response.json();
-//   console.log(data);
-//   setbackendTeacherData(data);
-//   console.log(setbackendTeacherData.length);
-// }
-
 
 useEffect(()=>{
     showAllCourse();
-    // showAllTeacher();
 },[]) 
 
   return (
@@ -38,7 +28,7 @@ useEffect(()=>{
      <h3>Latest Courses</h3> 
         <div className="row">
         {backendData.map(
-                (data)=>{return  <Cardcourse  title={data.title} description={data.description} img={url+data.thumbnail}/>}
+                (data)=>{return  <Cardcourse  title={data.title} description={data.description} img={url+data.thumbnail} id={data._id}/>}
                 )}
         </div>
              {/* pagination */}

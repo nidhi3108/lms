@@ -1,9 +1,41 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Youtube } from "react-feather";
 import { NavLink, useParams } from "react-router-dom";
 import Cardcourse from "../Home/Cardcourse";
 const CourseDetail = () => {
+  const [CoursebackendData, setCoursebackendData] = useState([]);
+  const [RealtedTeacherbackendData, setRealtedTeacherbackendData] = useState([]);
   let { course_id } = useParams();
+  console.log(course_id);
+  const url = "http://localhost:5000/";
+
+const showCourseDetail= async ()=>{
+  const response = await fetch("http://localhost:5000/course/getCourseDetail/"+course_id);
+    console.log(response.status);
+    const data = await response.json();
+    console.log(data);
+    setCoursebackendData(data);
+    // console.log(CoursebackendData.length);
+    const createdBy=data.createdBy
+    console.log(createdBy);
+    showrelatedTeacherDetail(createdBy);
+}
+
+
+  const showrelatedTeacherDetail= async (createdBy)=>{
+    const response = await fetch("http://localhost:5000/teacher/getrelatedTeacherDetail/"+createdBy);
+    console.log(response.status);
+    const data = await response.json();
+    console.log(data);
+    setRealtedTeacherbackendData(data);
+    // console.log(RealtedTeacherbackendData.length);
+  }
+
+  useEffect(() => {
+    showCourseDetail();
+   
+  }, []);
+  
   return (
     <>
       <div className="container mt-5 w-75">
@@ -11,25 +43,18 @@ const CourseDetail = () => {
           <div className="row g-0">
             <div className="col-md-4">
               <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHY9CHw_2VsuMCijpcpQ6nEk4quK_TtGKMvg9OHMiSDl1Ebyc7zUhubBojR5gYPjX_AIc&usqp=CAU"
-                alt="Trendy Pants and Shoes"
-                className="img-fluid rounded-start"
+                 src={url + CoursebackendData.thumbnail}
+                 className="img-fluid mt-3"
               />
             </div>
             <div className="col-md-8">
               <div className="card-body p-0">
-                <h5 className="card-title">Card title</h5>
+                <h5 className="card-title">{CoursebackendData.title}</h5>
                 <p className="card-text">
-                  This is a wider card with supporting text below as a natural
-                  lead-in to additional content. This content is a little bit
-                  longer. This is a wider card with supporting text below as a
-                  natural lead-in to additional content. This content is a
-                  little bit longer. This is a wider card with supporting text
-                  below as a natural lead-in to additional content. This content
-                  is a little bit longer.
+                 {CoursebackendData.description}
                 </p>
                 <p className="fw-bold">
-                  Course By: <NavLink to="/teacher-detail/1">Teacher 1</NavLink>
+                  Course By: <NavLink to={`/teacher-detail/${RealtedTeacherbackendData._id}`}  >{RealtedTeacherbackendData.name}</NavLink>
                 </p>
                 <p className="fw-bold">Durationn: 3 Hours 30 minute</p>
                 <p className="fw-bold">Total Enrolled: 456 Students</p>

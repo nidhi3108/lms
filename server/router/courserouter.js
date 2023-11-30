@@ -45,7 +45,26 @@ router.get('/getall/:id',(req,res)=>{
         res.json(err)
     });
 })
- 
+
+
+router.get('/getCourseDetail/:course_id',(req,res)=>{
+    console.log(req.body);
+    console.log(req.params.course_id);
+    coursemodel.findById(req.params.course_id).populate('createdBy')
+    .then((result)=>{
+        console.log(result);
+        console.log("coursedata fetvh hogya");
+        res.json(result);
+    })
+    .catch((err)=>{
+        console.log(err);
+        console.log("data fetching  fail hogya");
+        res.json(err)
+    });
+})
+
+
+
 
 
 router.post('/delete',(req,res)=>{

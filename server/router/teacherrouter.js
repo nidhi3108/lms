@@ -49,5 +49,21 @@ router.get('/getallTeacher',(req,res)=>{
     })
 })
 
+router.get('/getrelatedTeacherDetail/:teacher_id',(req,res)=>{
+    // console.log(req.body);
+    console.log(req.params.teacher_id);
+    model.findById(req.params.teacher_id).populate('email')
+    .then((result)=>{
+        console.log("res",result);
+        console.log("relTEDteacherdata fetvh hogya");
+        res.json(result);
+    })
+    .catch((err)=>{
+        console.log(err);
+        console.log("data fetching  fail hogya");
+        res.json(err)
+    });
+})
+ 
 
 module.exports=router

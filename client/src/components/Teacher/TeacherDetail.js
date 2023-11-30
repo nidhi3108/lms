@@ -1,8 +1,28 @@
-import React from "react";
-import { NavLink,Link } from "react-router-dom";
+import React, { useState } from "react";
+import { NavLink,Link, useParams } from "react-router-dom";
 import { Youtube } from "react-feather";
+import { useEffect } from "react";
 
-const TeacherDetail = (props) => {
+const TeacherDetail = () => {
+  const [TeacherbackendData, setTeacherbackendData] = useState([]);
+  let { teacher_id } = useParams();
+  console.log(teacher_id);
+  const url = "http://localhost:5000/";
+
+  const showTeacherDetail= async ()=>{
+    const response = await fetch("http://localhost:5000/teacher/getrelatedTeacherDetail/"+teacher_id);
+    console.log(response.status);
+    const data = await response.json();
+
+    console.log(data);
+    setTeacherbackendData(data);
+    // console.log(RealtedTeacherbackendData.length);
+  }
+
+  useEffect(() => {
+    showTeacherDetail();
+   
+  }, []);
   return (
     <>
       <div className="container mt-5 w-75">
@@ -10,22 +30,17 @@ const TeacherDetail = (props) => {
           <div className="row g-0">
             <div className="col-md-4">
               <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHY9CHw_2VsuMCijpcpQ6nEk4quK_TtGKMvg9OHMiSDl1Ebyc7zUhubBojR5gYPjX_AIc&usqp=CAU"
-                alt="Trendy Pants and Shoes"
-                className="img-fluid rounded-start"
+                src={url + TeacherbackendData.thumbnail}
               />
             </div>
             <div className="col-md-8">
               <div className="card-body p-0">
-                <h5 className="card-title">Nidhi Verma</h5>
-                <p className="card-text">
-                  This is a wider card with supporting text below as a natural
-                  lead-in to additional content. This content is a little bit
-                  longer. This is a wider card with supporting text below as a
-                  natural lead-in to additional content. This content is a
-                  little bit longer. This is a wider card with supporting text
-                  below as a natural lead-in to additional content. This content
-                  is a little bit longer.
+                <h5 className="card-title">{TeacherbackendData.name}</h5>
+                <p className="card-text fw-bold">
+                 E-mail: {TeacherbackendData.email}<br/>
+                 Qualification: {TeacherbackendData.qualification}
+                 E-mail: {TeacherbackendData.email}<br/>
+                 Phone-No: {TeacherbackendData.phone}
                 </p>
                 <p className="fw-bold">
                   Skills: <NavLink to="/teacher-detail/1">PHP</NavLink>,

@@ -42,7 +42,7 @@ function App() {
     <Header/>
     <Routes>
       <Route element={<Home/>} path="/home"/>
-      <Route element={<CourseDetail/>} path="/detail/:course_id"/>
+      <Route element={<CourseDetail/>} path="coursedetail/:course_id"/>
       <Route element={<UserLogin/>} path="/user-login"/>
       <Route element={<UserRegister/>} path="/user-register"/>
       <Route element={<UserDashboard/>} path="/user-dashboard"/>

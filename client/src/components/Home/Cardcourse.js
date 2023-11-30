@@ -17,7 +17,7 @@ const Cardcourse = (props) => {
                 <span className="float-end"><strong>Views:</strong> 55855</span>
               </div>
               
-            <NavLink to="/detail/1" className="btn btn-primary mt-3">
+            <NavLink to={`/coursedetail/${props.id}`}  className="btn btn-primary mt-3">
               Read More
             </NavLink>
           </div>
