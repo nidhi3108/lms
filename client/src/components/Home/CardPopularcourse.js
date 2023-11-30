@@ -13,8 +13,7 @@ const CardPopularcourse = (props) => {
               <div className="title">
                 <span><strong>Rating:</strong> 5/10</span>
                 <span className="float-end"><strong>Views:</strong> 55855</span>
-              </div>
-              
+             </div>             
             <NavLink to="/detail/1" className="btn btn-primary mt-3">
               Read More
             </NavLink>

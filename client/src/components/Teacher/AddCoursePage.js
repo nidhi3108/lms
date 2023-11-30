@@ -81,6 +81,7 @@ const AddCoursePage = () => {
                 description: " ",
                 thumbnail: null,
                 file: null,
+                duration:"",
                 technology: " ",
                 createdBy:currentTeacher._id,
                 createdAt: new Date()
@@ -165,6 +166,19 @@ const AddCoursePage = () => {
                           className="form-control"
                           onChange={handleChange}
                           value={values.technology}
+                        />
+                      </div>
+                      <div className="mb-3">
+                        <label className="form-label" htmlFor="form6Example5">
+                          Duration
+                        </label>
+                        <input
+                          type="duration"
+                          id="duration"
+                          placeholder="Eg. 30 Hours 34 Minute"
+                          className="form-control"
+                          onChange={handleChange}
+                          value={values.duration}
                         />
                       </div>
                     </form>

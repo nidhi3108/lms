@@ -5,6 +5,7 @@ const Courseschema= new Schema({
    description:String,
    file:String,
     thumbnail:String,
+    duration:String,
     createdBy:{type: mongoose.Types.ObjectId},
     createdAt:Date,
   //  Teachermodel: {

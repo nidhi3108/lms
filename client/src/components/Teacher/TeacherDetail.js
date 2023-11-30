@@ -27,10 +27,13 @@ const TeacherDetail = () => {
     <>
       <div className="container mt-5 w-75">
         <div className="card mb-3">
-          <div className="row g-0">
+          <div className="row">
             <div className="col-md-4">
               <img
-                src={url + TeacherbackendData.thumbnail}
+              width="100%"
+                src={url + TeacherbackendData.thumbnail
+                 }
+                 alt="Tacher pic"
               />
             </div>
             <div className="col-md-8">
@@ -39,7 +42,6 @@ const TeacherDetail = () => {
                 <p className="card-text fw-bold">
                  E-mail: {TeacherbackendData.email}<br/>
                  Qualification: {TeacherbackendData.qualification}
-                 E-mail: {TeacherbackendData.email}<br/>
                  Phone-No: {TeacherbackendData.phone}
                 </p>
                 <p className="fw-bold">

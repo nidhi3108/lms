@@ -9,10 +9,8 @@ const CardPopularTeachercourse = (props) => {
           <img src={props.img} alt="Fissure in Sandstone" />
           <div className="card-body">
             <h5 className="card-title">{props.title}</h5>
-            <p className="card-text">{props.description}</p>
-            
-              
-            <NavLink to={`/teacher-detail/${props._id}`} className="btn btn-primary mt-3">
+            <p className="card-text">{props.description}</p>      
+            <NavLink to={`/teacher-detail/${props.id}`} className="btn btn-primary mt-3">
               Read More
             </NavLink>
           </div>

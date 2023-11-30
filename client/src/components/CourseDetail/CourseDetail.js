@@ -56,7 +56,10 @@ const showCourseDetail= async ()=>{
                 <p className="fw-bold">
                   Course By: <NavLink to={`/teacher-detail/${RealtedTeacherbackendData._id}`}  >{RealtedTeacherbackendData.name}</NavLink>
                 </p>
-                <p className="fw-bold">Durationn: 3 Hours 30 minute</p>
+                <p className="fw-bold">
+                  Created At: {CoursebackendData.createdAt}
+                </p>
+                <p className="fw-bold">Duration: {CoursebackendData.duration}</p>
                 <p className="fw-bold">Total Enrolled: 456 Students</p>
                 <p className="fw-bold">Rating: 4/5</p>
               </div>
