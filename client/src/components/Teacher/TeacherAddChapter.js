@@ -4,8 +4,10 @@ import { Formik } from "formik";
 
 const TeacherAddChapter= () => {
   const [currentTeacher, setcurrentTeacher] = useState(JSON.parse(sessionStorage.getItem('currentTeacher')))
-  
-let selectedCourseId = localStorage.getItem("selectedCourse");
+  const [youtubeURL, setYoutubeURL] = useState("");
+
+
+  let selectedCourseId = localStorage.getItem("selectedCourse");
 const flag ="chapter";
   const [selFile, setSelFile] = useState("")
   const fileInputRef= useRef();
@@ -33,7 +35,9 @@ const ChapterSubmit = async (formdata,{resetForm}) => {
 resetForm();
 
 };
-
+const handleInputChange = (e) => {
+  setYoutubeURL(e.target.value);
+};
 const uploadFile=(e)=>{
   const file=e.target.files[0];
   setSelFile(file.name)  
@@ -117,6 +121,20 @@ const uploadFile=(e)=>{
                         //   value={values.file}
                         />
                       </div>
+                      <div>
+      <label>
+        Paste YouTube Video URL:
+        <input
+          type="text"
+          value={youtubeURL}
+          onChange={handleInputChange}
+          placeholder="Paste YouTube video URL here"
+        />
+      </label>
+      <a href={youtubeURL} target="_blank" rel="noopener noreferrer">
+        {youtubeURL && "Click here to view the video"}
+      </a>
+    </div>
                     </form>
                     {/* Submit button */}
                     <div>
