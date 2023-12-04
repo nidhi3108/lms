@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import { NavLink } from 'react-router-dom';
 import { Trash2 } from 'react-feather';
 
 const Allchapter = () => {
@@ -43,12 +44,15 @@ const Allchapter = () => {
     return backendData.map((data) => (
       <div className="col-md-3">
         <div className="card">
+          
+        <NavLink to={data.youtubeURL} target="_blank">
           <img
             src={url + data.file}
             className="card-img-top"
             style={{ height: "250px" }}
             alt="Fissure in Sandstone"
           />
+          </NavLink>
           <div className="card-body d-flex justify-content-between">
             <div className="chapterData">
             <h5 className="card-title">{data.title}</h5>

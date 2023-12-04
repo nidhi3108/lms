@@ -65,5 +65,17 @@ router.get('/getrelatedTeacherDetail/:teacher_id',(req,res)=>{
     });
 })
  
+router.post('/edit',(req,res)=>{
+    console.log(req.body.id);
+    model.findOneAndUpdate({_id: req.body.id}, {password:req.body.password})
+    .then((result) => {
+        res.json(result)
+        console.log("pass update");
+    }).catch((err) => {
+        res.json(err)
+    });
+    
+})
+
 
 module.exports=router

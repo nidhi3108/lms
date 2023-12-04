@@ -4,7 +4,7 @@ const Chapterschema= new Schema({
    title:String,
    description:String,
    file:String,
-   youtubeLink: String,
+   youtubeURL: String,
    createdBy:{type: mongoose.Types.ObjectId},
    courseId:{type: mongoose.Types.ObjectId},
     createdAt:Date
