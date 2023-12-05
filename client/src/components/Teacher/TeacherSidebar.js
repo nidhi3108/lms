@@ -1,9 +1,16 @@
 import React, { useState } from "react";
-import {NavLink,Link,Route} from "react-router-dom"
+import {NavLink,Link,Route,useNavigate} from "react-router-dom"
+
 // import Mycourses from "./Mycourses";
 const TeacherSidebar = () => {
+    const navigate = useNavigate();
     const [currentTeacher, setcurrentTeacher] = useState(JSON.parse(sessionStorage.getItem('currentTeacher')))
     console.log(currentTeacher._id);
+    console.log("2 bar render hua page");
+    const signOut = () => {
+        sessionStorage.removeItem("currentTeacher");
+        // navigate("../teacher-login");
+      };
     return(
 
         <>
@@ -16,7 +23,7 @@ const TeacherSidebar = () => {
                             <Link to="/teacher-myusers" className="list-group-item list-group-item-action">My Users</Link>
                             <Link to="/teacher-profilesetting" className="list-group-item list-group-item-action">Profile Setting</Link>
                             <Link to="/teacher-changepass" className="list-group-item list-group-item-action">Change Password</Link>
-                            <Link to="/teacher-logout" className="list-group-item list-group-item-action text-danger">Logout</Link>
+                            <Link to="/teacher-login" className="list-group-item list-group-item-action text-danger" onClick={signOut}>Logout</Link>
                         </div>
                     </div>
         </>

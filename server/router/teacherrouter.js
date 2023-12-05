@@ -78,4 +78,17 @@ router.post('/edit',(req,res)=>{
 })
 
 
+router.post('/editprofile',(req,res)=>{
+    console.log(req.body.id);
+    console.log(req.body);
+    model.findOneAndUpdate({_id: req.body.id}, {password:req.body.password,name:req.body.name,email:req.body.email,qualification:req.body.qualification,phone:req.body.phone, address: req.body.address,thumbnail:req.body.thumbnail})
+    .then((result) => {
+        res.json(result)
+        console.log("pass update");
+    }).catch((err) => {
+        res.json(err)
+    });
+    
+})
+
 module.exports=router
