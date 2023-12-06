@@ -20,6 +20,9 @@ const Cardcourse = (props) => {
             <NavLink to={`/coursedetail/${props.id}`}  className="btn btn-primary mt-3">
               Read More
             </NavLink>
+            <NavLink to={`/coursedetail/${props.id}`}  className="btn btn-success mt-3 ms-1">
+              Enroll
+            </NavLink>
           </div>
         </div>
       </div>
