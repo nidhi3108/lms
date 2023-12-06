@@ -3,7 +3,12 @@ import { NavLink } from "react-router-dom";
 
 const Cardcourse = (props) => {
 
+ const enroll=()=>{
+  console.log("student enrolled");
   
+ } 
+
+
   return (
     <>
       <div className="col-sm-3">
@@ -20,9 +25,9 @@ const Cardcourse = (props) => {
             <NavLink to={`/coursedetail/${props.id}`}  className="btn btn-primary mt-3">
               Read More
             </NavLink>
-            <NavLink to={`/coursedetail/${props.id}`}  className="btn btn-success mt-3 ms-1">
+            <button  className="btn btn-success mt-3 ms-1" onClick={enroll}>
               Enroll
-            </NavLink>
+            </button>
           </div>
         </div>
       </div>
