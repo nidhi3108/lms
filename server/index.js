@@ -10,6 +10,7 @@ const teacherrouter=require('./router/teacherrouter')
 const filerouter=require('./router/filerouter')
 const courserouter=require('./router/courserouter')
 const chapterrouter=require('./router/chapterrouter')
+const enrollrouter=require('./router/enrollrouter')
 const cors=require('cors')
 
 app.use(express.json());
@@ -27,6 +28,7 @@ app.use('/teacher',teacherrouter)
 app.use('/course',courserouter)
 app.use('/file', filerouter)
 app.use('/chapter', chapterrouter)
+app.use('/enroll', enrollrouter)
 
 app.use(express.static('./static/uploads'));
 

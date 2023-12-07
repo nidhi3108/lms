@@ -59,22 +59,22 @@ const Login = (props) => {
   const userData = await response.json();
   if(response.status===200){
       console.log("login Successful");
-      
-      // Swal.fire({
-      //     title:"Register Suuceesful",
-      //     icon:"success",
-      //     timer: 2000
-      //   })
+      sessionStorage.setItem('currentStudent',JSON.stringify(userData));
+      Swal.fire({
+          title:"Register Suuceesful",
+          icon:"success",
+          timer: 2000
+        })
       navigate("/user-dashboard");
         resetForm();
   }
   else{
       console.log("login failed");
-      // Swal.fire({
-      //     title:"oops something wrong",
-      //     icon:"error",
-      //     timer: 2000
-      //   })
+      Swal.fire({
+          title:"oops something wrong",
+          icon:"error",
+          timer: 2000
+        })
   }
   }
   };

@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import swal from 'sweetalert2';
+import Swal from "sweetalert2";
 import { NavLink, useNavigate } from 'react-router-dom'
 const Register = (props) => {
   const navigate = useNavigate();
@@ -50,7 +50,7 @@ const Register = (props) => {
       if (thumbnailpicteacherRef.current) {
         thumbnailpicteacherRef.current.value = null;
       }
-      swal.fire({
+      Swal.fire({
           title:"Register Suuceesful",
           icon:"success",
           timer: 2000
@@ -59,7 +59,7 @@ const Register = (props) => {
   }
   else{
       console.log("Register failed");
-      swal.fire({
+      Swal.fire({
           title:"oops something wrong",
           icon:"error",
           timer: 2000
@@ -81,19 +81,19 @@ console.log(response.status);
       
 if(response.status===200){
     console.log("Register Successful");
-    // Swal.fire({
-    //     title:"Register Suuceesful",
-    //     icon:"success",
-    //     timer: 2000
-    //   })
+    Swal.fire({
+        title:"Register Suuceesful",
+        icon:"success",
+        timer: 2000
+      })
 }
 else{
     console.log("Register failed");
-    // Swal.fire({
-    //     title:"oops something wrong",
-    //     icon:"error",
-    //     timer: 2000
-    //   })
+    Swal.fire({
+        title:"oops something wrong",
+        icon:"error",
+        timer: 2000
+      })
 }
 }
   }
