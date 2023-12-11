@@ -4,9 +4,11 @@ import swal from 'sweetalert2';
 
 const Cardcourse = (props) => {
 
- const enroll= async ()=>{
+ const enroll= async (courseid)=>{
   const formData= JSON.parse(sessionStorage.getItem('currentStudent'))
-  console.log(formData);
+  console.log(formData._id);
+  formData.append= courseid;
+  console.log(formData._id);
   console.log("student enrolled");
   const response= await fetch("http://localhost:5000/enroll/save",{
     method: 'post',
@@ -38,7 +40,10 @@ else{
 
   
  } 
-
+ const enrollHandler = () => {
+  console.log(props.id);
+  enroll(props.id);
+};
 
   return (
     <>
@@ -56,7 +61,7 @@ else{
             <NavLink to={`/coursedetail/${props.id}`}  className="btn btn-primary mt-3">
               Read More
             </NavLink>
-            <button  className="btn btn-success mt-3 ms-1" onClick={enroll}>
+            <button  className="btn btn-success mt-3 ms-1" onClick={enrollHandler}>
               Enroll
             </button>
           </div>
