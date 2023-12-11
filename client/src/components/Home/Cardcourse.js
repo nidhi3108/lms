@@ -7,12 +7,17 @@ const Cardcourse = (props) => {
  const enroll= async (courseid)=>{
   const formData= JSON.parse(sessionStorage.getItem('currentStudent'))
   console.log(formData._id);
-  formData.append= courseid;
-  console.log(formData._id);
+  const enrollmentData = {
+    studentId: formData._id,
+    courseId: courseid
+  };
+  // const enrolldata = formData._id
+  // enrolldata.append= courseid;
+  console.log(enrollmentData);
   console.log("student enrolled");
   const response= await fetch("http://localhost:5000/enroll/save",{
     method: 'post',
-    body: JSON.stringify(formData),
+    body: JSON.stringify(enrollmentData),
     headers:{
         'Content-Type': 'application/json'
     }
