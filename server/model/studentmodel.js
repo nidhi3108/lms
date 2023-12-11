@@ -27,12 +27,6 @@ const Studentschema= new Schema({
    password:String,
    interested:String,
    qualification:String,
-  //  interestedCategories: [
-  //     {
-  //       type: Schema.Types.ObjectId,
-  //       ref: 'Coursecategorymodel' // Reference to the 'CourseCategory' model
-  //     }
-  //   ],
     address:String,
 })
 const Studentmodel=model("Studentmodel",Studentschema)

@@ -5,34 +5,36 @@ import swal from 'sweetalert2';
 const Cardcourse = (props) => {
 
  const enroll= async ()=>{
+  const formData= JSON.parse(sessionStorage.getItem('currentStudent'))
+  console.log(formData);
   console.log("student enrolled");
-//   const response= await fetch("http://localhost:5000/teacher/register",{
-//     method: 'post',
-//     body: JSON.stringify(formData),
-//     headers:{
-//         'Content-Type': 'application/json'
-//     }
+  const response= await fetch("http://localhost:5000/enroll/save",{
+    method: 'post',
+    body: JSON.stringify(formData),
+    headers:{
+        'Content-Type': 'application/json'
+    }
 
    
-// });
-// console.log(response.status);
+});
+console.log(response.status);
       
-// if(response.status===200){
-//     console.log("enrolled Successful");
-//     swal.fire({
-//         title:"enrolled Suuceesful",
-//         icon:"success",
-//         timer: 2000
-//       })
-// }
-// else{
-//     console.log("enrolled failed");
-//     swal.fire({
-//         title:"oops something wrong",
-//         icon:"error",
-//         timer: 2000
-//       })
-// }
+if(response.status===200){
+    console.log("enrolled Successful");
+    swal.fire({
+        title:"enrolled Suuceesful",
+        icon:"success",
+        timer: 2000
+      })
+}
+else{
+    console.log("enrolled failed");
+    swal.fire({
+        title:"oops something wrong",
+        icon:"error",
+        timer: 2000
+      })
+}
 
   
  } 

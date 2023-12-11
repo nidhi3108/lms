@@ -7,7 +7,7 @@ const Enrollschema= new Schema({
    password:String,
    interested:String,
    qualification:String,
-address:String,
+    address:String,
     enrollment_id: String,
 })
 const Enrollmodel=model("Enrollmodel",Enrollschema)

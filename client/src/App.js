@@ -35,6 +35,7 @@ import AllLatestPopularcourses from './components/Commonpages/AllLatestPopularco
 import AllLatestTeacher from './components/Commonpages/AllLatestTeacher';
 import Allchapter from './components/Teacher/Allchapter';
 import Authorize from './components/Commonpages/Authorize';
+import UserAuthorization from './components/User/userAuthorization';
 
 function App() {
   return (
@@ -45,7 +46,7 @@ function App() {
       <Route element={<CourseDetail/>} path="coursedetail/:course_id"/>
       <Route element={<UserLogin/>} path="/user-login"/>
       <Route element={<UserRegister/>} path="/user-register"/>
-      <Route element={<UserDashboard/>} path="/user-dashboard"/>
+      <Route element={<UserAuthorization><UserDashboard/></UserAuthorization>} path="/user-dashboard"/>
       <Route element={<Mycourses/>} path="/user-mycourses"/>
       <Route element={<RecommendedCourse/>} path="/user-recomcourse"/>
       <Route element={<Favouritecourse/>} path="/user-favcourse"/>

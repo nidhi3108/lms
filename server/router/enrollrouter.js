@@ -1,17 +1,17 @@
 const router= require("express").Router();
 const Enrollmodel=require('../model/enrollmodel');
 
-router.post('/add',(req,res)=>{
+router.post('/save',(req,res)=>{
     console.log(req.body);
-    // new Enrollmodel(req.body).save()
-    // .then((result)=>{
-    //     console.log("chapter data save");
-    //     res.json(result);
-    // })
-    // .catch((err)=>{
-    //     console.log(err);
-    //     res.json(err)
-    // })
+    new Enrollmodel(req.body).save()
+    .then((result)=>{
+        console.log("enrolled data save");
+        res.json(result);
+    })
+    .catch((err)=>{
+        console.log(err);
+        res.json(err)
+    })
 })
 
 
