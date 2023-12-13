@@ -10,6 +10,7 @@ const Enrollschema= new Schema({
 //     address:String,
     course_id: String,
     enrollment_id: String,
+    enrolledCourses: [{ type: Schema.Types.ObjectId, ref: 'Course' }],
 })
 const Enrollmodel=model("Enrollmodel",Enrollschema)
 module.exports=Enrollmodel
