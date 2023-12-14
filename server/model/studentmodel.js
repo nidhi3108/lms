@@ -21,12 +21,12 @@ const {Types,Schema,model} = require('../connection')
 
 // })
 const Studentschema= new Schema({
-   fullname:String,
+    name:String,
    email:String,
-   phoneno:String,
+   phone:String,
    password:String,
-   interested:String,
-   qualification:String,
+   interest:String,
+//    qualification:String,
     address:String,
 })
 const Studentmodel=model("Studentmodel",Studentschema)

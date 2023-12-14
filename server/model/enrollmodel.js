@@ -1,5 +1,5 @@
 const {Types,Schema,model} = require('../connection')
-
+// req.body and model keys should be same 
 const Enrollschema= new Schema({
 //    fullname:String,
 //    email:String,
@@ -8,9 +8,10 @@ const Enrollschema= new Schema({
 //    interested:String,
 //    qualification:String,
 //     address:String,
-    course_id: String,
-    enrollment_id: String,
-    enrolledCourses: [{ type: Schema.Types.ObjectId, ref: 'Course' }],
+// courseId: String,
+    studentId: String,
+    enrolledCourses: [String],
+
 })
 const Enrollmodel=model("Enrollmodel",Enrollschema)
 module.exports=Enrollmodel

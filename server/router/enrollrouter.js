@@ -25,6 +25,7 @@ const enrolledCourses=require('../model/enrollmodel')
 // })
 
 router.post('/save', async (req, res) => {
+    console.log("req.body" , req.body);
     try {
         const { studentId, courseId } = req.body;
 

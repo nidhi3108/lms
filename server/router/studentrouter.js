@@ -4,7 +4,7 @@ const model= require("../model/studentmodel")
 const router=express.Router();
 
 router.post('/register',(req,res)=>{
-    console.log(req.body);
+    console.log("student req.body",req.body);
     console.log("req.body");
     new model(req.body).save()
     .then((result)=>{
