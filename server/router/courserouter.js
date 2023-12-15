@@ -1,6 +1,7 @@
 
 const router= require("express").Router();
 const coursemodel=require('../model/coursemodel');
+const Enrollmodel=require('../model/enrollmodel');
 
 router.post('/add',(req,res)=>{
     console.log(req.body);
@@ -48,9 +49,26 @@ router.get('/getall/:id',(req,res)=>{
 
 
 router.get('/getCourseDetail/:course_id',(req,res)=>{
-    console.log(req.body);
-    console.log(req.params.course_id);
+    console.log("enrolled req.body",req.body);
+    console.log("enrolled req.body id",req.params.course_id);
     coursemodel.findById(req.params.course_id).populate('createdBy')
+    .then((result)=>{
+        console.log(result);
+        console.log("enrolled coursedata fetvh hogya");
+        res.json(result);
+    })
+    .catch((err)=>{
+        console.log(err);
+        console.log("enrolledfetching  fail hogya");
+        res.json(err)
+    });
+})
+
+// <---user--->
+router.get('/getallstudentenrolledcourse/:id',(req,res)=>{
+    console.log(req.body);
+    console.log(req.params.id);
+    Enrollmodel.findById(req.params.id).populate('enrolledCourses')
     .then((result)=>{
         console.log(result);
         console.log("coursedata fetvh hogya");

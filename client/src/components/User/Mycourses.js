@@ -1,7 +1,64 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Sidebar from "./Sidebar";
+import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { Trash2 } from 'react-feather';
+
 
 const Mycourses = () => {
+  const [currentStudent, setcurrentStudent] = useState(JSON.parse(sessionStorage.getItem('currentStudent')))
+console.log(currentStudent);
+const id = currentStudent._id
+console.log(id);
+  const [backendData,setBackendData]= useState([])
+   const url= "http://localhost:5000/";
+  const showCourse = async () => {
+    const response = await fetch("http://localhost:5000/course/getallstudentenrolledcourse/" + id);
+    console.log(response.status);
+    const data = await response.json();
+    console.log(data);
+    setBackendData(data);
+    console.log(backendData.length);
+    console.log("studentenrolledocourses");
+  }; 
+
+  const showAllStudentEnrolledCourse=()=>{
+    return backendData.map((data) => (
+      <div className="col-md-4">
+        <div className="card">
+          <img 
+            src={url+data.thumbnail}
+            className="card-img-top"
+            style={{height:"300px"}}
+            alt="Fissure in Sandstone"
+          />
+          <div className="card-body">
+            <h5 className="card-title">{data.title}</h5>
+            {/* <h6>{currentTeacher._id}</h6> */}
+             <div className="button d-flex" >
+            <Link to={"/all-chapter/"+data._id} className="btn btn-primary me-2 "style={{height: "fit-content"}}>
+              View
+            </Link>
+            <Link to={"/teacher-addchapter"} className="btn btn-primary me-1"style={{height: "fit-content"}} onClick={()=>
+              
+              // console.log("selected course saing :::",data._id)
+{              localStorage.setItem("selectedCourse",data._id)
+}            }>
+              +Chapter
+            </Link>
+            {/* <button onClick={() => deletecourse(data)}>
+              <Trash2 style={{color: 'red'}} />
+            </button> */}
+            </div>
+          </div>
+        </div>
+      </div>
+    ));
+  }
+
+  useEffect(()=>{
+    showCourse();
+   },[])
   return (
     <>
     <div className="container">
@@ -10,32 +67,10 @@ const Mycourses = () => {
     <Sidebar/>
      </section>
     <section className="col-md-9 mt-2">
-      <div className="card">
-        <h5 className="card-header">My Courses</h5>
+    <h5 className="card-header">My Courses</h5>
         <div className="card-body">
-          <table className="table border border-radius">
-            <thead>
-              <tr>
-                <th colSpan={3}>My Courses</th>
-              </tr>
-              <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Created By</th>
-                <th scope="col">Action</th>
-              </tr>
-            </thead>
-            <tbody className="table-group-divider table-divider-color">
-              <tr>
-                <th scope="row">PHP</th>
-                <td>Nidhi Verma</td>
-                <td>
-                  <button className="btn btn-primary">Delete</button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+        <div className="row">{showAllStudentEnrolledCourse()}</div>
         </div>
-      </div>
               
     </section>
                 
