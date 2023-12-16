@@ -61,7 +61,7 @@ const Login = (props) => {
       console.log("login Successful");
       sessionStorage.setItem('currentStudent',JSON.stringify(userData));
       Swal.fire({
-          title:"Register Suuceesful",
+          title:"Login Suuceesful",
           icon:"success",
           timer: 2000
         })

@@ -7,6 +7,16 @@ const Cardcourse = (props) => {
  const enroll= async (courseid)=>{
   const formData= JSON.parse(sessionStorage.getItem('currentStudent'))
   console.log(formData);
+  if(!formData){
+    console.log("Login first");
+    swal.fire({
+      title:"Login First",
+      icon:"error",
+      timer: 2000
+    })
+  }
+  else{
+
   console.log(formData._id);
   formData.append=courseid
 
@@ -39,7 +49,7 @@ if(response.status===200){
 else{
     console.log("enrolled failed");
     swal.fire({
-        title:"oops something wrong",
+        title:"Already enrolled this course",
         icon:"error",
         timer: 2000
       })
@@ -47,6 +57,8 @@ else{
 
   
  } 
+     
+}
  const enrollHandler = () => {
   console.log(props.id);
   enroll(props.id);

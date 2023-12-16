@@ -22,7 +22,12 @@ console.log(id);
     console.log("studentenrolledocourses");
   }; 
 
+  
+
+
+
   const showAllStudentEnrolledCourse=()=>{
+    console.log("user ne jisme enroll kia that courses'id aagyi");
     return backendData.map((data) => (
       <div className="col-md-4">
         <div className="card">
@@ -71,9 +76,7 @@ console.log(id);
         <div className="card-body">
         <div className="row">{showAllStudentEnrolledCourse()}</div>
         </div>
-              
     </section>
-                
     </div>
     </div>
     </>
