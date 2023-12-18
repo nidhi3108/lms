@@ -3,27 +3,62 @@ import Sidebar from "./Sidebar";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Trash2 } from 'react-feather';
+import { NavLink } from 'react-router-dom'
 
 
 const Mycourses = () => {
   const [currentStudent, setcurrentStudent] = useState(JSON.parse(sessionStorage.getItem('currentStudent')))
-console.log(currentStudent);
+// console.log(currentStudent);
 const id = currentStudent._id
-console.log(id);
+// console.log(id);
   const [backendData,setBackendData]= useState([])
    const url= "http://localhost:5000/";
   const showCourse = async () => {
     const response = await fetch("http://localhost:5000/course/getallstudentenrolledcourse/" + id);
     console.log(response.status);
     const data = await response.json();
-    console.log(data);
-    setBackendData(data);
-    console.log(backendData.length);
-    console.log("studentenrolledocourses");
+    // console.log(data);
+    // setBackendData(data);
+    // console.log(backendData.length);
+    // console.log("studentenrolledocourses");
+
+
+   showAllenrolledcoursebyid(data);
   }; 
 
+  // const showAllenrolledcoursebyid= async (data)=>{
+  //   // console.log(data[0].enrolledCourses);
+  //   const allenrolledid=data[0].enrolledCourses
+  //   const detailedData= allenrolledid.map(async  (id)=>{
+  //     const response = await fetch("http://localhost:5000/course/getalldataofenrolledcourse/" + id);
+  //     console.log(response.status);
+  //     const enrolleddata = await response.json();
+  //     console.log(enrolleddata);
+    
+  //     // // console.log("studentenrolledocourses");
+  //   }
+  //   )
+  //   setBackendData(detailedData);
+  //   console.log(backendData.length);
+  //   console.log(backendData);
+  //   console.log(detailedData);
+  // }
   
 
+  const showAllenrolledcoursebyid = async (data) => {
+    const allenrolledid = data[0].enrolledCourses;
+    const detailedData = await Promise.all(
+      allenrolledid.map(async (id) => {
+        const response = await fetch("http://localhost:5000/course/getalldataofenrolledcourse/" + id);
+        if (response.status === 200) {
+          return response.json();
+        }
+        return null; // Handle error condition or return appropriate value
+      })
+    );
+  
+    setBackendData(detailedData.filter(Boolean));
+  };
 
 
   const showAllStudentEnrolledCourse=()=>{
@@ -38,23 +73,11 @@ console.log(id);
             alt="Fissure in Sandstone"
           />
           <div className="card-body">
-            <h5 className="card-title">{data.title}</h5>
-            {/* <h6>{currentTeacher._id}</h6> */}
-             <div className="button d-flex" >
-            <Link to={"/all-chapter/"+data._id} className="btn btn-primary me-2 "style={{height: "fit-content"}}>
-              View
-            </Link>
-            <Link to={"/teacher-addchapter"} className="btn btn-primary me-1"style={{height: "fit-content"}} onClick={()=>
-              
-              // console.log("selected course saing :::",data._id)
-{              localStorage.setItem("selectedCourse",data._id)
-}            }>
-              +Chapter
-            </Link>
-            {/* <button onClick={() => deletecourse(data)}>
-              <Trash2 style={{color: 'red'}} />
-            </button> */}
-            </div>
+            <p className="card-title">{data.title}</p>
+            <p className="card-title">{data.description}</p>
+            <NavLink to={`/coursedetail/${data.id}`}  className="btn btn-primary mt-3">
+              Read More
+            </NavLink>
           </div>
         </div>
       </div>

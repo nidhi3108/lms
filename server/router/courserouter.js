@@ -65,11 +65,6 @@ router.get('/getCourseDetail/:course_id',(req,res)=>{
 })
 
 
-
-
-
-
-
 router.post('/delete',(req,res)=>{
     // console.log(data);
     console.log(req.body);
@@ -81,7 +76,6 @@ router.post('/delete',(req,res)=>{
         res.json(err);
     });
 })
-
 
 
 // <---user--->
@@ -98,6 +92,25 @@ router.get('/getallstudentenrolledcourse/:id',(req,res)=>{
     .catch((err)=>{
         console.log(err);
         console.log("sare courses ki id fetching  fail hogya");
+        res.json(err)
+    });
+})
+
+
+
+router.get('/getalldataofenrolledcourse/:id',(req,res)=>{
+    console.log("userenrolledcourse ki req.body",req.body);
+    console.log("userenrolledcourse ki req.body ki id",req.params.id);
+    // we have to populate data related to user._id
+    coursemodel.findById(req.params.id).populate('title')
+    .then((result)=>{
+        console.log(result);
+        console.log("enrolled coursedata fetvh hogya");
+        res.json(result);
+    })
+    .catch((err)=>{
+        console.log(err);
+        console.log("enrolledfetching  fail hogya");
         res.json(err)
     });
 })
