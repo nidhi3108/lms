@@ -31,6 +31,22 @@ router.get('/getall/:id',(req,res)=>{
     });
 })
 
+router.get('/getallchapter/:id',(req,res)=>{
+    console.log(req.body);
+    console.log(req.params.id);
+    Chaptermodel.find({courseId: req.params.id})
+    .then((result)=>{
+        console.log(result);
+        console.log("sara chapter data fetvh hogya");
+        res.json(result);
+    })
+    .catch((err)=>{
+        console.log(err);
+        console.log(" chapter data fetching  fail hogya");
+        res.json(err)
+    });
+})
+
 router.post('/delete',(req,res)=>{
     console.log(req.body);
     Chaptermodel.findByIdAndDelete({_id: req.body._id})

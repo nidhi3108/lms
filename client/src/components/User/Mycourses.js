@@ -44,7 +44,9 @@ const id = currentStudent._id
   //   console.log(detailedData);
   // }
   
-
+  // using async/await directly inside a map function might not work as expected, as map doesn't 
+  // inherently await each iteration. However, you can combine map with Promise.all to achieve a 
+  // similar effect, executing asynchronous operations for each item in parallel. 
   const showAllenrolledcoursebyid = async (data) => {
     const allenrolledid = data[0].enrolledCourses;
     const detailedData = await Promise.all(
@@ -75,8 +77,11 @@ const id = currentStudent._id
           <div className="card-body">
             <p className="card-title">{data.title}</p>
             <p className="card-title">{data.description}</p>
-            <NavLink to={`/coursedetail/${data.id}`}  className="btn btn-primary mt-3">
+            <NavLink to={`/coursedetail/${data._id}`}  className="btn btn-primary mt-3">
               Read More
+            </NavLink>
+            <NavLink to="#"  className="btn btn-success mt-3">
+              Unenroll
             </NavLink>
           </div>
         </div>

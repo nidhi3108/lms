@@ -5,6 +5,7 @@ import Cardcourse from "../Home/Cardcourse";
 const CourseDetail = () => {
   const [CoursebackendData, setCoursebackendData] = useState([]);
   const [RealtedTeacherbackendData, setRealtedTeacherbackendData] = useState([]);
+  const [backendData, setBackendData] = useState([]);
   let { course_id } = useParams();
   console.log(course_id);
   const url = "http://localhost:5000/";
@@ -31,9 +32,19 @@ const showCourseDetail= async ()=>{
     // console.log(RealtedTeacherbackendData.length);
   }
 
+
+  const showChapter = async () => {
+    const response = await fetch("http://localhost:5000/chapter/getallchapter/"+course_id);
+    console.log(response.status);
+    const data = await response.json();
+    console.log(data);
+    setBackendData(data);
+    console.log(backendData.length);
+  };
+
   useEffect(() => {
     showCourseDetail();
-   
+    showChapter();
   }, []);
   
   return (
@@ -66,112 +77,28 @@ const showCourseDetail= async ()=>{
             </div>
           </div>
         </div>
-        <div className="card mt-4 border border-secondary ">
-          <ul className="list-group list-group-flush">
-            <div className="card-header ">Course Videos</div>
-            <li className="list-group-item ">
-              Introduction
-              <button
-                type="button"
-                className="btn btn-sm btn-danger float-end"
-                data-bs-toggle="modal"
-                data-bs-target="#staticBackdrop"
-              >
-                <Youtube />
-                {/* <model start here */}
-                {/* Modal */}
-                <div
-                  className="modal fade"
-                  id="staticBackdrop"
-                  data-bs-backdrop="static"
-                  data-bs-keyboard="false"
-                  tabIndex={-1}
-                  aria-labelledby="staticBackdropLabel"
-                  aria-hidden="true"
-                >
-                  <div className="modal-dialog model-xl">
-                    <div className="modal-content">
-                      <div className="modal-header">
-                        <h5
-                          className="modal-title text-black"
-                          id="staticBackdropLabel"
-                        >
-                          Video 1
-                        </h5>
-                        <button
-                          type="button"
-                          className="btn-close"
-                          data-bs-dismiss="modal"
-                          aria-label="Close"
-                        />
-                      </div>
-                      <div className="modal-body">
-                        <div class="ratio ratio-16x9">
-                          <iframe
-                            src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0"
-                            title="YouTube video"
-                            allowfullscreen
-                          ></iframe>
-                        </div>
-                      </div>
-                      <div className="modal-footer">
-                        <button
-                          type="button"
-                          className="btn btn-secondary"
-                          data-bs-dismiss="modal"
-                        >
-                          Close
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                {/* model end here */}
-              </button>
-
-            </li>
-            <li className="list-group-item ">
-              Setup Project
-              <button className="btn btn-sm btn-danger float-end">
-                <Youtube />
-              </button>
-            </li>
-            <li className="list-group-item ">
-              Complete it
-              <button className="btn btn-sm btn-danger float-end">
-                <Youtube />
-              </button>
-            </li>
-            <li className="list-group-item ">
-              Deployment
-              <button className="btn btn-sm btn-danger float-end">
-                <Youtube />
-              </button>
-            </li>
-          </ul>
-        </div>
-        <h3 className="mt-4">Related Course</h3>
+       
         <div className="row">
-          <Cardcourse
-            title="React"
-            description="This is most popular course to learn"
-            img="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHY9CHw_2VsuMCijpcpQ6nEk4quK_TtGKMvg9OHMiSDl1Ebyc7zUhubBojR5gYPjX_AIc&usqp=CAU"
-          />
-          <Cardcourse
-            title="React"
-            description="This is most popular course to learn"
-            img="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHY9CHw_2VsuMCijpcpQ6nEk4quK_TtGKMvg9OHMiSDl1Ebyc7zUhubBojR5gYPjX_AIc&usqp=CAU"
-          />
-          <Cardcourse
-            title="React"
-            description="This is most popular course to learn"
-            img="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHY9CHw_2VsuMCijpcpQ6nEk4quK_TtGKMvg9OHMiSDl1Ebyc7zUhubBojR5gYPjX_AIc&usqp=CAU"
-          />
-          <Cardcourse
-            title="React"
-            description="This is most popular course to learn"
-            img="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHY9CHw_2VsuMCijpcpQ6nEk4quK_TtGKMvg9OHMiSDl1Ebyc7zUhubBojR5gYPjX_AIc&usqp=CAU"
-          />
+        <h3 className="mt-4">All Chapter</h3>
+        <div className="card">
+        {backendData.map((chapter) => (
+    <div className="col-md-4" key={chapter._id}>
+
+        <img
+          src={url + chapter.thumbnail}
+          className="card-img-top"
+          style={{ height: "300px" }}
+          alt="Fissure in Sandstone"
+        />
+        <div className="card-body">
+          <p className="card-title">{chapter.title}</p>
+          <p className="card-title">{chapter.description}</p>
+        </div>
+      </div>
+
+  ))}
+
+      </div>
         </div>
       </div>
     </>
