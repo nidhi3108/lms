@@ -49,7 +49,7 @@ const showCourseDetail= async ()=>{
   
   return (
     <>
-      <div className="container mt-5 w-75">
+       <div className="container mt-5 w-75">
         <div className="card mb-3">
           <div className="row g-0">
             <div className="col-md-4">
@@ -78,18 +78,18 @@ const showCourseDetail= async ()=>{
           </div>
         </div>
        
-        <div className="row">
+        <div className="row d-flex justify-content-center">
         <h3 className="mt-4">All Chapter</h3>
+        <div className="col mt-2">
         <div className="card">
         {backendData.map((chapter) => (
     <div className="col-md-4" key={chapter._id}>
 
-        <img
-          src={url + chapter.thumbnail}
-          className="card-img-top"
-          style={{ height: "300px" }}
-          alt="Fissure in Sandstone"
-        />
+<NavLink  to={{
+          pathname: chapter.youtubeURL,
+          target: "_blank",
+        }} >Click Here
+        </NavLink>
         <div className="card-body">
           <p className="card-title">{chapter.title}</p>
           <p className="card-title">{chapter.description}</p>
@@ -98,6 +98,7 @@ const showCourseDetail= async ()=>{
 
   ))}
 
+      </div>
       </div>
         </div>
       </div>
