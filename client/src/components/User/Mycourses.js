@@ -17,11 +17,7 @@ const id = currentStudent._id
     const response = await fetch("http://localhost:5000/course/getallstudentenrolledcourse/" + id);
     console.log(response.status);
     const data = await response.json();
-    // console.log(data);
-    // setBackendData(data);
-    // console.log(backendData.length);
-    // console.log("studentenrolledocourses");
-
+     console.log(data);
 
    showAllenrolledcoursebyid(data);
   }; 
@@ -48,6 +44,7 @@ const id = currentStudent._id
   // inherently await each iteration. However, you can combine map with Promise.all to achieve a 
   // similar effect, executing asynchronous operations for each item in parallel. 
   const showAllenrolledcoursebyid = async (data) => {
+    if(data){
     const allenrolledid = data[0].enrolledCourses;
     const detailedData = await Promise.all(
       allenrolledid.map(async (id) => {
@@ -60,13 +57,28 @@ const id = currentStudent._id
     );
   
     setBackendData(detailedData.filter(Boolean));
+    }
+    else{
+      console.log("No enrolled courses");
+
+    }
   };
 
+  const Noenrolledcourses=()=>{
+    console.log("f");
+    return (
+      <>
+          <div className="container">
+            <p>No  enrolled courses</p>
+          </div>
+      </>
+    )
+  }
 
   const showAllStudentEnrolledCourse=()=>{
     console.log("user ne jisme enroll kia that courses'id aagyi");
     return backendData.map((data) => (
-      <div className="col-md-4">
+      <div className="col-4 mt-3 ">
         <div className="card">
           <img 
             src={url+data.thumbnail}
@@ -77,7 +89,7 @@ const id = currentStudent._id
           <div className="card-body">
             <p className="card-title">{data.title}</p>
             <p className="card-title">{data.description}</p>
-            <NavLink to={`/coursedetail/${data._id}`}  className="btn btn-primary mt-3">
+            <NavLink to={`/coursedetail/${data._id}`}  className="btn btn-primary mt-3 me-4">
               Read More
             </NavLink>
             <NavLink to="#"  className="btn btn-success mt-3">
@@ -102,7 +114,11 @@ const id = currentStudent._id
     <section className="col-md-9 mt-2">
     <h5 className="card-header">My Courses</h5>
         <div className="card-body">
-        <div className="row">{showAllStudentEnrolledCourse()}</div>
+        <div className="row">
+          {          
+          showAllStudentEnrolledCourse()}
+          
+          </div>
         </div>
     </section>
     </div>

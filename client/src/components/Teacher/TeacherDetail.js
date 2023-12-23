@@ -40,9 +40,11 @@ const TeacherDetail = () => {
               <div className="card-body p-0">
                 <h5 className="card-title">{TeacherbackendData.name}</h5>
                 <p className="card-text fw-bold">
-                 E-mail: {TeacherbackendData.email}<br/>
-                 Qualification: {TeacherbackendData.qualification}
-                 Phone-No: {TeacherbackendData.phone}
+                 E-mail: <NavLink to={`mailto:${TeacherbackendData.email}`}> {TeacherbackendData.email}</NavLink><br/>
+                 Qualification: {TeacherbackendData.qualification}<br/>
+                 Phone-No: {TeacherbackendData.phoneno}
+                 Qualification: {TeacherbackendData.qualification}<br/>
+                 Address: {TeacherbackendData.address}
                 </p>
                 <p className="fw-bold">
                   Skills: <NavLink to="/teacher-detail/1">PHP</NavLink>,

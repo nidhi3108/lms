@@ -42,16 +42,11 @@ const Allchapter = () => {
   }
   const showAllChapter = () => {
     return backendData.map((data) => (
-      <div className="col-md-3">
+      <div className="col-md-3 mt-2">
         <div className="card">
           
-        <NavLink to={data.youtubeURL} target="_blank">
-          <img
-            src={url + data.file}
-            className="card-img-top"
-            style={{ height: "250px" }}
-            alt="Fissure in Sandstone"
-          />
+        <NavLink className=" ms-4 mt-3" to={data.youtubeURL} target="_blank">
+          Click Here to start learn
           </NavLink>
           <div className="card-body d-flex justify-content-between">
             <div className="chapterData">
@@ -77,9 +72,9 @@ const Allchapter = () => {
         <div className="row">
           <section className="col mt-2"> 
             <div className="card">
-                <div className="head d-flex justify-content-between">
+                <div className="head d-flex justify-content-between ms-5">
                
-              <h5 >My Chapter</h5>
+              <h5 className="mt-2" >My Chapter</h5>
               <Link to={"/teacher-mycourses/"+currentTeacher._id} className="btn btn-primary me-1" >Back to my courses</Link>
                    
               </div>

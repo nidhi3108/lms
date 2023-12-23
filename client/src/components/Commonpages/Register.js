@@ -9,7 +9,7 @@ const Register = (props) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    phone: "",
+    phoneno: "",
     address: "",
     // interest: "",
     // interest: flag === "student" ? "" : null, // Initialize based on flag
@@ -81,11 +81,15 @@ console.log(response.status);
       
 if(response.status===200){
     console.log("Register Successful");
+    if (thumbnailpicteacherRef.current) {
+      thumbnailpicteacherRef.current.value = null;
+    }
     Swal.fire({
         title:"Register Suuceesful",
         icon:"success",
         timer: 2000
       })
+      navigate('../user-login');
 }
 else{
     console.log("Register failed");
