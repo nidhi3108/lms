@@ -1,7 +1,16 @@
-import React from "react";
-import {NavLink,Link} from "react-router-dom"
-const Sidebar = () => {
+import React, { useState } from "react";
+import {NavLink,Link,Route,useNavigate} from "react-router-dom"
 
+const Sidebar = () => {
+    const navigate = useNavigate();
+    const [currentStudent, setcurrentStudent] = useState(JSON.parse(sessionStorage.getItem('currentStudent')))
+    console.log(currentStudent._id);
+    console.log("2 bar render hua page");
+    const signOut = () => {
+        sessionStorage.removeItem("currentStudent");
+        localStorage.clear();
+        // navigate("../teacher-login");
+      };
     return(
         <>
          <div className="card mt-4 border border-secondary">
@@ -12,8 +21,8 @@ const Sidebar = () => {
                             <Link to="/user-favcourse" className="list-group-item list-group-item-action">Favourite Course</Link>
                            
                             <Link to="/user-profilesetting" className="list-group-item list-group-item-action">Profile Setting</Link>
-                            <Link to="/user-changepass" className="list-group-item list-group-item-action">Change Password</Link>
-                            <Link to="/user-logout" className="list-group-item list-group-item-action text-danger">Logout</Link>
+                            <Link to="/user-changepass" className="list-group-item list-group-item-action">Reset Password</Link>
+                            <Link to="/user-login" className="list-group-item list-group-item-action text-danger" onClick={signOut}>Logout</Link>
                         </div>
                     </div>
         </>

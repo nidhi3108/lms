@@ -1,9 +1,11 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
 import swal from "sweetalert2";
 
 const Cardcourse = (props) => {
-  const [enrolled, setEnrolled] = useState(false);
+  const [currentStudent, setcurrentStudent]=useState(sessionStorage.getItem("currentStudent"))
+  console.log(currentStudent);
+  const [enrolled, setEnrolled] = useState(localStorage.getItem(`enrolled_${props.id}`) === "true");
   const buttonRef = useRef();
   const enroll = async (courseid) => {
     const formData = JSON.parse(sessionStorage.getItem("currentStudent"));
@@ -22,6 +24,7 @@ const Cardcourse = (props) => {
       const enrollmentData = {
         studentId: formData._id,
         courseId: courseid,
+
       };
 
       console.log(enrollmentData);
@@ -37,6 +40,7 @@ const Cardcourse = (props) => {
 
       if (response.status === 200) {
         console.log("enrolled Successful");
+        localStorage.setItem(`enrolled_${props.id}`, "true");
         // Changebuttoncolor(response.status);
         setEnrolled(true);
         buttonRef.current.style.backgroundColor = "green";
@@ -61,6 +65,20 @@ const Cardcourse = (props) => {
 
   };
 
+  //for changung color of enrolled button
+  useEffect(() => {
+    if (enrolled) {
+      buttonRef.current.style.backgroundColor = "green";
+    }
+  }, [enrolled]);
+
+//for chaging color of button enroll but if student is not login
+  useEffect(() => {
+    if (!currentStudent) {
+      buttonRef.current.style.backgroundColor = "red";
+    }
+  }, [currentStudent]);
+  
   return (
     <>
       <div className="col-sm-3">
@@ -90,7 +108,7 @@ const Cardcourse = (props) => {
               className={`btn ${enrolled ? "btn-success" : "btn-danger"} mt-3 ms-1`}
               onClick={enrollHandler}
             >
-                   {enrolled ? "Enrolled" : "Enroll"}
+               {enrolled ? "Enrolled" : "Enroll"}
             </button>
           </div>
         </div>

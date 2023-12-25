@@ -56,7 +56,7 @@ const TeacherChangepassword = () => {
           </section>
           <section className="col-md-9 mt-4">
             <div className="card">
-              <h5 className="card-header">Change password</h5>
+              <h5 className="card-header">Reset password</h5>
               <div className="card-body">
           
               <Formik

@@ -57,4 +57,45 @@ router.post('/save', async (req, res) => {
 });
 
 
+// unenroll course 
+
+router.post('/unenroll_course', async (req, res) => {
+   console.log("studentid",req.body.studentId);
+   console.log("courseid",req.body.courseId);
+    try {
+      const { studentId, courseId } = req.body;
+  
+      const userEnrollment = await Enrollmodel.findOne({ studentId });
+  
+      if (!userEnrollment) {
+        return res.status(404).json({ error: 'User enrollment not found' });
+      }
+  
+      const updatedCourses = userEnrollment.enrolledCourses.filter(
+        (course) => course !== courseId
+      );
+  
+      userEnrollment.enrolledCourses = updatedCourses;
+  
+      await userEnrollment.save();
+  
+      res.status(200).json({ message: 'Course unenrolled' });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Internal server error' });
+    }
+  });
+// router.get('/unenroll_course/:courseId',(req,res)=>{
+//     console.log("id", req.body.id);
+//     console.log("enroll req param id",req.params.courseId);
+//     Enrollmodel.findByIdAndDelete({enrolledCourses: req.params.courseId})
+//     .then((result) => {
+//         res.status(200).json(result)
+        
+//     }).catch((err) => {
+//         res.json(err)
+//     });
+// })
+
+
 module.exports=router

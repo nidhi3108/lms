@@ -38,4 +38,31 @@ router.post('/login',(req,res)=>{
     })
 })
 
+
+//edit password
+router.post('/edit',(req,res)=>{
+    console.log(req.body.id);
+    model.findOneAndUpdate({_id: req.body.id}, {password:req.body.password})
+    .then((result) => {
+        res.json(result)
+        console.log("pass update");
+    }).catch((err) => {
+        res.json(err)
+    });
+    
+})
+
+
+router.post('/editprofile',(req,res)=>{
+    console.log(req.body.id);
+    console.log(req.body);
+    model.findOneAndUpdate({_id: req.body.id}, {password:req.body.password,name:req.body.name,email:req.body.email,interest:req.body.interest,phone:req.body.phone, address: req.body.address,thumbnail:req.body.thumbnail})
+    .then((result) => {
+        res.json(result)
+        console.log("pass update");
+    }).catch((err) => {
+        res.json(err)
+    });
+    
+})
 module.exports=router

@@ -26,6 +26,7 @@ const Studentschema= new Schema({
    phone:String,
    password:String,
    interest:String,
+   thumbnail:String,
 //    qualification:String,
     address:String,
 })

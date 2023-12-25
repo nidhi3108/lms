@@ -77,7 +77,7 @@ router.post('/edit',(req,res)=>{
     
 })
 
-
+//
 router.post('/editprofile',(req,res)=>{
     console.log(req.body.id);
     console.log(req.body);
