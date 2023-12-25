@@ -18,6 +18,9 @@ const Cardcourse = (props) => {
         timer: 2000,
       });
     } else {
+
+      //here write comparing comdition of enrolled and all fethed course of that logined student
+      
       console.log(formData._id);
       formData.append = courseid;
 
@@ -87,14 +90,14 @@ const Cardcourse = (props) => {
           <div className="card-body">
             <h5 className="card-title">{props.title}</h5>
             <p className="card-text">{props.description}</p>
-            <div className="title">
+            {/* <div className="title">
               <span>
                 <strong>Rating:</strong> 5/10
               </span>
               <span className="float-end">
                 <strong>Views:</strong> 55855
               </span>
-            </div>
+            </div> */}
 
             <NavLink
               to={`/coursedetail/${props.id}`}

@@ -29,7 +29,12 @@ import CardPopularTeachercourse from './CardPopularTeacher'
    
 // ];
 
+
 const Home=()=>{
+//here firstly fetched enrolled courses of a student them compare and show acc to color
+//id currentstudent deatisl is null then normally show all the course but if the current stuednt is not null 
+//them show all courses by comparing with fethced coures
+
 
 const url = "http://localhost:5000/";
 const [backendData, setBackendData] = useState([]);

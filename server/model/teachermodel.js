@@ -8,6 +8,7 @@ const Teacherschema= new Schema({
    password:String,
    qualification:String,
    thumbnail:String,
+   experience:String,
    // createdBy:{type: mongoose.Types.ObjectId},
 })
 const Teachermodel=model("Teachermodel",Teacherschema)

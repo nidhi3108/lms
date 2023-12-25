@@ -16,6 +16,7 @@ const Register = (props) => {
     // qualification: flag === "teacher" ? "" : null,
     password: "",
     flag: "",
+    experience:"",
     thumbnail: "",
   });
   let name, value;
@@ -208,7 +209,20 @@ else {
               onChange={handleInputChange}
             />
           </div>
-
+  {/* experience */}
+  <div className=" mb-4">
+            <label className="form-label" htmlFor="form6Example4">
+              {props.experience}
+            </label>
+            <input
+              type="text"
+              name="experience"
+              id="experience"
+              className="form-control"
+              value={formData.experience}
+              onChange={handleInputChange}
+            />
+          </div>
           {flag == "student" ? (
             <div className=" mb-4">
               <label className="form-label" htmlFor="form6Example4">
