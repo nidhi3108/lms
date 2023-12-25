@@ -39,7 +39,27 @@ const deletecourse= async (data)=>{
     else{
        console.log("some error in course deletion");
     }
+    deleteAllChapterOfThisCourse(data);
     showCourse();
+}
+
+const deleteAllChapterOfThisCourse= async (data)=>{
+console.log(data);
+const response = await fetch('http://localhost:5000/chapter/delete_all', {
+  method: 'post',
+  body: JSON.stringify({ courseId: data._id }),
+  headers: {
+    'Content-Type': 'application/json'
+  }
+});
+
+if (response.status === 200) {
+  console.log("Chapters related to the course deleted");
+} else {
+  console.log("Some error in deleting chapters");
+}
+
+
 }
 
   const showAllCourse=()=>{

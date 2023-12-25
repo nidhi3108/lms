@@ -1,74 +1,55 @@
 import React from "react";
-import TeacherSidebar from "./TeacherSidebar";
 import {Formik} from "formik";
 import Swal from "sweetalert2";
-import {useNavigate, resetForm} from "react-router-dom"
+import {useNavigate, resetForm, NavLink} from "react-router-dom"
 
-const TeacherChangepassword = () => {
-  const teacherId=JSON.parse(sessionStorage.getItem("currentTeacher"));
-  console.log(teacherId._id);
-
-
+const TeacherResetPassword = () => {
+  // const teacherId=JSON.parse(sessionStorage.getItem("currentTeacher"));
+  // console.log(teacherId._id);
 
   const changePass=  async (formdata,{resetForm})=>{
     console.log(formdata);
-    formdata.id = teacherId._id;
-    if(!formdata){
-      console.log("Enter details");
+    // formdata.id = teacherId._id;
+    const response= await fetch("http://localhost:5000/teacher/reset",{
+      method: 'post',
+      body: JSON.stringify(formdata),
+      headers:{
+          'Content-Type': 'application/json'
+      }
+
+
+  });
+  console.log(response.status);
+  const userData = await response.json();
+  if(response.status===200){
+      console.log("Password Update Successful");
       Swal.fire({
-        title: "Enter details...",
+        title:"Success",
+        icon: "success",
+        text:"pass Upadation Successful",
+        timer: 2000,
+        confirmButtonText: 'OK',
+        confirmButtonColor: 'green'
+        })
+      resetForm();
+  }
+  else{
+      console.log("Pass updation failed");
+      Swal.fire({
+        title: "pass updation Failed...",
         icon: 'error',
         timer: 3000,
         text: 'Someone anonymous...',
         })
-}
-else {
-  const response= await fetch("http://localhost:5000/teacher/edit",{
-    method: 'post',
-    body: JSON.stringify(formdata),
-    headers:{
-        'Content-Type': 'application/json'
-    }
-
-
-});
-console.log(response.status);
-const userData = await response.json();
-if(response.status===200){
-    console.log("Password Update Successful");
-    Swal.fire({
-      title:"Success",
-      icon: "success",
-      text:"pass Upadation Successful",
-      timer: 2000,
-      confirmButtonText: 'OK',
-      confirmButtonColor: 'green'
-      })
-    resetForm();
-}
-else{
-    console.log("Pass updation failed");
-    Swal.fire({
-      title: "pass updation Failed...",
-      icon: 'error',
-      timer: 3000,
-      text: 'Someone anonymous...',
-      })
-}
-resetForm();
- 
-}
-  
   }
-
+  resetForm();
+  }
   return (
     <>
-      <div className="container">
+      <div className="container w-50">
         <div className="row">
-          <section className="col-md-3">
-            <TeacherSidebar/>
-          </section>
-          <section className="col-md-9 mt-4">
+
+          <section className="col mt-4">
             <div className="card">
               <h5 className="card-header">Reset password</h5>
               <div className="card-body">
@@ -123,6 +104,7 @@ resetForm();
                   <button type="submit" className="btn btn-primary" >
                     Reset
                   </button>
+                  <NavLink className="btn btn-primary float-end"  to="/teacher-login">Login Here</NavLink>
                 </form>
                   )}
                   </Formik>
@@ -135,4 +117,4 @@ resetForm();
   );
 };
 
-export default TeacherChangepassword;
+export default TeacherResetPassword;

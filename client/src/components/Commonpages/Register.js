@@ -56,15 +56,24 @@ const Register = (props) => {
           timer: 2000
         })
         navigate('../teacher-login');
+  }else if(response.status===400) {
+    console.log("email already exits");
+    Swal.fire({
+      title:"email already exits",
+      icon:"error",
+      timer: 2000
+    })
   }
-  else{
-      console.log("Register failed");
+  else {
+    console.log("Register failed");
       Swal.fire({
           title:"oops something wrong",
           icon:"error",
           timer: 2000
         })
+   
   }
+
   
 }
 else{
@@ -91,13 +100,22 @@ if(response.status===200){
       })
       navigate('../user-login');
 }
-else{
-    console.log("Register failed");
+else if(response.status===400) {
+  console.log("email already exits");
+  Swal.fire({
+    title:"email already exits",
+    icon:"error",
+    timer: 2000
+  })
+}
+else {
+  console.log("Register failed");
     Swal.fire({
         title:"oops something wrong",
         icon:"error",
         timer: 2000
       })
+ 
 }
 }
   }

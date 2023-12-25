@@ -3,9 +3,17 @@ const model= require("../model/studentmodel")
 // const Model= require("../model/teachermodel")
 const router=express.Router();
 
-router.post('/register',(req,res)=>{
+router.post('/register',async (req,res)=>{
     console.log("student req.body",req.body);
     console.log("req.body");
+    const  email  = req.body.email;
+
+    // Check if the email already exists in the database
+    const existingUser = await model.findOne({ email });
+
+    if (existingUser) {
+        return res.status(400).json({ error: 'Email already exists' });
+    }
     new model(req.body).save()
     .then((result)=>{
         console.log(" student register data save");

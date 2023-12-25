@@ -27,6 +27,8 @@ import TeacherMyUsers from './components/Teacher/TeacherMyUsers';
 import TeacherProfileSetting from './components/Teacher/TeacherProfileSetting';
 import TeacherDetail from './components/Teacher/TeacherDetail';
 import TeacherAddChapter from './components/Teacher/TeacherAddChapter';
+import TeacherResetPassword from './components/Teacher/TeacherResetPassword';
+
 
 
 //commaon pages List pages
@@ -64,6 +66,7 @@ function App() {
       <Route element={<TeacherMyCourse/>} path="/teacher-mycourses/:id"/>
       <Route element={<TeacherMyUsers/>} path="teacher-myusers"/>
       <Route element={<TeacherProfileSetting/>} path="/teacher-profilesetting"/>
+      <Route element={<TeacherResetPassword/>} path="/teacher-resetpassword"/>
       <Route element={<TeacherDetail/>} path="/teacher-detail/:teacher_id"/>
       <Route element={<TeacherAddChapter/>} path="/teacher-addchapter"/>
 

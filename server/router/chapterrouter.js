@@ -59,6 +59,33 @@ router.post('/delete',(req,res)=>{
 })
 
 
+router.post('/delete_all', async (req, res) => {
+    console.log(req.body.courseId);
+    const { courseId } = req.body;
+    Chaptermodel.deleteMany({ courseId })
+    .then((result) => {
+        res.status(200).json(result)
+        
+    }).catch((err) => {
+        res.json(err);
+    });
+    // try {
+    //   const { courseId } = req.body;
+  
+    //   // Find all chapters with the given courseId and delete them
+    //   const deletedChapters = await Chapter.deleteMany({ courseId });
+  
+    //   if (deletedChapters.deletedCount > 0) {
+    //     return res.status(200).json({ message: 'Chapters deleted successfully' });
+    //   } else {
+    //     return res.status(404).json({ error: 'No chapters found for deletion' });
+    //   }
+    // } catch (error) {
+    //   console.error('Error deleting chapters:', error);
+    //   return res.status(500).json({ error: 'Internal server error' });
+    // }
+  });
+
 
 
 module.exports=router

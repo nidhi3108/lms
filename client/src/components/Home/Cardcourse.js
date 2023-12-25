@@ -75,7 +75,7 @@ const Cardcourse = (props) => {
 //for chaging color of button enroll but if student is not login
   useEffect(() => {
     if (!currentStudent) {
-      buttonRef.current.style.backgroundColor = "red";
+      buttonRef.current.style.backgroundColor = "green";
     }
   }, [currentStudent]);
   
@@ -118,3 +118,5 @@ const Cardcourse = (props) => {
 };
 
 export default Cardcourse;
+
+

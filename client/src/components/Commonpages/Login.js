@@ -1,7 +1,7 @@
 import React from "react";
 import Swal from "sweetalert2";
 import {Formik} from "formik";
-import {useNavigate, resetForm} from "react-router-dom"
+import {useNavigate, resetForm, NavLink} from "react-router-dom"
 
 const Login = (props) => {
   const navigate = useNavigate();
@@ -139,6 +139,20 @@ const Login = (props) => {
               <button type="submit" className="btn btn-primary btn-block mb-4">
                 Submit
               </button>
+            <div className="password d-flex justify-content-between mb-2">
+
+            {flag === "student" ? (
+  <>
+    {/* <NavLink to="#" >Forgot Password?</NavLink> */}
+    <NavLink to="/user-register" >New User? Register Here</NavLink>
+  </>
+) : (
+  <>
+    {/* <NavLink to="/teacher-resetpassword" >Forgot Password?</NavLink> */}
+    <NavLink to="/teacher-register" >New User? Register Here</NavLink>
+  </>
+)}          
+            </div>
             </form>
           )}
         </Formik>
