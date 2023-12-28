@@ -68,18 +68,27 @@ const Cardcourse = (props) => {
 
   };
 
+  let studentData=currentStudent
+  console.log(studentData);
+
   //for changung color of enrolled button
   useEffect(() => {
+    if(studentData!=null){
     if (enrolled) {
       buttonRef.current.style.backgroundColor = "green";
-    }
+    }}
+    else
+    console.log("teacher page h y");
   }, [enrolled]);
 
 //for chaging color of button enroll but if student is not login
   useEffect(() => {
+    if(studentData!=null){
     if (!currentStudent) {
       buttonRef.current.style.backgroundColor = "green";
-    }
+    }}
+    else
+    console.log("teacher page h y");
   }, [currentStudent]);
   
   return (
@@ -90,29 +99,30 @@ const Cardcourse = (props) => {
           <div className="card-body">
             <h5 className="card-title">{props.title}</h5>
             <p className="card-text">{props.description}</p>
-            {/* <div className="title">
-              <span>
-                <strong>Rating:</strong> 5/10
-              </span>
-              <span className="float-end">
-                <strong>Views:</strong> 55855
-              </span>
-            </div> */}
 
             <NavLink
               to={`/coursedetail/${props.id}`}
               className="btn btn-primary mt-3"
             >
               Read More
+             
             </NavLink>
-            <button
+            {currentStudent?<button
             ref={buttonRef}
               // className="btn btn-danger mt-3 ms-1"
               className={`btn ${enrolled ? "btn-success" : "btn-danger"} mt-3 ms-1`}
               onClick={enrollHandler}
             >
                {enrolled ? "Enrolled" : "Enroll"}
-            </button>
+            </button>:""}
+            {/* <button
+            ref={buttonRef}
+              // className="btn btn-danger mt-3 ms-1"
+              className={`btn ${enrolled ? "btn-success" : "btn-danger"} mt-3 ms-1`}
+              onClick={enrollHandler}
+            >
+               {enrolled ? "Enrolled" : "Enroll"}
+            </button> */}
           </div>
         </div>
       </div>

@@ -1,97 +1,101 @@
-import React, { useEffect } from 'react'
-import Cardcourse from './Cardcourse'
-import Testimonial from './Testimonials'
-import { NavLink } from 'react-router-dom'
-import { useState } from 'react'
-import CardPopularTeachercourse from './CardPopularTeacher'
-
-// let mapData = [
-//     {
-//         "title":"React",
-//         "description":"This is react course",
-//         "imgUrl":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHY9CHw_2VsuMCijpcpQ6nEk4quK_TtGKMvg9OHMiSDl1Ebyc7zUhubBojR5gYPjX_AIc&usqp=CAU"
-//     },
-//     {
-//         "title":"React",
-//         "description":"This is react course",
-//         "imgUrl":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHY9CHw_2VsuMCijpcpQ6nEk4quK_TtGKMvg9OHMiSDl1Ebyc7zUhubBojR5gYPjX_AIc&usqp=CAU"
-//     },
-//     {
-//         "title":"React",
-//         "description":"This is react course",
-//         "imgUrl":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHY9CHw_2VsuMCijpcpQ6nEk4quK_TtGKMvg9OHMiSDl1Ebyc7zUhubBojR5gYPjX_AIc&usqp=CAU"
-//     },
-//     {
-//         "title":"React",
-//         "description":"This is react course",
-//         "imgUrl":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHY9CHw_2VsuMCijpcpQ6nEk4quK_TtGKMvg9OHMiSDl1Ebyc7zUhubBojR5gYPjX_AIc&usqp=CAU"
-//     },
-   
-// ];
-
+import React from "react"
 
 const Home=()=>{
-//here firstly fetched enrolled courses of a student them compare and show acc to color
-//id currentstudent deatisl is null then normally show all the course but if the current stuednt is not null 
-//them show all courses by comparing with fethced coures
 
-
-const url = "http://localhost:5000/";
-const [backendData, setBackendData] = useState([]);
-const [backendTeacherData, setbackendTeacherData] = useState([])
-
-
-const showAllCourse= async ()=> {
-    const response = await fetch("http://localhost:5000/course/getallcourse");
-    console.log(response.status);
-    const data = await response.json();
-    console.log(data);
-    setBackendData(data);
-    console.log(backendData.length);
-}
-
-const showAllTeacher = async ()=>{
-    const response = await fetch("http://localhost:5000/teacher/getallTeacher");
-    console.log(response.status);
-    const data = await response.json();
-    console.log(data);
-    setbackendTeacherData(data);
-    console.log(setbackendTeacherData.length);
-  }
-  
-
-  
-  
-useEffect(()=>{
-      showAllTeacher();
-      showAllCourse();
-},[]) 
-
-
-    useEffect(() => {
-        document.title="Home Page";
-        
-    });
-    return(
+    return (
         <>
-        <div className="container mt-4">
-        <h3>Latest Courses <NavLink to="/all-latest-courses" className='float-end'>See All</NavLink></h3> 
-        <div className="row">
-            {backendData.slice(0, 4).map( 
-                (data)=>{return  <Cardcourse  title={data.title} description={data.description} img={url+data.thumbnail} id={data._id}/>}
-                )}
+        <header>
+  {/* Intro settings */}
+  <style
+    dangerouslySetInnerHTML={{
+      __html:
+        "\n    /* Default height for small devices */\n    #intro-example {\n      height: 400px;\n    }\n\n    /* Height for devices larger than 992px */\n    @media (min-width: 992px) {\n      #intro-example {\n        height: 600px;\n      }\n    }\n  "
+    }}
+  />
+  {/* Navbar */}
+  <nav className="navbar navbar-expand-lg navbar-light bg-white">
+    <div className="container-fluid">
+      <button
+        data-mdb-collapse-init=""
+        className="navbar-toggler"
+        type="button"
+        data-mdb-target="#navbarExample01"
+        aria-controls="navbarExample01"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <i className="fas fa-bars" />
+      </button>
+      <div className="collapse navbar-collapse" id="navbarExample01">
+        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+          <li className="nav-item active">
+            <a className="nav-link" aria-current="page" href="#">
+              Home
+            </a>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link" href="#">
+              Features
+            </a>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link" href="#">
+              Pricing
+            </a>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link" href="#">
+              About
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  {/* Navbar */}
+  {/* Background image */}
+  <div
+    id="intro-example"
+    className="p-5 text-center bg-image"
+    style={{
+      backgroundImage: 'url("https://mdbcdn.b-cdn.net/img/new/slides/041.webp")'
+    }}
+  >
+    <div className="mask" style={{ backgroundColor: "rgba(0, 0, 0, 0.7)" }}>
+      <div className="d-flex justify-content-center align-items-center h-100">
+        <div className="text-white">
+          <h1 className="mb-3">Learn Bootstrap 5 with MDB</h1>
+          <h5 className="mb-4">
+            Best &amp; free guide of responsive web design
+          </h5>
+          <a
+            data-mdb-ripple-init=""
+            className="btn btn-outline-light btn-lg m-2"
+            href="https://www.youtube.com/watch?v=c9B4TPnak1A"
+            role="button"
+            rel="nofollow"
+            target="_blank"
+          >
+            Start tutorial
+          </a>
+          <a
+            data-mdb-ripple-init=""
+            className="btn btn-outline-light btn-lg m-2"
+            href="https://mdbootstrap.com/docs/standard/"
+            target="_blank"
+            role="button"
+          >
+            Download MDB UI KIT
+          </a>
         </div>
-        <h3>Popular Teachers <NavLink to="/all-latest-teacher" className='float-end'>See All</NavLink></h3> 
-        <div className="row">
-       {backendTeacherData.slice(0, 4).map(
-                (data)=>{return  <CardPopularTeachercourse  title={data.name} img={url+data.thumbnail} id={data._id}/>}
-                )}       
-        </div>
-        <h3>Testimonial</h3> 
-        <Testimonial/>
-        </div>
-       
+      </div>
+    </div>
+  </div>
+  {/* Background image */}
+</header>
+
         </>
     )
 }
+
 export default Home

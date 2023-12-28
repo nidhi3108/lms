@@ -1,8 +1,9 @@
 import './App.css';
 import CourseDetail from './components/CourseDetail/CourseDetail';
 import Header from "./components/Header";
-import Home from "./components/Home/Home";
+import AboutUs from "./components/Home/AboutUs";
 import { BrowserRouter, Routes,Route } from "react-router-dom";
+Home
 //users
 import UserLogin from './components/User/UserLogin';
 import UserRegister from './components/User/UserRegister';
@@ -38,6 +39,9 @@ import AllLatestTeacher from './components/Commonpages/AllLatestTeacher';
 import Allchapter from './components/Teacher/Allchapter';
 import Authorize from './components/Commonpages/Authorize';
 import UserAuthorization from './components/User/userAuthorization';
+import Home from './components/Home/Home';
+
+
 
 function App() {
   return (
@@ -45,6 +49,7 @@ function App() {
     <Header/>
     <Routes>
       <Route element={<Home/>} path="/home"/>
+      <Route element={<AboutUs/>} path="/about-us"/>
       <Route element={<CourseDetail/>} path="coursedetail/:course_id"/>
       <Route element={<UserLogin/>} path="/user-login"/>
       <Route element={<UserRegister/>} path="/user-register"/>
