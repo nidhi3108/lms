@@ -3,9 +3,11 @@ import Mycourses from "./Mycourses";
 import Sidebar from "./Sidebar";
 
 import {Routes as Switch,Route} from "react-router-dom"
+import NavBarStudent from "../Home/NavBarStudent";
 
 const UserDashboard = () => (
     <>
+    {/* <NavBarStudent/> */}
         <div className="container  mt-2">
             <div className="row">
                 <div className="col-md-3">

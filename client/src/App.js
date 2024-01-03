@@ -3,7 +3,7 @@ import CourseDetail from './components/CourseDetail/CourseDetail';
 import Header from "./components/Header";
 import AboutUs from "./components/Home/AboutUs";
 import { BrowserRouter, Routes,Route } from "react-router-dom";
-Home
+
 //users
 import UserLogin from './components/User/UserLogin';
 import UserRegister from './components/User/UserRegister';
@@ -48,6 +48,7 @@ function App() {
     <BrowserRouter>
     <Header/>
     <Routes>
+      {/* <Route element={<Header/>}/> */}
       <Route element={<Home/>} path="/home"/>
       <Route element={<AboutUs/>} path="/about-us"/>
       <Route element={<CourseDetail/>} path="coursedetail/:course_id"/>
