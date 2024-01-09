@@ -2,9 +2,11 @@ import React from "react";
 
 import {Routes as Switch,Route} from "react-router-dom"
 import TeacherSidebar from "./TeacherSidebar";
+import NavBarTeacher from "../Home/NavbarTeacher";
 
 const TeacherDashboard = () => (
     <>
+    {/* <NavBarTeacher/> */}
          <div className="container  mt-2">
             <div className="row">
                 <div className="col-md-3">

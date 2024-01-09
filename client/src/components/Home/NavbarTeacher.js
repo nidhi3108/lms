@@ -7,7 +7,7 @@ const NavBarTeacher = () => {
 
   const signOut = () => {
     sessionStorage.removeItem("currentTeacher");
-    navigate("../home");
+    navigate("../");
   };
 //    let currentStudent= sessionStorage.getItem("currentStudent")
 //    console.log(currentStudent);
@@ -166,7 +166,7 @@ const NavBarTeacher = () => {
             <h3 className="navbar-brand">LMS</h3>
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-                <NavLink className="nav-link" to="/home">
+                <NavLink className="nav-link" to="/">
                  Home
                 </NavLink>
               </li>

@@ -12,15 +12,18 @@ const Header = () => {
   const [currentTeacher, setCurrentTeacher] = useState(
     sessionStorage.getItem("currentTeacher")
   );
+  console.log(currentTeacher);
   const [currentStudent, setCurrentStudent] = useState(
     sessionStorage.getItem("currentStudent")
-  );
+    );
+    console.log(currentTeacher);
 
   useEffect(() => {
+    
     // Update the state when sessionStorage changes
     setCurrentTeacher(sessionStorage.getItem("currentTeacher"));
     setCurrentStudent(sessionStorage.getItem("currentStudent"));
-  }, []);
+  });
 
 
   return (

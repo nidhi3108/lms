@@ -5,7 +5,11 @@ import Sidebar from "./Sidebar";
 import {Routes as Switch,Route} from "react-router-dom"
 import NavBarStudent from "../Home/NavBarStudent";
 
-const UserDashboard = () => (
+const UserDashboard = () =>  {
+
+
+    
+return (
     <>
     {/* <NavBarStudent/> */}
         <div className="container  mt-2">
@@ -20,5 +24,6 @@ const UserDashboard = () => (
         </div>
     </>
 );
+}
 
 export default UserDashboard;
