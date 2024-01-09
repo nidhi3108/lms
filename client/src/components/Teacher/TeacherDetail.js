@@ -22,7 +22,7 @@ const TeacherDetail = () => {
     console.log(data);
     setBackendData(data);
     console.log(backendData.length);
-  }; 
+  }
 
   const showTeacherDetail= async ()=>{
     const response = await fetch("http://localhost:5000/teacher/getrelatedTeacherDetail/"+teacher_id);
