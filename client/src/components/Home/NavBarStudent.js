@@ -1,12 +1,13 @@
 import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 
-const NavBarStudent = () => {
+const NavBarStudent = (props) => {
   const navigate = useNavigate();
   let userState = sessionStorage.getItem("currentStudent");
 
   const signOut = () => {
     sessionStorage.removeItem("currentStudent");
+    props.setRenderHeader(false);
     navigate("../");
   };
 //    let currentStudent= sessionStorage.getItem("currentStudent")
@@ -53,7 +54,7 @@ const NavBarStudent = () => {
                   Teachers
                 </NavLink>
               </li>
-            
+
             </ul>
             <div className="dropdown">
               <button
@@ -176,7 +177,7 @@ const NavBarStudent = () => {
                   About Us
                 </NavLink>
               </li>
-             
+
               <li className="nav-item">
                 <NavLink className="nav-link" to="/teachers">
                   Teachers

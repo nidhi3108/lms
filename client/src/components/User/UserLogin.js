@@ -3,7 +3,7 @@ import Login from "../Commonpages/Login";
 const UserLogin = (props) => {
   return (
     <>
-    <Login title="Login Here" name="Full Name" email="Email" password="Password" flag="student"/>
+    <Login title="Login Here" name="Full Name" email="Email" password="Password" flag="student" setRenderHeader={props.setRenderHeader}/>
     </>
   )
 }
