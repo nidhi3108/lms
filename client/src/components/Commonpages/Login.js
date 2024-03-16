@@ -47,7 +47,7 @@ const Login = (props) => {
     }
   }
   else{
-    const response= await fetch("http://localhost:5000/student/login",{
+    const response= await fetch(`${baseUrl}/student/login`,{
       method: 'post',
       body: JSON.stringify(formdata),
       headers:{

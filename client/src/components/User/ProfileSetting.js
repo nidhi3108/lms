@@ -3,6 +3,8 @@ import Sidebar from "./Sidebar";
 import {Formik} from "formik";
 import Swal from "sweetalert2";
 import {useNavigate, resetForm} from "react-router-dom"
+import { baseUrl } from "../../utils/constants";
+
 
 const ProfileSetting = () => {
 
@@ -16,7 +18,7 @@ const ProfileSetting = () => {
     console.log(formdata);
     formdata.thumbnail = selThumbnail;
     formdata.id = studentId._id;
-    const response= await fetch("http://localhost:5000/student/editprofile",{
+    const response= await fetch(`${baseUrl}/student/editprofile`,{
       method: 'post',
       body: JSON.stringify(formdata),
       headers:{
@@ -61,7 +63,7 @@ const ProfileSetting = () => {
      setSelThumbnail(file.name)
   const fd = new FormData();
       fd.append("myprofilephoto", file);
-      fetch("http://localhost:5000/file/uploadprofilephoto", {
+      fetch(`${baseUrl}/file/uploadprofilephoto`, {
         method: "POST",
         body: fd,
      }).then((res) => {

@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Trash2 } from "react-feather";
 import { NavLink } from "react-router-dom";
+import { baseUrl } from "../../utils/constants";
+
 
 const Mycourses = () => {
 
@@ -19,7 +21,7 @@ const Mycourses = () => {
   const url = "http://localhost:5000/";
   const showCourse = async () => {
     const response = await fetch(
-      "http://localhost:5000/course/getallstudentenrolledcourse/" + id
+      `${baseUrl}/course/getallstudentenrolledcourse/` + id
     );
     console.log(response.status);
     const data = await response.json();
@@ -57,7 +59,7 @@ const Mycourses = () => {
       const detailedData = await Promise.all(
         allenrolledid.map(async (id) => {
           const response = await fetch(
-            "http://localhost:5000/course/getalldataofenrolledcourse/" + id
+            `${baseUrl}/course/getalldataofenrolledcourse/` + id
           );
           if (response.status === 200) {
             return response.json();
@@ -126,7 +128,7 @@ const Mycourses = () => {
       const studentId=id;
       console.log(studentId);
 
-const response=  await fetch('http://localhost:5000/enroll/unenroll_course/', {
+const response=  await fetch(`${baseUrl}/enroll/unenroll_course/`, {
   method: 'post',
   body: JSON.stringify({ studentId: id, courseId }),
   headers: {

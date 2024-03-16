@@ -2,6 +2,8 @@ import React from "react";
 import { Routes as Switch, Route } from "react-router-dom";
 import TeacherSidebar from "./TeacherSidebar";
 import AddCoursePage from "./AddCoursePage";
+import { baseUrl } from "../../utils/constants";
+
 
 const TeacherAddcourse = () => (
   <>

@@ -2,16 +2,18 @@ import React, { useEffect, useState } from "react";
 import { NavLink } from 'react-router-dom'
 // import Cardcourse from '../Home/Cardcourse'
 import CardPopularTeachercourse from '../Home/CardPopularTeacher'
+import { baseUrl } from "../../utils/constants";
+
 
 
 const AllLatestTeacher = (props) => {
 
 
-  const url = "http://localhost:5000/";
+
   const [backendTeacherData, setbackendTeacherData] = useState([])
 
 const showAllTeacher = async ()=>{
-  const response = await fetch("http://localhost:5000/teacher/getallTeacher");
+  const response = await fetch(`${baseUrl}/teacher/getallTeacher`);
   console.log(response.status);
   const data = await response.json();
   console.log(data);
@@ -29,7 +31,7 @@ const showAllTeacher = async ()=>{
      <h3>Popular Teachers</h3> 
      <div className="row">
      {backendTeacherData.map(
-                (data)=>{return  <CardPopularTeachercourse  title={data.name} description={data.description} img={url+data.thumbnail} id={data._id}/>}
+                (data)=>{return  <CardPopularTeachercourse  title={data.name} description={data.description} img={baseUrl+data.thumbnail} id={data._id}/>}
                 )}
         </div>
              {/* pagination */}

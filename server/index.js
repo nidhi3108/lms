@@ -2,7 +2,7 @@ const dotenv=require('dotenv')
 const express= require('express')
 // const jwt = require('jsonwebtoken');
 const app=express();
-const port= process.env.port ||8080;
+const port= process.env.port ||5000;
 dotenv.config({path:'./.env'});
 
 const studentrouter=require('./router/studentrouter')

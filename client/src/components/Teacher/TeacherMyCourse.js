@@ -4,6 +4,8 @@ import TeacherAddcourse from "./TeacherAddcourse"
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Trash2 } from 'react-feather';
+import { baseUrl } from "../../utils/constants";
+
 
 const TeacherMyCourse= () => {
   const [currentTeacher, setcurrentTeacher] = useState(JSON.parse(sessionStorage.getItem('currentTeacher')))
@@ -13,7 +15,7 @@ const TeacherMyCourse= () => {
    console.log(id);
    
   const showCourse = async () => {
-    const response = await fetch("http://localhost:5000/course/getall/" + id);
+    const response = await fetch(`${baseUrl}/course/getall/` + id);
     console.log(response.status);
     const data = await response.json();
     console.log(data);
@@ -25,7 +27,7 @@ const TeacherMyCourse= () => {
 const deletecourse= async (data)=>{
   console.log(data);
   console.log("delete kro course");
-  const response=  await fetch('http://localhost:5000/course/delete/', {
+  const response=  await fetch(`${baseUrl}/course/delete/`, {
         method: 'post',
         body: JSON.stringify(data),
         headers: {
@@ -45,7 +47,7 @@ const deletecourse= async (data)=>{
 
 const deleteAllChapterOfThisCourse= async (data)=>{
 console.log(data);
-const response = await fetch('http://localhost:5000/chapter/delete_all', {
+const response = await fetch(`${baseUrl}/chapter/delete_all`, {
   method: 'post',
   body: JSON.stringify({ courseId: data._id }),
   headers: {

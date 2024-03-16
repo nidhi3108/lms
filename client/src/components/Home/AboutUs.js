@@ -4,6 +4,8 @@ import Testimonial from './Testimonials'
 import { NavLink } from 'react-router-dom'
 import { useState } from 'react'
 import CardPopularTeachercourse from './CardPopularTeacher'
+import { baseUrl } from '../../utils/constants'
+
 
 // let mapData = [
 //     {
@@ -42,7 +44,7 @@ const [backendTeacherData, setbackendTeacherData] = useState([])
 
 
 const showAllCourse= async ()=> {
-    const response = await fetch("http://localhost:5000/course/getallcourse");
+    const response = await fetch(`${baseUrl}/course/getallcourse`);
     console.log(response.status);
     const data = await response.json();
     console.log(data);
@@ -51,7 +53,7 @@ const showAllCourse= async ()=> {
 }
 
 const showAllTeacher = async ()=>{
-    const response = await fetch("http://localhost:5000/teacher/getallTeacher");
+    const response = await fetch(`${baseUrl}/teacher/getallTeacher`);
     console.log(response.status);
     const data = await response.json();
     console.log(data);

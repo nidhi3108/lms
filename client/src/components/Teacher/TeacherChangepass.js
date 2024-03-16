@@ -3,6 +3,8 @@ import TeacherSidebar from "./TeacherSidebar";
 import {Formik} from "formik";
 import Swal from "sweetalert2";
 import {useNavigate, resetForm} from "react-router-dom"
+import { baseUrl } from "../../utils/constants";
+
 
 const TeacherChangepassword = () => {
   const teacherId=JSON.parse(sessionStorage.getItem("currentTeacher"));
@@ -23,7 +25,7 @@ const TeacherChangepassword = () => {
         })
 }
 else {
-  const response= await fetch("http://localhost:5000/teacher/edit",{
+  const response= await fetch(`${baseUrl}/teacher/edit`,{
     method: 'post',
     body: JSON.stringify(formdata),
     headers:{

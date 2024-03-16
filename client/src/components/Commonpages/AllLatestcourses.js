@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from 'react-router-dom'
 import Cardcourse from '../Home/Cardcourse'
+import { baseUrl } from "../../utils/constants";
+
 const AllLatestcourses = (props) => {
 
   const url = "http://localhost:5000/";
@@ -9,7 +11,7 @@ const [backendData, setBackendData] = useState([]);
 
 
 const showAllCourse= async ()=> {
-    const response = await fetch("http://localhost:5000/course/getallcourse");
+    const response = await fetch(`${baseUrl}/course/getallcourse`);
     console.log(response.status);
     const data = await response.json();
     console.log(data);

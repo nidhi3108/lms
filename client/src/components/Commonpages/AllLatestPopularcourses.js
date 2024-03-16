@@ -1,6 +1,8 @@
 import React from "react";
 import { NavLink } from 'react-router-dom'
 import CardPopularcourse from '../Home/CardPopularcourse'
+import { baseUrl } from "../../utils/constants";
+
 const AllLatestPopularcourses = (props) => {
   return (
     <>

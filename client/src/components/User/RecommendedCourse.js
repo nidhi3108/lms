@@ -1,5 +1,7 @@
 import React from "react";
 import Sidebar from "./Sidebar";
+import { baseUrl } from "../../utils/constants";
+
 
 const RecommendedCourse = () => {
   return (

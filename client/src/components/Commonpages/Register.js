@@ -1,6 +1,8 @@
 import React, { useRef, useState } from "react";
 import Swal from "sweetalert2";
 import { NavLink, useNavigate } from 'react-router-dom'
+import { baseUrl } from "../../utils/constants";
+
 const Register = (props) => {
   const navigate = useNavigate();
   const flag = props.flag;
@@ -35,7 +37,7 @@ const Register = (props) => {
     console.log("success handlesubmit");
     
    if (flag === "teacher"){
-    const response= await fetch("http://localhost:5000/teacher/register",{
+    const response= await fetch(`${baseUrl}/teacher/register`,{
       method: 'post',
       body: JSON.stringify(formData),
       headers:{
@@ -78,7 +80,7 @@ const Register = (props) => {
   
 }
 else{
-  const response= await fetch("http://localhost:5000/student/register",{
+  const response= await fetch(`${baseUrl}/student/register`,{
     method: 'post',
     body: JSON.stringify(formData),
     headers:{
@@ -126,7 +128,7 @@ else {
     setSelThumbnail(file.name);
     const formDataCopy  = new FormData();
     formDataCopy .append("myuploadteacherfile", file);
-    fetch("http://localhost:5000/file/uploadTeacherpic", {
+    fetch(`${baseUrl}/file/uploadTeacherpic`, {
       method: "POST",
       body: formDataCopy ,
     }).then((res) => {

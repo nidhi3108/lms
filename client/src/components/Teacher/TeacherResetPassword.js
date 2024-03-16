@@ -2,6 +2,8 @@ import React from "react";
 import {Formik} from "formik";
 import Swal from "sweetalert2";
 import {useNavigate, resetForm, NavLink} from "react-router-dom"
+import { baseUrl } from "../../utils/constants";
+
 
 const TeacherResetPassword = () => {
   // const teacherId=JSON.parse(sessionStorage.getItem("currentTeacher"));
@@ -10,7 +12,7 @@ const TeacherResetPassword = () => {
   const changePass=  async (formdata,{resetForm})=>{
     console.log(formdata);
     // formdata.id = teacherId._id;
-    const response= await fetch("http://localhost:5000/teacher/reset",{
+    const response= await fetch(`${baseUrl}/teacher/reset`,{
       method: 'post',
       body: JSON.stringify(formdata),
       headers:{

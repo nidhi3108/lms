@@ -23,7 +23,7 @@ const Header = () => {
     // Update the state when sessionStorage changes
     setCurrentTeacher(sessionStorage.getItem("currentTeacher"));
     setCurrentStudent(sessionStorage.getItem("currentStudent"));
-  });
+  },[currentStudent,currentTeacher]);
 
 
   return (

@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Youtube } from "react-feather";
 import { NavLink, useParams } from "react-router-dom";
 import Cardcourse from "../Home/Cardcourse";
+import { baseUrl } from "../../utils/constants";
+
 const CourseDetail = () => {
   const [CoursebackendData, setCoursebackendData] = useState([]);
   const [RealtedTeacherbackendData, setRealtedTeacherbackendData] = useState(
@@ -10,11 +12,11 @@ const CourseDetail = () => {
   const [backendData, setBackendData] = useState([]);
   let { course_id } = useParams();
   console.log(course_id);
-  const url = "http://localhost:5000/";
+
 
   const showCourseDetail = async () => {
     const response = await fetch(
-      "http://localhost:5000/course/getCourseDetail/" + course_id
+      `${baseUrl}/course/getCourseDetail/` + course_id
     );
     console.log(response.status);
     const data = await response.json();
@@ -28,7 +30,7 @@ const CourseDetail = () => {
 
   const showrelatedTeacherDetail = async (createdBy) => {
     const response = await fetch(
-      "http://localhost:5000/teacher/getrelatedTeacherDetail/" + createdBy
+      `${baseUrl}/teacher/getrelatedTeacherDetail/` + createdBy
     );
     console.log(response.status);
     const data = await response.json();
@@ -39,7 +41,7 @@ const CourseDetail = () => {
 
   const showChapter = async () => {
     const response = await fetch(
-      "http://localhost:5000/chapter/getallchapter/" + course_id
+      `${baseUrl}/chapter/getallchapter/` + course_id
     );
     console.log(response.status);
     const data = await response.json();
@@ -60,7 +62,7 @@ const CourseDetail = () => {
           <div className="row g-0">
             <div className="col-md-4">
               <img
-                src={url + CoursebackendData.thumbnail}
+                src={baseUrl + CoursebackendData.thumbnail}
                 className="img-fluid mt-3"
               />
             </div>

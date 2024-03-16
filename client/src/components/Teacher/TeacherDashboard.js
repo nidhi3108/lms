@@ -3,6 +3,8 @@ import React from "react";
 import {Routes as Switch,Route} from "react-router-dom"
 import TeacherSidebar from "./TeacherSidebar";
 import NavBarTeacher from "../Home/NavbarTeacher";
+import { baseUrl } from "../../utils/constants";
+
 
 const TeacherDashboard = () => (
     <>

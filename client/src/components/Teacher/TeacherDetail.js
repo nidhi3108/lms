@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { NavLink,Link, useParams } from "react-router-dom";
 import { Youtube } from "react-feather";
 import { useEffect } from "react";
+import { baseUrl } from "../../utils/constants";
+
 
 const TeacherDetail = () => {
   const [currentTeacher, setcurrentTeacher] = useState(JSON.parse(sessionStorage.getItem('currentTeacher')))
@@ -16,7 +18,7 @@ const TeacherDetail = () => {
 
 
   const showCourse = async () => {
-    const response = await fetch("http://localhost:5000/course/getall/" + teacher_id);
+    const response = await fetch(`${baseUrl}/course/getall/` + teacher_id);
     console.log(response.status);
     const data = await response.json();
     console.log(data);
@@ -25,7 +27,7 @@ const TeacherDetail = () => {
   }
 
   const showTeacherDetail= async ()=>{
-    const response = await fetch("http://localhost:5000/teacher/getrelatedTeacherDetail/"+teacher_id);
+    const response = await fetch(`${baseUrl}/teacher/getrelatedTeacherDetail/`+teacher_id);
     console.log(response.status);
     const data = await response.json();
 

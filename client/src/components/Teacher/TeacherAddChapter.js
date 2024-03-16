@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { Formik } from "formik";
+import { baseUrl } from "../../utils/constants";
+
 
 const TeacherAddChapter = () => {
   const [currentTeacher, setcurrentTeacher] = useState(
@@ -18,7 +20,7 @@ const TeacherAddChapter = () => {
     console.log(formdata);
     console.info("Add chapter form data >>>>> ", formdata);
 
-    const response = await fetch("http://localhost:5000/chapter/add", {
+    const response = await fetch(`${baseUrl}/chapter/add`, {
       method: "post",
       body: JSON.stringify(formdata),
       headers: {

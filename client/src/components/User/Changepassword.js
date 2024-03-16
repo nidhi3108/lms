@@ -3,6 +3,8 @@ import Sidebar from "./Sidebar";
 import {Formik} from "formik";
 import Swal from "sweetalert2";
 import {useNavigate, resetForm} from "react-router-dom"
+import { baseUrl } from "../../utils/constants";
+
 
 const Changepassword = () => {
 
@@ -13,7 +15,7 @@ const Changepassword = () => {
   const changePass=  async (formdata,{resetForm})=>{
     console.log(formdata);
     formdata.id = studentId._id;
-    const response= await fetch("http://localhost:5000/student/edit",{
+    const response= await fetch(`${baseUrl}/student/edit`,{
       method: 'post',
       body: JSON.stringify(formdata),
       headers:{

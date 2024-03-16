@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { NavLink } from 'react-router-dom';
 import { Trash2 } from 'react-feather';
+import { baseUrl } from "../../utils/constants";
+
 
 const Allchapter = () => {
   
@@ -13,7 +15,7 @@ const Allchapter = () => {
   const url = "http://localhost:5000/";
 
   const showChapter = async () => {
-    const response = await fetch("http://localhost:5000/chapter/getall/"+id);
+    const response = await fetch(`${baseUrl}/chapter/getall/`+id);
     console.log(response.status);
     const data = await response.json();
     console.log(data);
@@ -23,7 +25,7 @@ const Allchapter = () => {
   const deletechapter= async (data)=>{
     console.log(data);
     console.log("delete chapter");
-    const response=  await fetch('http://localhost:5000/chapter/delete/', {
+    const response=  await fetch(`${baseUrl}/chapter/delete/`, {
       method: 'post',
       body: JSON.stringify(data),
       headers: {

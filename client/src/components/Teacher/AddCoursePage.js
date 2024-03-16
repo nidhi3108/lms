@@ -1,5 +1,7 @@
 import { Formik } from "formik";
 import React, { useRef, useState } from "react";
+import { baseUrl } from "../../utils/constants";
+
 const AddCoursePage = () => {
   // const flag="course"
   const [currentTeacher, setcurrentTeacher] = useState(JSON.parse(sessionStorage.getItem('currentTeacher')))
@@ -13,7 +15,7 @@ const AddCoursePage = () => {
     formdata.thumbnail = selThumbnail;
     console.log(formdata);
 
-    const response = await fetch("http://localhost:5000/course/add", {
+    const response = await fetch(`${baseUrl}/course/add`, {
       method: 'POST',
       body: JSON.stringify(formdata),
       headers: {
@@ -42,7 +44,7 @@ const AddCoursePage = () => {
     setSelFile(file.name)  
     const fd = new FormData();
     fd.append("myfile", file); 
-    fetch("http://localhost:5000/file/uploadfile", {
+    fetch(`${baseUrl}/file/uploadfile`, {
       method: "POST",
       body: fd,
     }).then((res) => {
@@ -58,7 +60,7 @@ const AddCoursePage = () => {
     setSelThumbnail(file.name);
     const fd = new FormData();
     fd.append("myuploadfile", file);
-    fetch("http://localhost:5000/file/thumbnailfile", {
+    fetch(`${baseUrl}/file/thumbnailfile`, {
       method: "POST",
       body: fd,
     }).then((res) => {

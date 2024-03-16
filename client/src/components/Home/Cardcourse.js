@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
 import swal from "sweetalert2";
+import { baseUrl } from "../../utils/constants";
+
 
 const Cardcourse = (props) => {
   const [currentStudent, setcurrentStudent]=useState(sessionStorage.getItem("currentStudent"))
@@ -32,7 +34,7 @@ const Cardcourse = (props) => {
 
       console.log(enrollmentData);
       console.log("student enrolled");
-      const response = await fetch("http://localhost:5000/enroll/save", {
+      const response = await fetch(`${baseUrl}/enroll/save`, {
         method: "post",
         body: JSON.stringify(enrollmentData),
         headers: {
