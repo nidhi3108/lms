@@ -2,7 +2,7 @@ const dotenv=require('dotenv')
 const express= require('express')
 // const jwt = require('jsonwebtoken');
 const app=express();
-const port= process.env.port ||5000;
+const port= process.env.port ||8080;
 dotenv.config({path:'./.env'});
 
 const studentrouter=require('./router/studentrouter')
@@ -22,7 +22,7 @@ app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).send('Something went wrong!');
   });
-  
+
 app.use('/student',studentrouter)
 app.use('/teacher',teacherrouter)
 app.use('/course',courserouter)

@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import Swal from "sweetalert2";
 import {Formik} from "formik";
 import {useNavigate, resetForm, NavLink} from "react-router-dom"
+import {baseUrl} from "../../utils/constants";
 
 const Login = (props) => {
   const navigate = useNavigate();
@@ -9,13 +10,13 @@ const Login = (props) => {
   const LoginSubmit = async (formdata,{resetForm}) => {
     console.log(formdata);
     if (flag === "teacher"){
-      const response= await fetch("http://localhost:5000/teacher/login",{
+      const response= await fetch(`${baseUrl}/teacher/login`,{
         method: 'post',
         body: JSON.stringify(formdata),
         headers:{
             'Content-Type': 'application/json'
         }
-  
+
 
     });
     console.log(response.status);
@@ -52,8 +53,8 @@ const Login = (props) => {
       headers:{
           'Content-Type': 'application/json'
       }
-  
-     
+
+
   });
   console.log(response.status);
   const userData = await response.json();
@@ -109,7 +110,7 @@ const Login = (props) => {
                   />
                 </div>
               </div>
-         
+
               {/* Email input */}
               <div className="mb-4">
                 <label className="form-label" htmlFor="form6Example5">
@@ -124,7 +125,7 @@ const Login = (props) => {
                 />
               </div>
               {/* Number input */}
-             
+
               <div className="mb-4">
                 <label className="form-label" htmlFor="form6Example6">
                   {props.password}
@@ -153,7 +154,7 @@ const Login = (props) => {
     {/* <NavLink to="/teacher-resetpassword" >Forgot Password?</NavLink> */}
     <NavLink to="/teacher-register" >New User? Register Here</NavLink>
   </>
-)}          
+)}
             </div>
             </form>
           )}
