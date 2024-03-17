@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 import Sidebar from "./Sidebar";
-import { useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
-import { Trash2 } from "react-feather";
-import { NavLink } from "react-router-dom";
-import { baseUrl } from "../../utils/constants";
+import {useParams} from "react-router-dom";
+import {Link} from "react-router-dom";
+import {Trash2} from "react-feather";
+import {NavLink} from "react-router-dom";
+import {baseUrl} from "../../utils/constants";
 
 
 const Mycourses = () => {
@@ -87,7 +87,7 @@ const Mycourses = () => {
             <img
               src={url + data.thumbnail}
               className="card-img-top"
-              style={{ height: "300px" }}
+              style={{height: "300px"}}
               alt="Fissure in Sandstone"
             />
             <div className="card-body">
@@ -121,32 +121,30 @@ const Mycourses = () => {
   };
 
 
-    const unenrolledcourse = async (courseId)=>{
-     
-      console.log(courseId);
-      console.log(id);
-      const studentId=id;
-      console.log(studentId);
+  const unenrolledcourse = async (courseId) => {
+    console.log(courseId);
+    console.log(id);
+    const studentId = id;
+    console.log(studentId);
 
-const response=  await fetch(`${baseUrl}/enroll/unenroll_course/`, {
-  method: 'post',
-  body: JSON.stringify({ studentId: id, courseId }),
-  headers: {
-      'Content-Type': 'application/json'
-  }
-})
+    const response = await fetch(`${baseUrl}/enroll/unenroll_course/`, {
+      method: 'post',
+      body: JSON.stringify({studentId: id, courseId}),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
     console.log(response);
-    if(response.status===200){
-       console.log("course unenrolled");
-       // Update the frontend data after successful unenrollment
+    if (response.status === 200) {
+      console.log("course unenrolled");
+      // Update the frontend data after successful unenrollment
       const updatedCourses = backendData.filter(course => course._id !== courseId);
       setBackendData(updatedCourses);
-     localStorage.setItem(`enrolled_${courseId}`, "false");
+      localStorage.setItem(`enrolled_${courseId}`, "false");
+    } else {
+      console.log("some error in course unenrolled");
     }
-    else{
-       console.log("some error in course unenrolled");
-    }
-    }
+  }
 
   useEffect(() => {
     showCourse();
@@ -156,7 +154,7 @@ const response=  await fetch(`${baseUrl}/enroll/unenroll_course/`, {
       <div className="container">
         <div className="row">
           <section className="col-md-3">
-            <Sidebar />
+            <Sidebar/>
           </section>
           <section className="col-md-9 mt-2">
             <h5 className="card-header">My Courses</h5>

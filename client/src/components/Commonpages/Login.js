@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, {useEffect} from "react";
 import Swal from "sweetalert2";
 import {Formik} from "formik";
 import {useNavigate, resetForm, NavLink} from "react-router-dom"
@@ -7,35 +7,35 @@ import {baseUrl} from "../../utils/constants";
 const Login = (props) => {
   const navigate = useNavigate();
   const flag = props.flag;
-  const LoginSubmit = async (formdata,{resetForm}) => {
+  const loginSubmit = async (formdata, {resetForm}) => {
     console.log(formdata);
-    if (flag === "teacher"){
-      const response= await fetch(`${baseUrl}/teacher/login`,{
+    if (flag === "teacher") {
+      const response = await fetch(`${baseUrl}/teacher/login`, {
         method: 'post',
         body: JSON.stringify(formdata),
-        headers:{
-            'Content-Type': 'application/json'
+        headers: {
+          'Content-Type': 'application/json'
         }
 
 
-    });
-    console.log(response.status);
-    const userData = await response.json();
-    if(response.status===200){
+      });
+      console.log(response.status);
+      const userData = await response.json();
+      if (response.status === 200) {
         console.log("Login Successful");
-        sessionStorage.setItem('currentTeacher',JSON.stringify(userData));
+        sessionStorage.setItem('currentTeacher', JSON.stringify(userData));
+        props.setRenderHeader(true);
         Swal.fire({
-          title:"Success",
+          title: "Success",
           icon: "success",
-          text:"Log In Successful",
+          text: "Log In Successful",
           timer: 2000,
           confirmButtonText: 'OK',
           confirmButtonColor: 'green'
-          })
+        })
         navigate("/teacher-dashboard");
         resetForm();
-    }
-    else{
+      } else {
         console.log("Login failed");
         Swal.fire({
           title: "Login Failed...",
@@ -43,41 +43,40 @@ const Login = (props) => {
           timer: 3000,
           text: 'Someone anonymous...',
           footer: `<a href='../userregister'>Want to register?</a>`
-          })
-    }
-  }
-  else{
-    const response= await fetch(`${baseUrl}/student/login`,{
-      method: 'post',
-      body: JSON.stringify(formdata),
-      headers:{
-          'Content-Type': 'application/json'
+        })
       }
+    } else {
+      const response = await fetch(`${baseUrl}/student/login`, {
+        method: 'post',
+        body: JSON.stringify(formdata),
+        headers: {
+          'Content-Type': 'application/json'
+        }
 
 
-  });
-  console.log(response.status);
-  const userData = await response.json();
-  if(response.status===200){
-      console.log("login Successful");
-      sessionStorage.setItem('currentStudent',JSON.stringify(userData));
-      Swal.fire({
-          title:"Login Suuceesful",
-          icon:"success",
+      });
+      console.log(response.status);
+      const userData = await response.json();
+      if (response.status === 200) {
+        console.log("login Successful");
+        sessionStorage.setItem('currentStudent', JSON.stringify(userData));
+        props.setRenderHeader(true);
+        Swal.fire({
+          title: "Login Successful",
+          icon: "success",
           timer: 2000
         })
-      navigate("/user-dashboard");
+        navigate("/user-dashboard");
         resetForm();
-  }
-  else{
-      console.log("login failed");
-      Swal.fire({
-          title:"oops something wrong",
-          icon:"error",
+      } else {
+        console.log("login failed");
+        Swal.fire({
+          title: "oops something wrong",
+          icon: "error",
           timer: 2000
         })
-  }
-  }
+      }
+    }
   };
 
 
@@ -91,9 +90,9 @@ const Login = (props) => {
             email: "",
             password: "",
           }}
-          onSubmit={LoginSubmit}
+          onSubmit={loginSubmit}
         >
-          {({ values, handleChange, handleSubmit }) => (
+          {({values, handleChange, handleSubmit}) => (
             <form onSubmit={handleSubmit}>
               {/* 2 column grid layout with text inputs for the first and last names */}
               <div className="row mb-4">
@@ -142,20 +141,20 @@ const Login = (props) => {
               <button type="submit" className="btn btn-primary btn-block mb-4">
                 Submit
               </button>
-            <div className="password d-flex justify-content-between mb-2">
+              <div className="password d-flex justify-content-between mb-2">
 
-            {flag === "student" ? (
-  <>
-    {/* <NavLink to="#" >Forgot Password?</NavLink> */}
-    <NavLink to="/user-register" >New User? Register Here</NavLink>
-  </>
-) : (
-  <>
-    {/* <NavLink to="/teacher-resetpassword" >Forgot Password?</NavLink> */}
-    <NavLink to="/teacher-register" >New User? Register Here</NavLink>
-  </>
-)}
-            </div>
+                {flag === "student" ? (
+                  <>
+                    {/* <NavLink to="#" >Forgot Password?</NavLink> */}
+                    <NavLink to="/user-register">New User? Register Here</NavLink>
+                  </>
+                ) : (
+                  <>
+                    {/* <NavLink to="/teacher-resetpassword" >Forgot Password?</NavLink> */}
+                    <NavLink to="/teacher-register">New User? Register Here</NavLink>
+                  </>
+                )}
+              </div>
             </form>
           )}
         </Formik>
