@@ -7,29 +7,6 @@ import CardPopularTeachercourse from './CardPopularTeacher'
 import {baseUrl} from '../../utils/constants'
 
 
-// let mapData = [
-//     {
-//         "title":"React",
-//         "description":"This is react course",
-//         "imgUrl":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHY9CHw_2VsuMCijpcpQ6nEk4quK_TtGKMvg9OHMiSDl1Ebyc7zUhubBojR5gYPjX_AIc&usqp=CAU"
-//     },
-//     {
-//         "title":"React",
-//         "description":"This is react course",
-//         "imgUrl":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHY9CHw_2VsuMCijpcpQ6nEk4quK_TtGKMvg9OHMiSDl1Ebyc7zUhubBojR5gYPjX_AIc&usqp=CAU"
-//     },
-//     {
-//         "title":"React",
-//         "description":"This is react course",
-//         "imgUrl":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHY9CHw_2VsuMCijpcpQ6nEk4quK_TtGKMvg9OHMiSDl1Ebyc7zUhubBojR5gYPjX_AIc&usqp=CAU"
-//     },
-//     {
-//         "title":"React",
-//         "description":"This is react course",
-//         "imgUrl":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHY9CHw_2VsuMCijpcpQ6nEk4quK_TtGKMvg9OHMiSDl1Ebyc7zUhubBojR5gYPjX_AIc&usqp=CAU"
-//     },
-
-// ];
 
 
 const AboutUs = () => {
@@ -82,12 +59,9 @@ const AboutUs = () => {
 
   useEffect(() => {
 
-    getEnrolledCourses().then();
-    showAllTeacher().then(r => {
-    });
-    showAllCourse().then(r => {
-    });
-
+    getEnrolledCourses()
+    showAllTeacher()
+    showAllCourse()
   }, [])
 
 

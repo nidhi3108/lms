@@ -16,8 +16,6 @@ const Login = (props) => {
         headers: {
           'Content-Type': 'application/json'
         }
-
-
       });
       console.log(response.status);
       const userData = await response.json();
@@ -78,7 +76,6 @@ const Login = (props) => {
       }
     }
   };
-
 
   return (
     <>

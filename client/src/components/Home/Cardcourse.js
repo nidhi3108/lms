@@ -117,14 +117,7 @@ const Cardcourse = (props) => {
             >
                {enrolled ? "Enrolled" : "Enroll"}
             </button>:""}
-            {/* <button
-            ref={buttonRef}
-              // className="btn btn-danger mt-3 ms-1"
-              className={`btn ${enrolled ? "btn-success" : "btn-danger"} mt-3 ms-1`}
-              onClick={enrollHandler}
-            >
-               {enrolled ? "Enrolled" : "Enroll"}
-            </button> */}
+       
           </div>
         </div>
       </div>
