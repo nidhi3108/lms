@@ -1,13 +1,14 @@
-import React from "react";
+import React, {useContext} from "react";
 import {NavLink, useNavigate} from "react-router-dom";
+import {RenderHeaderContext} from "../../App";
 
-const NavBarTeacher = (props) => {
+const NavBarTeacher = () => {
   const navigate = useNavigate();
   let userState = sessionStorage.getItem("currentTeacher");
-
+  const {setRenderHeader} = useContext(RenderHeaderContext);
   const signOut = () => {
     sessionStorage.removeItem("currentTeacher");
-    props.setRenderHeader(false)
+    setRenderHeader(false)
     navigate("../");
   };
 //    let currentStudent= sessionStorage.getItem("currentStudent")

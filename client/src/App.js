@@ -39,8 +39,9 @@ import Allchapter from './components/Teacher/Allchapter';
 import Authorize from './components/Commonpages/Authorize';
 import UserAuthorization from './components/User/userAuthorization';
 import Home from './components/Home/Home';
-import {useState} from "react";
+import {createContext, useState} from "react";
 
+export const RenderHeaderContext = createContext(null);
 
 function App() {
   const [renderHeader, setRenderHeader] = useState(false);
@@ -48,43 +49,44 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Header renderHeader={renderHeader} setRenderHeader={setRenderHeader}/>
-      <Routes>
-        <Route element={<Home/>} path="/"/>
-        <Route element={<AboutUs/>} path="/about-us"/>
-        <Route element={<CourseDetail/>} path="coursedetail/:course_id"/>
-        <Route element={<UserLogin setRenderHeader={setRenderHeader}/>} path="/user-login"/>
-        <Route element={<UserRegister/>} path="/user-register"/>
-        <Route element={<UserAuthorization><UserDashboard/></UserAuthorization>} path="/user-dashboard"/>
-        <Route element={<Mycourses/>} path="/user-mycourses"/>
-        <Route element={<RecommendedCourse/>} path="/user-recomcourse"/>
-        <Route element={<Favouritecourse/>} path="/user-favcourse"/>
-        <Route element={<ProfileSetting/>} path="/user-profilesetting"/>
-        <Route element={<Changepassword/>} path="/user-changepass"/>
-        <Route element={<Logout/>} path="/user-logout"/>
-        {/* //Teachers */}
-        <Route element={<TeacherRegister/>} path="/teacher-register"/>
-        <Route element={<TeacherLogin setRenderHeader={setRenderHeader}/>} path="/teacher-login"/>
-        <Route element={<Authorize><TeacherDashboard/></Authorize>} path="/teacher-dashboard"/>
-        <Route element={<TeacherSidebar/>} path="/teacher-sidebar"/>
-        <Route element={<TeacherChangepassword/>} path="/teacher-changepass"/>
-        <Route element={<TeacherAddcourse/>} path="/teacher-addcourse"/>
-        <Route element={<TeacherLogout/>} path="/teacher-logout"/>
-        <Route element={<TeacherMyCourse/>} path="/teacher-mycourses/:id"/>
-        <Route element={<TeacherMyUsers/>} path="teacher-myusers"/>
-        <Route element={<TeacherProfileSetting/>} path="/teacher-profilesetting"/>
-        <Route element={<TeacherResetPassword/>} path="/teacher-resetpassword"/>
-        <Route element={<TeacherDetail/>} path="/teacher-detail/:teacher_id"/>
-        <Route element={<TeacherAddChapter/>} path="/teacher-addchapter"/>
+      <RenderHeaderContext.Provider value={{renderHeader, setRenderHeader}}>
+        <Header/>
+        <Routes>
+          <Route element={<Home/>} path="/"/>
+          <Route element={<AboutUs/>} path="/about-us"/>
+          <Route element={<CourseDetail/>} path="coursedetail/:course_id"/>
+          <Route element={<UserLogin/>} path="/user-login"/>
+          <Route element={<UserRegister/>} path="/user-register"/>
+          <Route element={<UserAuthorization><UserDashboard/></UserAuthorization>} path="/user-dashboard"/>
+          <Route element={<Mycourses/>} path="/user-mycourses"/>
+          <Route element={<RecommendedCourse/>} path="/user-recomcourse"/>
+          <Route element={<Favouritecourse/>} path="/user-favcourse"/>
+          <Route element={<ProfileSetting/>} path="/user-profilesetting"/>
+          <Route element={<Changepassword/>} path="/user-changepass"/>
+          <Route element={<Logout/>} path="/user-logout"/>
+          {/* //Teachers */}
+          <Route element={<TeacherRegister/>} path="/teacher-register"/>
+          <Route element={<TeacherLogin/>} path="/teacher-login"/>
+          <Route element={<Authorize><TeacherDashboard/></Authorize>} path="/teacher-dashboard"/>
+          <Route element={<TeacherSidebar/>} path="/teacher-sidebar"/>
+          <Route element={<TeacherChangepassword/>} path="/teacher-changepass"/>
+          <Route element={<TeacherAddcourse/>} path="/teacher-addcourse"/>
+          <Route element={<TeacherLogout/>} path="/teacher-logout"/>
+          <Route element={<TeacherMyCourse/>} path="/teacher-mycourses/:id"/>
+          <Route element={<TeacherMyUsers/>} path="teacher-myusers"/>
+          <Route element={<TeacherProfileSetting/>} path="/teacher-profilesetting"/>
+          <Route element={<TeacherResetPassword/>} path="/teacher-resetpassword"/>
+          <Route element={<TeacherDetail/>} path="/teacher-detail/:teacher_id"/>
+          <Route element={<TeacherAddChapter/>} path="/teacher-addchapter"/>
 
-        {/* List page */}
-        <Route element={<AllLatestcourses/>} path="/all-latest-courses"/>
-        <Route element={<AllLatestPopularcourses/>} path="/all-latest-popular-courses"/>
-        <Route element={<AllLatestTeacher/>} path="/all-latest-teacher"/>
-        <Route element={<Allchapter/>} path="/all-chapter/:id"/>
+          {/* List page */}
+          <Route element={<AllLatestcourses/>} path="/all-latest-courses"/>
+          <Route element={<AllLatestPopularcourses/>} path="/all-latest-popular-courses"/>
+          <Route element={<AllLatestTeacher/>} path="/all-latest-teacher"/>
+          <Route element={<Allchapter/>} path="/all-chapter/:id"/>
 
-
-      </Routes>
+        </Routes>
+      </RenderHeaderContext.Provider>
 
     </BrowserRouter>
   );

@@ -1,20 +1,22 @@
-import React from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import React, {useContext} from "react";
+import {NavLink, useNavigate} from "react-router-dom";
+import {RenderHeaderContext} from "../../App";
 
-const NavBarStudent = (props) => {
+const NavBarStudent = () => {
   const navigate = useNavigate();
   let userState = sessionStorage.getItem("currentStudent");
+  const {setRenderHeader} = useContext(RenderHeaderContext);
 
   const signOut = () => {
     sessionStorage.removeItem("currentStudent");
-    props.setRenderHeader(false);
+    setRenderHeader(false);
     navigate("../");
   };
 //    let currentStudent= sessionStorage.getItem("currentStudent")
 //    console.log(currentStudent);
   return (
     <>
-    {/* {currentStudent? */}
+      {/* {currentStudent? */}
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container">
           <button
@@ -26,7 +28,7 @@ const NavBarStudent = (props) => {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <i className="fas fa-bars" />
+            <i className="fas fa-bars"/>
           </button>
           <div
             className="collapse navbar-collapse .textcolor-blue"
@@ -121,14 +123,14 @@ const NavBarStudent = (props) => {
               </ul>
             </div> */}
             <div className="signout">
-            <button
+              <button
                 type="button"
                 onClick={signOut}
                 class="btn btn-danger me-3"
               >
                 Sign out
               </button>
-                  </div>
+            </div>
             <form className="d-flex input-group w-auto ms-3">
               <input
                 type="search"
