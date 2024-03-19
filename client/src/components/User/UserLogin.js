@@ -1,9 +1,10 @@
 import React from "react";
 import Login from "../Commonpages/Login";
-const UserLogin = (props) => {
+
+const UserLogin = () => {
   return (
     <>
-    <Login title="Login Here" name="Full Name" email="Email" password="Password" flag="student" setRenderHeader={props.setRenderHeader}/>
+      <Login title="Login Here" name="Full Name" email="Email" password="Password" flag="student"/>
     </>
   )
 }

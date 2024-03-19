@@ -1,10 +1,12 @@
-import React, {useEffect} from "react";
+import React, {useContext, useEffect} from "react";
 import Swal from "sweetalert2";
 import {Formik} from "formik";
 import {useNavigate, resetForm, NavLink} from "react-router-dom"
 import {baseUrl} from "../../utils/constants";
+import {RenderHeaderContext} from "../../App";
 
 const Login = (props) => {
+  const {setRenderHeader} = useContext(RenderHeaderContext);
   const navigate = useNavigate();
   const flag = props.flag;
   const loginSubmit = async (formdata, {resetForm}) => {
@@ -22,7 +24,7 @@ const Login = (props) => {
       if (response.status === 200) {
         console.log("Login Successful");
         sessionStorage.setItem('currentTeacher', JSON.stringify(userData));
-        props.setRenderHeader(true);
+        setRenderHeader(true);
         Swal.fire({
           title: "Success",
           icon: "success",
@@ -58,7 +60,7 @@ const Login = (props) => {
       if (response.status === 200) {
         console.log("login Successful");
         sessionStorage.setItem('currentStudent', JSON.stringify(userData));
-        props.setRenderHeader(true);
+        setRenderHeader(true);
         Swal.fire({
           title: "Login Successful",
           icon: "success",
