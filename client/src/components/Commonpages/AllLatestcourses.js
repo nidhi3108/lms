@@ -30,7 +30,7 @@ useEffect(()=>{
      <h3>Latest Courses</h3> 
         <div className="row">
         {backendData.map(
-                (data)=>{return  <Cardcourse  title={data.title} description={data.description} img={url+data.thumbnail} id={data._id}/>}
+                (data)=>{return  <Cardcourse  title={data.title} description={data.description} img={baseUrl+"/"+data.thumbnail} id={data._id}/>}
                 )}
         </div>
              {/* pagination */}

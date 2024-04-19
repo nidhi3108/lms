@@ -10,7 +10,7 @@ import { baseUrl } from "../../utils/constants";
 const TeacherMyCourse= () => {
   const [currentTeacher, setcurrentTeacher] = useState(JSON.parse(sessionStorage.getItem('currentTeacher')))
    const [backendData,setBackendData]= useState([])
-   const url= "http://localhost:5000/";
+
    const { id } = useParams();
    console.log(id);
    
@@ -69,7 +69,7 @@ if (response.status === 200) {
       <div className="col-md-4">
         <div className="card">
           <img 
-            src={url+data.thumbnail}
+            src={baseUrl+"/"+data.thumbnail}
             className="card-img-top"
             style={{height:"300px"}}
             alt="Fissure in Sandstone"

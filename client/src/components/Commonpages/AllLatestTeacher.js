@@ -31,7 +31,7 @@ const showAllTeacher = async ()=>{
      <h3>Popular Teachers</h3> 
      <div className="row">
      {backendTeacherData.map(
-                (data)=>{return  <CardPopularTeachercourse  title={data.name} description={data.description} img={baseUrl+data.thumbnail} id={data._id}/>}
+                (data)=>{return  <CardPopularTeachercourse  title={data.name} description={data.description} img={baseUrl+"/" +data.thumbnail} id={data._id}/>}
                 )}
         </div>
              {/* pagination */}

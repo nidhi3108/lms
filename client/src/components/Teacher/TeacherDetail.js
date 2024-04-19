@@ -47,7 +47,7 @@ const TeacherDetail = () => {
       <div className="col-md-4">
         <div className="card">
           <img 
-            src={url+data.thumbnail}
+            src={baseUrl+"/" +data.thumbnail}
             className="card-img-top"
             style={{height:"300px"}}
             alt="Fissure in Sandstone"
@@ -76,7 +76,7 @@ const TeacherDetail = () => {
             <div className="col-md-4">
               <img
               width="100%"
-                src={url + TeacherbackendData.thumbnail
+                src={baseUrl+"/" + TeacherbackendData.thumbnail
                  }
                  alt="Tacher pic"
               />

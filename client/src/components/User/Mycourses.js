@@ -85,7 +85,7 @@ const Mycourses = () => {
         <div className="col-4 mt-3 ">
           <div className="card">
             <img
-              src={url + data.thumbnail}
+              src={baseUrl+"/" + data.thumbnail}
               className="card-img-top"
               style={{height: "300px"}}
               alt="Fissure in Sandstone"

@@ -76,7 +76,7 @@ const AboutUs = () => {
         <div className="row">
           {backendData.slice(0, 4).map(
             (data) => {
-              return <Cardcourse title={data.title} description={data.description} img={url + data.thumbnail}
+              return <Cardcourse title={data.title} description={data.description} img={baseUrl+"/"+ data.thumbnail}
                                  id={data._id}/>
             }
           )}
@@ -85,7 +85,7 @@ const AboutUs = () => {
         <div className="row">
           {backendTeacherData.slice(0, 4).map(
             (data) => {
-              return <CardPopularTeachercourse title={data.name} img={url + data.thumbnail} id={data._id}/>
+              return <CardPopularTeachercourse title={data.name} img={baseUrl +"/"+ data.thumbnail} id={data._id}/>
             }
           )}
         </div>

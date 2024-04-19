@@ -62,7 +62,7 @@ const CourseDetail = () => {
           <div className="row g-0">
             <div className="col-md-4">
               <img
-                src={baseUrl + CoursebackendData.thumbnail}
+                src={baseUrl +"/"+ CoursebackendData.thumbnail}
                 className="img-fluid mt-3"
               />
             </div>
