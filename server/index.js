@@ -29,7 +29,6 @@ app.use('/course',courserouter)
 app.use('/file', filerouter)
 app.use('/chapter', chapterrouter)
 app.use('/enroll', enrollrouter)
-
 app.use(express.static('./static/uploads'));
 
 // const createToken= async()=>{

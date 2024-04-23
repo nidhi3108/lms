@@ -4,11 +4,10 @@ import Sidebar from "./Sidebar";
 
 import {Routes as Switch,Route} from "react-router-dom"
 import NavBarStudent from "../Home/NavBarStudent";
+import StudentDetailPage from "./StudentDetailPage";
 
 const UserDashboard = () =>  {
 
-
-    
 return (
     <>
     {/* <NavBarStudent/> */}
@@ -18,7 +17,8 @@ return (
                 <Sidebar/>
                 </div>
                 <div className="col-md-9 mt-4">
-               Dashboard
+            <StudentDetailPage/>
+          
                     </div>
             </div>
         </div>

@@ -32,27 +32,7 @@ const Mycourses = () => {
     showAllenrolledcoursebyeachid(data);
   };
 
-  // const showAllenrolledcoursebyid= async (data)=>{
-  //   // console.log(data[0].enrolledCourses);
-  //   const allenrolledid=data[0].enrolledCourses
-  //   const detailedData= allenrolledid.map(async  (id)=>{
-  //     const response = await fetch("http://localhost:5000/course/getalldataofenrolledcourse/" + id);
-  //     console.log(response.status);
-  //     const enrolleddata = await response.json();
-  //     console.log(enrolleddata);
-
-  //     // // console.log("studentenrolledocourses");
-  //   }
-  //   )
-  //   setBackendData(detailedData);
-  //   console.log(backendData.length);
-  //   console.log(backendData);
-  //   console.log(detailedData);
-  // }
-
-  // using async/await directly inside a map function might not work as expected, as map doesn't
-  // inherently await each iteration. However, you can combine map with Promise.all to achieve a
-  // similar effect, executing asynchronous operations for each item in parallel.
+  
   const showAllenrolledcoursebyeachid = async (data) => {
     if (data.length != 0) {
       const allenrolledid = data[0].enrolledCourses;

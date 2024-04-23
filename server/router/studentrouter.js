@@ -73,4 +73,13 @@ router.post('/editprofile',(req,res)=>{
     });
     
 })
+
+router.get('/getall/:studentId', (req,res)=>{
+    console.log(req.params.studentId)
+    console.log("req body of student detail", req.params)
+    console.log("dfgs");
+
+
+})
+
 module.exports=router

@@ -212,7 +212,7 @@ else {
             />
           </div>
   {/* experience */}
-  <div className=" mb-4">
+  {/* <div className=" mb-4">
             <label className="form-label" htmlFor="form6Example4">
               {props.experience}
             </label>
@@ -224,7 +224,7 @@ else {
               value={formData.experience}
               onChange={handleInputChange}
             />
-          </div>
+          </div> */}
           {flag == "student" ? (
             <div className=" mb-4">
               <label className="form-label" htmlFor="form6Example4">

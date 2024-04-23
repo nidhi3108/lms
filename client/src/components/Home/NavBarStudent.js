@@ -48,7 +48,7 @@ const NavBarStudent = (props) => {
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to="/teachers">
+                <NavLink className="nav-link" to="/all-latest-teacher">
                   Teachers
                 </NavLink>
                 </li><li>

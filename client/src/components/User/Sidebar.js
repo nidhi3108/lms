@@ -18,7 +18,7 @@ const Sidebar = () => {
                         <div className="list-group list-group-flush">
                             <Link to="/user-dashboard" className="list-group-item list-group-item-action">Dashboard</Link>
                             <Link to="/user-mycourses" className="list-group-item list-group-item-action">My Course</Link>
-                            <Link to="/user-favcourse" className="list-group-item list-group-item-action">Favourite Course</Link>
+                            {/* <Link to="/user-favcourse" className="list-group-item list-group-item-action">Favourite Course</Link> */}
                            
                             <Link to="/user-profilesetting" className="list-group-item list-group-item-action">Profile Setting</Link>
                             <Link to="/user-changepass" className="list-group-item list-group-item-action">Reset Password</Link>

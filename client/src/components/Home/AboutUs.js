@@ -25,16 +25,22 @@ const AboutUs = () => {
 
   const getEnrolledCourses = async () => {
     const response = await fetch(
-      `${baseUrl}/course/getallstudentenrolledcourse/` + studentId
-    );
+      `${baseUrl}/course/getallstudentenrolledcourse/` + studentId);
     console.log(response.status);
     const data = await response.json();
+    console.log(data);
+    if (data && data.length > 0 && data[0].enrolledCourses) {
     console.log(`Enrolled Data :: ${data[0].enrolledCourses} `, typeof data[0].enrolledCourses);
     data[0].enrolledCourses.forEach((courseId) => {
       console.log(`course ID TO SET :::: ${courseId}`);
       localStorage.setItem(`enrolled_${courseId}`, "true");
     })
-    console.log(`Enrollled DAta received ::: ${enrolledCourseData}`);
+    console.log(`Enrollled Data received ::: ${enrolledCourseData}`);
+  }
+  else{
+    console.log("No enrolled courses for this user");
+  }
+ 
     // localStorage.setItem('enrolledCourses', JSON.stringify(enrolledCourseData));
   }
 
