@@ -4,6 +4,7 @@ import {Routes as Switch,Route} from "react-router-dom"
 import TeacherSidebar from "./TeacherSidebar";
 import NavBarTeacher from "../Home/NavbarTeacher";
 import { baseUrl } from "../../utils/constants";
+import TeacherDetailPage from "./TeacherDetailPage";
 
 
 const TeacherDashboard = () => (
@@ -15,7 +16,7 @@ const TeacherDashboard = () => (
                 <TeacherSidebar/>
                 </div>
                 <div className="col-md-9 mt-4">
-               Teacher Dashboard
+               <TeacherDetailPage/>
                     </div>
             </div>
         </div>

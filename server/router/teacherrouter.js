@@ -3,7 +3,7 @@ const model= require("../model/teachermodel")
 const router=express.Router();
 
 
-router.post('/register', async (req,res)=>{
+router.post('/register', async (req,res)=> {
     console.log("teacher req.body",req.body);
     console.log("req.body");
     const  email  = req.body.email;
@@ -59,7 +59,6 @@ router.get('/getallTeacher',(req,res)=>{
 })
 
 router.get('/getrelatedTeacherDetail/:teacher_id',(req,res)=>{
-    // console.log(req.body);
     console.log(req.params.teacher_id);
     model.findById(req.params.teacher_id).populate('email')
     .then((result)=>{
@@ -86,7 +85,7 @@ router.post('/edit',(req,res)=>{
     
 })
 
-//
+
 router.post('/editprofile',(req,res)=>{
     console.log(req.body.id);
     console.log(req.body);
@@ -97,8 +96,20 @@ router.post('/editprofile',(req,res)=>{
     }).catch((err) => {
         res.json(err)
     });
-    
 })
+
+
+router.get('/getall/:teacherId',(req,res)=>{
+        console.log(req.params.teacherId);
+        console.log(req.params);
+    model.findById({_id:req.params.teacherId})
+    .then((result) => {
+        res.json(result)
+        console.log("dashboard data fethced");
+    }).catch((err) => {
+        res.json(err)
+    });
+    });
 
 
 //reset password
@@ -113,4 +124,6 @@ router.post('/reset',(req,res)=>{
     });
     
 })
+
+
 module.exports=router

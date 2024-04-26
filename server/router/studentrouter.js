@@ -78,8 +78,13 @@ router.get('/getall/:studentId', (req,res)=>{
     console.log(req.params.studentId)
     console.log("req body of student detail", req.params)
     console.log("dfgs");
-
-
+    model.findById({_id:req.params.studentId})
+    .then((result) => {
+        res.json(result)
+        console.log("pass update");
+    }).catch((err) => {
+        res.json(err)
+    });
 })
 
 module.exports=router

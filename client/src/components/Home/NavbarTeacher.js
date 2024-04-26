@@ -59,38 +59,7 @@ const NavBarTeacher = (props) => {
                   </NavLink>
                 </li>
             </ul>
-            {/* <div className="dropdown ms-3">
-              <button
-                data-mdb-ripple-color="dark"
-                className=" btn btn-outline-primary dropdown-toggle me-3"
-                type="button"
-                id="dropdownMenuButton"
-                data-mdb-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Teacher
-              </button>
-              <ul
-                className="dropdown-menu"
-                aria-labelledby="dropdownMenuButton"
-              >
-                <li>
-                  <NavLink className="dropdown-item" to="teacher-login">
-                    Login
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink className="dropdown-item" to="teacher-register">
-                    Register
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink className="dropdown-item" to="teacher-dashboard">
-                    Dashboard
-                  </NavLink>
-                </li>
-              </ul>
-            </div> */}
+            
             <div className="signout">
               <button
                 type="button"

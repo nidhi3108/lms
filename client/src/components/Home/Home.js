@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
+import "./Home.css"
 
 const Home = () => {
 
@@ -62,7 +63,9 @@ const Home = () => {
             </div>
           </div>
         </div>
+         {/* second section  */}
         {/* Background image */}
+     
       </header>
     </>
   );
