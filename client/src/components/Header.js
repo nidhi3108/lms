@@ -28,7 +28,7 @@ const Header = (props) => {
 
   return (
     <>
-      {currentStudent && <NavBarStudent setRenderHeader={props.setRenderHeader}/>}
+      {currentStudent && !currentTeacher && <NavBarStudent setRenderHeader={props.setRenderHeader}/>}
       {!currentStudent && currentTeacher && <NavBarTeacher setRenderHeader={props.setRenderHeader}/>}
 
       {/*{!currentStudent && !currentTeacher && (*/}

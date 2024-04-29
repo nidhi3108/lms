@@ -38,7 +38,7 @@ const NavBarTeacher = (props) => {
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" aria-current="page" to="/about-us">
+                <NavLink className="nav-link" aria-current="page" to="/about-us-teacher">
                   About Us
                 </NavLink>
               </li>

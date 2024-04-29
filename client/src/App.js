@@ -40,6 +40,7 @@ import Authorize from './components/Commonpages/Authorize';
 import UserAuthorization from './components/User/userAuthorization';
 import Home from './components/Home/Home';
 import {useState} from "react";
+import AboutUsTeacher from './components/Home/AboutUsTeacher';
 
 
 function App() {
@@ -52,6 +53,7 @@ function App() {
       <Routes>
         <Route element={<Home/>} path="/"/>
         <Route element={<AboutUs/>} path="/about-us"/>
+        <Route element={<Authorize><AboutUsTeacher/></Authorize>} path="/about-us-teacher"/>
         <Route element={<CourseDetail/>} path="coursedetail/:course_id"/>
         <Route element={<UserLogin setRenderHeader={setRenderHeader}/>} path="/user-login"/>
         <Route element={<UserRegister/>} path="/user-register"/>
