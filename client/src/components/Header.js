@@ -4,10 +4,6 @@ import NavBarTeacher from "./Home/NavbarTeacher";
 import NavBarStudent from "./Home/NavBarStudent";
 
 const Header = (props) => {
-  // let currentTeacher = sessionStorage.getItem("currentTeacher");
-  // console.log(currentTeacher);
-  // let currentStudent = sessionStorage.getItem("currentStudent");
-  // console.log(currentStudent);
 
   const [currentTeacher, setCurrentTeacher] = useState(
     sessionStorage.getItem("currentTeacher")
@@ -16,6 +12,7 @@ const Header = (props) => {
   const [currentStudent, setCurrentStudent] = useState(
     sessionStorage.getItem("currentStudent")
   );
+  
   console.log(currentTeacher);
 
   useEffect(() => {
