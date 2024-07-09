@@ -8,7 +8,6 @@ const Dummy = ()=>{
     const valuedata= await value.json();
     console.log(data)
     setData(valuedata)
-
 }
 
 useEffect(()=>{
